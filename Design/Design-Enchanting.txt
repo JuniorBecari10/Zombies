@@ -1,0 +1,10 @@
+Zombies Design - Enchanting
+
+The Enchantment Table stays at Garden, and costs 1000 gold to enchant a weapon.
+
+An Enchanted Weapon has a tag indicating that is Enchanted and it's damage is doubled, and the Use Cooldown stays at half of it.
+
+Example:
+
+Weapon not Enchanted: 10 Attack, 500ms Cooldown
+Same Weapon Enchanted: 20 Attack, 250ms Cooldown

@@ -1,0 +1,15 @@
+Zombies Design - Waves
+
+Start: Wave 1
+End: Wave 30 (has the Master Zombie, the boss of the game)
+
+As the wave number increases, the number of zombies increases too and they become stronger.
+
+------
+
+Wave Data:
+
+Wave 1 - 10 zombies - Basic Zombie
+Wave 2 - 15 zombies - Basic Zombie
+Wave 3 - 20 zombies - Basic Zombie and Basic Skeleton
+Wave 4 - 25 zombies - Basic Zombie and Basic Skeleton

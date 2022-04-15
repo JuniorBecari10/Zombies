@@ -1,0 +1,35 @@
+Zombies Design - Zombies
+
+Zombies come in waves. But in each wave come more and more zombies, and they are stronger too.
+
+------
+
+Zombie Stats:
+
+HP (Life in Hearts)
+Defense (Capability to resist attacks. Hearts that are not affected per each attack received; example: Received 5 Attack, but the zombie has 3 defense. 5 - 3 = 2, then the zombie will lose 2 hearts)
+Attack (How much damage will be dealt in HPA - Hearts Per Attack)
+
+------
+
+Zombie List:
+
+Basic Zombie
+
+HP: 5
+Defense: 1
+Attack: 1
+
+Ability: None
+
+---
+
+Basic Skeleton (has a bow)
+
+HP: 5
+Defense: 0
+Attack: 2
+
+Ability: Shoot arrows up to 5 blocks
+
+---

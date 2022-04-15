@@ -1,0 +1,12 @@
+Zombies Design - Gold
+
+Gold is the in-game money you use to buy:
+
+- Weapons
+- Perks
+
+You can earn Gold by:
+
+- Killing Zombies
+- Completing Achievements (not planned to do now)
+

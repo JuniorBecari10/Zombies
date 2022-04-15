@@ -1,0 +1,37 @@
+Zombies Design - Gameplay
+
+Movement
+
+PC
+
+WASD ou Arrows - Move Character
+Mouse (Move) Point Weapon
+Mouse (Click or Hold) Shoot in the pointed direction
+R - Recharge
+
+Mobile
+
+Touch (Joystick) - Move Character
+Touch (Anywhere) - Point weapon and shoot
+Touch (Button) - Recharge
+
+Regardless of the direction you are moving, you can shoot in any other direction you 
+want.
+
+------
+
+Player Data:
+
+10 HP (can be increased via perks)
+3 Weapon slots + Sword (can be increased by one via perks)
+3 Perk slots
+
+------
+
+Initial weapons:
+
+Sword (cannot be changed)
+
+Pistol (see Weapons)
+None
+None
