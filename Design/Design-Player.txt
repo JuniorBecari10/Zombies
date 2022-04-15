@@ -5,6 +5,7 @@ Player Data: (see Gameplay)
 10 HP (can be increased via perks)
 3 Weapon slots + Sword (can be increased by one via perks)
 3 Perk slots
+0 Defense (can be increased with Armor, see Armor)
 
 Speed: 1.5 or 2 (Blocks per Second)
 

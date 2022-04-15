@@ -1,0 +1,9 @@
+Zombies Design - Bonus
+
+Bonus are little helps that you get killing Zombies.
+All of they lasts 10 seconds.
+
+They can be:
+
+- Insta Kill
+- Double Gold

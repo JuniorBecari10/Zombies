@@ -1,9 +1,9 @@
 Design Zombies - Weapons
 
-All the weapons are ranged, except Sword.
+All the weapons are ranged (i.e. can shoot), except Sword.
 The weapons are unbreakable, including Sword.
 
-Point with mouse and click to Shoot (see Gameplay).
+Point with mouse and click (right or left) to Shoot (see Gameplay).
 
 The Attack number of the weapon is the same the player will deal on the Zombies.
 
@@ -11,7 +11,7 @@ REMEMBER: If you buy a weapon holding the same slot as another one, you will los
 
 Weapon Stats:
 
-Attack (The number of damage dealt in hearts, see Zombies), can be increased by Enchanting (see Enchanting).
+Attack (The amount of damage dealt in hearts, see Zombies), can be increased by Enchanting (see Enchanting).
 Use Cooldown (Time in milliseconds between each shot, miniguns will be less, snipers will be more).
 Total Bullet Capacity (Total capacity of bullets before having to buy more)
 Loaded Bullet Capacity (Capacity of bullets before having to recharge).
@@ -20,7 +20,7 @@ Loaded Bullet Capacity (Capacity of bullets before having to recharge).
 
 Weapons:
 
-Knife
+Sword
 
 Attack: 2
 Use Cooldown: 500ms (half a second)

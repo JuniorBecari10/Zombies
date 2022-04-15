@@ -4,7 +4,7 @@ Movement
 
 PC
 
-WASD ou Arrows - Move Character
+WASD or Arrows - Move Character
 Mouse (Move) Point Weapon
 Mouse (Click or Hold) Shoot in the pointed direction
 R - Recharge
@@ -18,6 +18,8 @@ Touch (Button) - Recharge
 Regardless of the direction you are moving, you can shoot in any other direction you 
 want.
 
+DETAIL: Hearts can only be full, in the game will not have half hearts.
+
 ------
 
 Player Data:
@@ -25,6 +27,9 @@ Player Data:
 10 HP (can be increased via perks)
 3 Weapon slots + Sword (can be increased by one via perks)
 3 Perk slots
+0 Defense (can be increased with Armor, see Armor)
+
+Speed: 1.5 or 2 (Blocks per Second)
 
 ------
 
