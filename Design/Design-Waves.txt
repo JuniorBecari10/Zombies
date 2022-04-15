@@ -5,6 +5,8 @@ End: Wave 30 (has the Master Zombie, the boss of the game)
 
 As the wave number increases, the number of zombies increases too and they become stronger.
 
+After all zombies die, a new wave starts up.
+
 ------
 
 Wave Data:
