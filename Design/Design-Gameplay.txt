@@ -8,12 +8,14 @@ WASD or Arrows - Move Character
 Mouse (Move) Point Weapon
 Mouse (Click or Hold) Shoot in the pointed direction
 R - Recharge
+Space - Dash to Pointed Direction
 
 Mobile
 
 Touch (Joystick) - Move Character
 Touch (Anywhere) - Point weapon and shoot
 Touch (Button) - Recharge
+Double Tab - Dash to touch direction
 
 Regardless of the direction you are moving, you can shoot in any other direction you 
 want.

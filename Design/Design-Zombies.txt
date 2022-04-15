@@ -21,6 +21,7 @@ Defense: 1
 Attack: 1
 
 Ability: None
+Immune to: Nothing
 
 ---
 
@@ -31,5 +32,6 @@ Defense: 0
 Attack: 2
 
 Ability: Shoot arrows up to 5 blocks
+Immune to: Nothing
 
 ---

@@ -1,3 +1,15 @@
 Zombies Design - Perks
 
+Perks are "boosters" that upgrade your Weapons.
+They take place in the Perks slots along with your weapons.
+
+You can get up to 3 Perks (see Player, Gameplay).
+
+------
+
+Perks:
+
+Speed (Multiply Player's Speed by 2x)
+Fire Bullets (Bullets are shot with fire, and Zombies that aren't immune to Fire burn (Ice weapons become normal, as there isn't any Perks!)).
+Ice Bullets (Bullets are shot with ice, and Zombies that aren't immune to Ice become slower and take damage by frostburn (Ice weapons become normal, as there isn't any Perks!)).
 
