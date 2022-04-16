@@ -1,0 +1,11 @@
+Zombies Design - Windows
+
+Zombies come by Windows.
+
+They take 3 Blocks of space (see Blocks).
+Zombies can exit from it, but can't turn back to it neither the Player (see Player).
+
+For a Zombie to exit the Window, he needs to break it.
+
+After a window has breaked, the player can go there and fix it. There are some different Blocks in 
+the front of the Windows; if the player stands on top of it, he automatically repairs the window.

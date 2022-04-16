@@ -15,12 +15,12 @@ Mobile
 Touch (Joystick) - Move Character
 Touch (Anywhere) - Point weapon and shoot
 Touch (Button) - Recharge
-Double Tab - Dash to touch direction
+Double Tap - Dash to touch direction
 
 Regardless of the direction you are moving, you can shoot in any other direction you 
 want.
 
-DETAIL: Hearts can only be full, in the game will not have half hearts.
+DETAIL: Hearts can only be full, in the game will be not half hearts.
 
 ------
 

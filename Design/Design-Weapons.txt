@@ -34,4 +34,15 @@ Use Cooldown: 300ms
 Total Bullet Capacity: 280
 Loaded Bullet Capacity: 10
 
-Shoot: Bullets
+Shoot: 1 Bullet
+
+---
+
+Shotgun
+
+Attack: 3
+Use Cooldown: 700ms
+Total Bullet Capacity: 250
+Loaded Bullet Capacity: 5
+
+Shoot: 3 Bullets
