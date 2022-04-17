@@ -1,6 +1,6 @@
 Zombies Design - Enchanting
 
-The Enchantment Machine stays at Garden, and costs 1000 gold to enchant a weapon.
+The Enchantment Machine stays at Garden, and costs 1500 gold to enchant a Weapon (see Weapons).
 
 Thare are 5 levels of Enchanting:
 Expressed in Roman Numerals (I II III IV V)

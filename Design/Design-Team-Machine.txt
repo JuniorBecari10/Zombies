@@ -1,0 +1,8 @@
+Zombies Design - Team Machine
+
+The Team Machine has life-savers helps, stays at Roof Top.
+
+Helps:
+
+Ammo Supply: 1000 Gold - Refills all ammo for all of your weapons.
+Dragon's Wrath: 3000 Gold - Kills all zombies in a 15 block radius of the player after a short delay (2 seconds)

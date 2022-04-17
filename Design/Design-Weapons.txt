@@ -16,6 +16,8 @@ Use Cooldown (Time in milliseconds between each shot, miniguns will be less, sni
 Total Ammo Capacity (Total capacity of Ammos before having to buy more)
 Loaded Ammo Capacity (Capacity of Ammos before having to recharge).
 
+Shoot: The object that will be emitted and the amount
+
 -----
 
 Weapons:
@@ -30,30 +32,52 @@ Use Cooldown: 500ms (half a second)
 Pistol
 
 Attack: 2
-Use Cooldown: 300ms
+Use Cooldown: 200ms
 Total Ammo Capacity: 280
 Loaded Ammo Capacity: 10
 
-Shoot: 1 Ammo
+Shoot: 1 Bullet
 
 ---
 
 Shotgun
 
-Attack: 3
+Attack: 7
 Use Cooldown: 700ms
 Total Ammo Capacity: 250
 Loaded Ammo Capacity: 5
 
-Shoot: 3 Ammos
+Shoot: 3 Bullets
+
+---
+
+Rifle
+
+Attack: 5
+Use Cooldown: 100ms
+Total Ammo Capacity: 300
+Loaded Ammo Capacity: 20
+
+Shoot: 1 Bullet
 
 ---
 
 Sniper
 
-Attack: 5
+Attack: 8
 Use Cooldown: 1000ms (one second)
 Total Ammo Capacity: 100
 Loaded Ammo Capacity: 1
 
-Shoot: 1 Ammo
+Shoot: 1 Bullet
+
+---
+
+Rocket Launcher
+
+Attack: 10
+Use Cooldown: 1200ms
+Total Ammo Capacity: 80
+Loaded Ammo Capacity: 5
+
+Shoot: 1 Bomb (explodes after 2 seconds after launched)

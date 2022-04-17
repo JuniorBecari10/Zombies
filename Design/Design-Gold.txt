@@ -7,5 +7,5 @@ Gold is the in-game money you use to buy:
 
 You can earn Gold by:
 
-- Killing Zombies (has a random chance to make a Critical Hit, doubling the amount of Gold earned).
+- Killing Zombies: 20 Gold per hit (has a random chance to make a Critical Hit, doubling the amount of Gold earned).
 - Completing Achievements (not planned to do now)
