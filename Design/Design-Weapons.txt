@@ -46,3 +46,14 @@ Total Bullet Capacity: 250
 Loaded Bullet Capacity: 5
 
 Shoot: 3 Bullets
+
+---
+
+Sniper
+
+Attack: 5
+Use Cooldown: 1000ms (one second)
+Total Bullet Capacity: 100
+Loaded Bullet Capacity: 1
+
+Shoot: 1 Bullet

@@ -12,4 +12,5 @@ Perks:
 Speed (Multiply Player's Speed by 2x)
 Fire Bullets (Bullets are shot with fire, and Zombies that aren't immune to Fire will burn (Ice weapons become normal, as there isn't any Perks!)).
 Ice Bullets (Bullets are shot with ice, and Zombies that aren't immune to Ice will become slower and take damage by frostburn (Fire weapons become normal, as there isn't any Perks!)).
+Quick Fire (Use Cooldown are reduced to half)
 
