@@ -1,0 +1,9 @@
+Zombies Design - Bonuses
+
+Bonuses (plural of Bonus) are little helps that you get when you kill Zombies.
+
+They can be:
+
+- Insta Kill: 10 Seconds (Instantly kills zombies in one hit)
+- Double Gold: 30 Seconds (The amount of gold dropped is doubled)
+- Max Ammo (Refills the ammo for all of your Weapons)

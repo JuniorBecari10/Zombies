@@ -1,0 +1,14 @@
+Zombies Design - Lucky Chest
+
+The Lucky Chest stays at Apartments, and it costs 1000 gold to open it.
+
+And it starts to scroll the Weapons (special ones!), and you have infinite time to choose a Weapon.
+
+Controls to Accept the Weapon in the Lucky Chest:
+
+PC - Left Click the Lucky Chest or press G. (see Gameplay)
+Mobile - Touch the Lucky Chest.
+
+Lucky Chest Weapons:
+
+

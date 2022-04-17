@@ -1,10 +1,12 @@
 Zombies Design - Enchanting
 
-The Enchantment Table stays at Garden, and costs 1000 gold to enchant a weapon.
+The Enchantment Machine stays at Garden, and costs 1000 gold to enchant a weapon.
 
-An Enchanted Weapon has a tag indicating that is Enchanted and it's damage is doubled, and the Use Cooldown stays at half of it.
+Thare are 5 levels of Enchanting:
+Expressed in Roman Numerals (I II III IV V)
 
-Example:
-
-Weapon not Enchanted: 10 Attack, 500ms Cooldown
-Same Weapon Enchanted: 20 Attack, 250ms Cooldown
+Level 1: Damage: +50%,  Use Cooldown -50%
+Level 2: Damage: +100%, Use Cooldown -60%
+Level 3: Damage: +150%, Use Cooldown -70%
+Level 4: Damage: +200%, Use Cooldown -80%
+Level 5: Damage: +300%, Use Cooldown -90%
