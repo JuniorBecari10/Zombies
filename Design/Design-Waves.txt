@@ -11,7 +11,13 @@ After all zombies die, a new wave starts up.
 
 Wave Data:
 
-Wave 1 - 10 zombies - Basic Zombie
-Wave 2 - 15 zombies - Basic Zombie
-Wave 3 - 20 zombies - Basic Zombie and Basic Skeleton
-Wave 4 - 25 zombies - Basic Zombie and Basic Skeleton
+Wave 1 - 8 zombies - Basic Zombie
+Wave 2 - 10 zombies - Basic Zombie
+Wave 3 - 12 zombies - Basic Zombie and Basic Skeleton
+Wave 4 - 14 zombies - Basic Zombie and Basic Skeleton
+Wave 5 - 18 zombies - Armored Zombie
+Wave 6 - 18 zombies - Armored Zombie and Basic Skeleton
+Wave 7 - 16 zombies - Armored Zombie and Armored Skeleton
+Wave 8 - 20 zombies - Armored Zombie and Armored Skeleton
+Wave 9 - 26 zombies - Bomb Zombie and Basic Skeleton
+Wave 10 - 26 zombies - Armored Zombie and Fire Zombie

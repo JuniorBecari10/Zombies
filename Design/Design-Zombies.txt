@@ -14,6 +14,8 @@ Attack (How much damage will be dealt in HPA - Hearts Per Attack)
 
 Zombie List:
 
+---
+
 Basic Zombie
 
 HP: 5
@@ -33,5 +35,53 @@ Attack: 2
 
 Ability: Shoot arrows up to 5 blocks
 Immune to: Nothing
+
+---
+
+Armored Zombie
+
+HP: 8
+Defense: 2
+Attack: 2
+
+Ability: None
+Immune to: Nothing
+
+---
+
+Armored Skeleton (has a bow)
+
+HP: 9
+Defense: 1
+Attack: 3
+
+Ability: Shoot arrows up to 8 blocks
+Immune to: Nothing
+
+---
+
+Bomb Zombie
+
+HP: 4
+Defense: 2
+Attack: 2, 7 (bomb)
+
+Ability: Explodes when touches the player
+Immune to: Nothing
+
+Obs: When hit by an explosive weapon, trigger the bomb
+
+---
+
+Fire Zombie
+
+HP: 9
+Defense: 3
+Attack: 3
+
+Ability: Put player on fire when touch him.
+Immune to: Fire Weapons and Fire Bullets perk
+
+Obs: When hit by an explosive weapon, trigger the bomb
 
 ---

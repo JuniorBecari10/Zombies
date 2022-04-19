@@ -2,7 +2,7 @@ Zombies Design - Bosses
 
 Bosses are special Zombies that appear at certain Rounds.
 
-Round 10: Bombie
+Round 15: Bombie
 
 HP: 100
 Defense: 3
