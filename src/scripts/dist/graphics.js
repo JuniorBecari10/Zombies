@@ -6,3 +6,4 @@ var Graphics = /** @class */ (function () {
     }
     return Graphics;
 }());
+var g = new Graphics("canvas");

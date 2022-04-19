@@ -7,3 +7,5 @@ class Graphics {
         this.ctx = this.canvas.getContext("2d");
     }
 }
+
+const g: Graphics = new Graphics("canvas");
