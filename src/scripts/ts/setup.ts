@@ -13,4 +13,9 @@ const rightArrowCode: number = 39;
 const downArrowCode: number = 40;
 const leftArrowCode: number = 37;
 
+const wCode: number = 87;
+const dCode: number = 68;
+const sCode: number = 83;
+const aCode: number = 65;
+
 const spaceCode: number = 32;

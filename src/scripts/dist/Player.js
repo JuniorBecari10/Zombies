@@ -39,19 +39,19 @@ class Player extends Entity {
                     this.bounds.x += this.speed * 20;
                 }
             }
-            if (keyPressed.keyCode == upArrowCode) {
+            if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode) {
                 this.dir = "up";
                 this.bounds.y -= this.speed;
             }
-            else if (keyPressed.keyCode == downArrowCode) {
+            else if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) {
                 this.dir = "down";
                 this.bounds.y += this.speed;
             }
-            if (keyPressed.keyCode == leftArrowCode) {
+            if (keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode) {
                 this.dir = "left";
                 this.bounds.x -= this.speed;
             }
-            else if (keyPressed.keyCode == rightArrowCode) {
+            else if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) {
                 this.dir = "right";
                 this.bounds.x += this.speed;
             }
