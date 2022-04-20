@@ -1,11 +1,4 @@
 "use strict";
-const player = new Player({ x: 0, y: 0, w: 48, h: 48 }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
-var entities = [];
-var keyPressed;
-var isKeyPressed = false;
-var mousePos = { x: 0, y: 0 };
-var isMousePressed = false;
-var gameState = "menu";
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
