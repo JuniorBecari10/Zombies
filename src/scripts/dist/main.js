@@ -1,17 +1,39 @@
 "use strict";
-var player = new Player({ x: 0, y: 0, w: 16, h: 16 }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
+const player = new Player({ x: 0, y: 0, w: 48, h: 48 }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
 var entities = [];
-function init() {
-    entities.push(player);
-    window.requestAnimationFrame(loop);
+var keyPressed;
+var isKeyPressed = false;
+var mousePos = { x: 0, y: 0 };
+var gameState = "menu";
+document.addEventListener("keydown", function (event) {
+    keyPressed = event;
+    isKeyPressed = true;
+});
+document.addEventListener("keyup", function (event) {
+    keyPressed = event;
+    isKeyPressed = false;
+});
+document.addEventListener("mousemove", function (event) {
+    let x = event.clientX;
+    let y = event.clientY;
+    mousePos = { x: x, y: y };
+});
+function removeEquals(arr) {
+    let sett = new Set(arr);
+    return Array.from(sett.values());
 }
+// ------
 function defineSize() {
     g.canvas.width = window.innerWidth;
     g.canvas.height = window.innerHeight;
 }
+// ----------------------------------------
+function init() {
+    entities.push(player);
+    window.requestAnimationFrame(loop);
+}
 function tick() {
-    for (var _i = 0, entities_1 = entities; _i < entities_1.length; _i++) {
-        var o = entities_1[_i];
+    for (let o of entities) {
         o.tick();
     }
 }
@@ -20,8 +42,7 @@ function render() {
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
-    for (var _i = 0, entities_2 = entities; _i < entities_2.length; _i++) {
-        var o = entities_2[_i];
+    for (let o of entities) {
         o.render(g);
     }
 }

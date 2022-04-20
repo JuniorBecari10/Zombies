@@ -1,9 +1,8 @@
 "use strict";
-var Graphics = /** @class */ (function () {
-    function Graphics(canvasId) {
+class Graphics {
+    constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext("2d");
     }
-    return Graphics;
-}());
-var g = new Graphics("canvas");
+}
+const g = new Graphics("canvas");
