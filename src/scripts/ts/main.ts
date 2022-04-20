@@ -1,6 +1,11 @@
+const player: Player = new Player({x: 0, y: 0, w: 40, h: 40}, playerSpritesheet, {x: 0, y: 0, w: 16, h: 16});
+
+var entities: Entity[] = [];
+
 document.addEventListener("keydown", function (event: KeyboardEvent) {
     keyPressed = event;
     isKeyPressed = true;
+    console.log(event);
 });
 
 document.addEventListener("keyup", function (event: KeyboardEvent) {

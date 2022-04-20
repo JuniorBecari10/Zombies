@@ -1,7 +1,10 @@
 "use strict";
+const player = new Player({ x: 0, y: 0, w: 40, h: 40 }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
+var entities = [];
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
+    console.log(event);
 });
 document.addEventListener("keyup", function (event) {
     keyPressed = event;
