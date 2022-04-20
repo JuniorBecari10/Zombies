@@ -4,6 +4,7 @@ var entities = [];
 var keyPressed;
 var isKeyPressed = false;
 var mousePos = { x: 0, y: 0 };
+var isMousePressed = false;
 var gameState = "menu";
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
@@ -18,6 +19,12 @@ document.addEventListener("mousemove", function (event) {
     let y = event.clientY;
     mousePos = { x: x, y: y };
 });
+document.addEventListener("mousedown", function (event) {
+    isMousePressed = true;
+});
+document.addEventListener("mouseup", function (event) {
+    isMousePressed = false;
+});
 function removeEquals(arr) {
     let sett = new Set(arr);
     return Array.from(sett.values());
@@ -30,6 +37,7 @@ function defineSize() {
 // ----------------------------------------
 function init() {
     entities.push(player);
+    g.canvas.style.imageRendering = "pixelated";
     window.requestAnimationFrame(loop);
 }
 function tick() {

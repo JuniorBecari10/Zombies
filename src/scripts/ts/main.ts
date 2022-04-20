@@ -8,24 +8,33 @@ var keyPressed: KeyboardEvent;
 var isKeyPressed: boolean = false;
 
 var mousePos: Point = {x: 0, y: 0};
+var isMousePressed: boolean = false
 
 var gameState: GameState = "menu";
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", function (event: KeyboardEvent) {
     keyPressed = event;
     isKeyPressed = true;
 });
 
-document.addEventListener("keyup", function (event) {
+document.addEventListener("keyup", function (event: KeyboardEvent) {
     keyPressed = event;
     isKeyPressed = false;
 });
 
-document.addEventListener("mousemove", function (event) {
+document.addEventListener("mousemove", function (event: MouseEvent) {
     let x: number = event.clientX;
     let y : number = event.clientY;
     
     mousePos = {x: x, y: y};
+});
+
+document.addEventListener("mousedown", function (event: MouseEvent) {
+    isMousePressed = true;
+});
+
+document.addEventListener("mouseup", function (event: MouseEvent) {
+    isMousePressed = false;
 });
 
 function removeEquals<T>(arr: T[]) {
@@ -46,6 +55,7 @@ function defineSize() {
 function init(): void {
     entities.push(player);
     
+    g.canvas.style.imageRendering = "pixelated";
     window.requestAnimationFrame(loop);
 }
 
