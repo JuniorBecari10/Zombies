@@ -4,7 +4,6 @@ var entities = [];
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
-    console.log(event);
 });
 document.addEventListener("keyup", function (event) {
     keyPressed = event;
