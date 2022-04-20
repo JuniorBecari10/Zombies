@@ -9,6 +9,11 @@ class Player extends Entity {
     leftSprs: Rectangle[] = [];
     rightSprs: Rectangle[] = [];
     
+    dashUpSpr: Rectangle;
+    dashDownSpr: Rectangle;
+    dashleftSpr: Rectangle;
+    dashRightSpr: Rectangle;
+    
     animCount: number = 0;
     maxAnimCount: number = 5;
     
@@ -20,6 +25,11 @@ class Player extends Entity {
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle) {
         super(bounds, spritesheet, cutBounds);
+        
+        this.dashDownSpr = {x: 80, y: 0, w: 16, h: 16};
+        this.dashleftSpr = {x: 80, y: 16, w: 16, h: 16};
+        this.dashRightSpr = {x: 80, y: 32, w: 16, h: 16};
+        this.dashUpSpr = {x: 80, y: 48, w: 16, h: 16};
         
         for (let i = 0; i < this.maxAnimIndex; i++) {
             this.downSprs[i] = {x: i * 16, y: 0, w: 16, h: 16};

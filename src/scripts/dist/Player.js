@@ -14,6 +14,10 @@ class Player extends Entity {
         this.maxAnimIndex = 5;
         this.dashCount = 0;
         this.maxDashCount = 60;
+        this.dashDownSpr = { x: 80, y: 0, w: 16, h: 16 };
+        this.dashleftSpr = { x: 80, y: 16, w: 16, h: 16 };
+        this.dashRightSpr = { x: 80, y: 32, w: 16, h: 16 };
+        this.dashUpSpr = { x: 80, y: 48, w: 16, h: 16 };
         for (let i = 0; i < this.maxAnimIndex; i++) {
             this.downSprs[i] = { x: i * 16, y: 0, w: 16, h: 16 };
             this.leftSprs[i] = { x: i * 16, y: 16, w: 16, h: 16 };
