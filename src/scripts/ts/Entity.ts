@@ -1,4 +1,4 @@
-class Entity {
+class Entity implements ITickable, IRenderable {
     bounds: Rectangle;
     spritesheet: HTMLImageElement;
     cutBounds: Rectangle;

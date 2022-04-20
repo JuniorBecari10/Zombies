@@ -8,3 +8,4 @@ const upArrowCode = 38;
 const rightArrowCode = 39;
 const downArrowCode = 40;
 const leftArrowCode = 37;
+const spaceCode = 32;

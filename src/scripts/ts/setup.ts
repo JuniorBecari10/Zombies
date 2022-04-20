@@ -12,3 +12,5 @@ const upArrowCode: number = 38;
 const rightArrowCode: number = 39;
 const downArrowCode: number = 40;
 const leftArrowCode: number = 37;
+
+const spaceCode: number = 32;
