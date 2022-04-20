@@ -11,7 +11,7 @@ class Player extends Entity {
     
     dashUpSpr: Rectangle;
     dashDownSpr: Rectangle;
-    dashleftSpr: Rectangle;
+    dashLeftSpr: Rectangle;
     dashRightSpr: Rectangle;
     
     animCount: number = 0;
@@ -27,7 +27,7 @@ class Player extends Entity {
         super(bounds, spritesheet, cutBounds);
         
         this.dashDownSpr = {x: 80, y: 0, w: 16, h: 16};
-        this.dashleftSpr = {x: 80, y: 16, w: 16, h: 16};
+        this.dashLeftSpr = {x: 80, y: 16, w: 16, h: 16};
         this.dashRightSpr = {x: 80, y: 32, w: 16, h: 16};
         this.dashUpSpr = {x: 80, y: 48, w: 16, h: 16};
         
@@ -57,20 +57,24 @@ class Player extends Entity {
                 }
             }
             
-            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) {
+            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
                 
                 if (this.dir == "up") {
                     this.bounds.y -= this.speed * 20;
+                    this.cutBounds = this.dashUpSpr;
                 }
                 if (this.dir == "down") {
                     this.bounds.y += this.speed * 20;
+                    this.cutBounds = this.dashDownSpr;
                 }
                 if (this.dir == "left") {
                     this.bounds.x -= this.speed * 20;
+                    this.cutBounds = this.dashLeftSpr;
                 }
                 if (this.dir == "right") {
                     this.bounds.x += this.speed * 20;
+                    this.cutBounds = this.dashRightSpr;
                 }
             }
             

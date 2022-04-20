@@ -15,7 +15,7 @@ class Player extends Entity {
         this.dashCount = 0;
         this.maxDashCount = 60;
         this.dashDownSpr = { x: 80, y: 0, w: 16, h: 16 };
-        this.dashleftSpr = { x: 80, y: 16, w: 16, h: 16 };
+        this.dashLeftSpr = { x: 80, y: 16, w: 16, h: 16 };
         this.dashRightSpr = { x: 80, y: 32, w: 16, h: 16 };
         this.dashUpSpr = { x: 80, y: 48, w: 16, h: 16 };
         for (let i = 0; i < this.maxAnimIndex; i++) {
@@ -38,19 +38,23 @@ class Player extends Entity {
                     this.animIndex = 0;
                 }
             }
-            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) {
+            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
                 if (this.dir == "up") {
                     this.bounds.y -= this.speed * 20;
+                    this.cutBounds = this.dashUpSpr;
                 }
                 if (this.dir == "down") {
                     this.bounds.y += this.speed * 20;
+                    this.cutBounds = this.dashDownSpr;
                 }
                 if (this.dir == "left") {
                     this.bounds.x -= this.speed * 20;
+                    this.cutBounds = this.dashLeftSpr;
                 }
                 if (this.dir == "right") {
                     this.bounds.x += this.speed * 20;
+                    this.cutBounds = this.dashRightSpr;
                 }
             }
             if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode) {
