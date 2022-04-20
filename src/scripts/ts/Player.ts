@@ -86,5 +86,19 @@ class Player extends Entity {
                 this.cutBounds = this.rightSprs[this.animIndex];
             }
         }
+        else {
+            if (this.dir == "up") {
+                this.cutBounds = this.upSprs[0];
+            }
+            if (this.dir == "down") {
+                this.cutBounds = this.downSprs[0];
+            }
+            if (this.dir == "left") {
+                this.cutBounds = this.leftSprs[0];
+            }
+            if (this.dir == "right") {
+                this.cutBounds = this.rightSprs[0];
+            }
+        }
     }
 }
