@@ -40,39 +40,39 @@ class Player extends Entity {
             }
             if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
-                if (this.dir == "up") {
+                if (this.dir == "up") { // && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed * 20, w: this.bounds.w, h: this.bounds.h})) {
                     this.bounds.y -= this.speed * 20;
                     this.cutBounds = this.dashUpSpr;
                 }
-                if (this.dir == "down") {
+                if (this.dir == "down") { // && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed * 20, w: this.bounds.w, h: this.bounds.h})) {
                     this.bounds.y += this.speed * 20;
                     this.cutBounds = this.dashDownSpr;
                 }
-                if (this.dir == "left") {
+                if (this.dir == "left") { // && !collideWithAny({x: this.bounds.x - this.speed * 20, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
                     this.bounds.x -= this.speed * 20;
                     this.cutBounds = this.dashLeftSpr;
                 }
-                if (this.dir == "right") {
+                if (this.dir == "right") { // && !collideWithAny({x: this.bounds.x + this.speed * 20, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
                     this.bounds.x += this.speed * 20;
                     this.cutBounds = this.dashRightSpr;
                 }
             }
-            if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode) {
+            if ((keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode) && !collideWithAny({ x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "up";
                 this.bounds.y -= this.speed;
                 this.cutBounds = this.upSprs[this.animIndex];
             }
-            if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) {
+            if ((keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) && !collideWithAny({ x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "down";
                 this.bounds.y += this.speed;
                 this.cutBounds = this.downSprs[this.animIndex];
             }
-            if (keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode) {
+            if ((keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode) && !collideWithAny({ x: this.bounds.x - this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "left";
                 this.bounds.x -= this.speed;
                 this.cutBounds = this.leftSprs[this.animIndex];
             }
-            if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) {
+            if ((keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) && !collideWithAny({ x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "right";
                 this.bounds.x += this.speed;
                 this.cutBounds = this.rightSprs[this.animIndex];
