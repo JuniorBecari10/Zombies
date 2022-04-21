@@ -1,12 +1,15 @@
-type GameState = "menu" | "game";
+type GameState = "menu" | "game" | "pause";
 
-var gameState: GameState = "menu";
+var gameState: GameState = "game";
 
 var keyPressed: KeyboardEvent;
 var isKeyPressed: boolean = false;
 
 var mousePos: Point = {x: 0, y: 0};
 var isMousePressed: boolean = false;
+
+//const entitySize: number = 40;
+//const mapScale: number = 4;
 
 const upArrowCode: number = 38;
 const rightArrowCode: number = 39;

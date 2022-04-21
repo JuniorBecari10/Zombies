@@ -60,6 +60,8 @@ function render(): void {
     g.ctx!.fillStyle = "black";
     g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
     
+    g.ctx?.drawImage(map, 0 - camera.x, 0 - camera.y, map.width, map.height)
+    
     for (let o of entities) {
         o.render(g);
     }

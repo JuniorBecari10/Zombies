@@ -41,10 +41,11 @@ function tick() {
     }
 }
 function render() {
-    var _a;
+    var _a, _b;
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
+    (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.drawImage(map, 0 - camera.x, 0 - camera.y, map.width, map.height);
     for (let o of entities) {
         o.render(g);
     }

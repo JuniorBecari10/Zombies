@@ -14,15 +14,15 @@ class Player extends Entity {
         this.maxAnimIndex = 5;
         this.dashCount = 0;
         this.maxDashCount = 60;
-        this.dashDownSpr = { x: 80, y: 0, w: 16, h: 16 };
-        this.dashLeftSpr = { x: 80, y: 16, w: 16, h: 16 };
-        this.dashRightSpr = { x: 80, y: 32, w: 16, h: 16 };
-        this.dashUpSpr = { x: 80, y: 48, w: 16, h: 16 };
+        this.dashDownSpr = { x: 80 * 40, y: 0, w: 16 * 40, h: 16 * 40 };
+        this.dashLeftSpr = { x: 80 * 40, y: 16 * 40, w: 16 * 40, h: 16 * 40 };
+        this.dashRightSpr = { x: 80 * 40, y: 32 * 40, w: 16 * 40, h: 16 * 40 };
+        this.dashUpSpr = { x: 80 * 40, y: 48 * 40, w: 16 * 40, h: 16 * 40 };
         for (let i = 0; i < this.maxAnimIndex; i++) {
-            this.downSprs[i] = { x: i * 16, y: 0, w: 16, h: 16 };
-            this.leftSprs[i] = { x: i * 16, y: 16, w: 16, h: 16 };
-            this.rightSprs[i] = { x: i * 16, y: 32, w: 16, h: 16 };
-            this.upSprs[i] = { x: i * 16, y: 48, w: 16, h: 16 };
+            this.downSprs[i] = { x: i * 16 * 40, y: 0, w: 16 * 40, h: 16 * 40 };
+            this.leftSprs[i] = { x: i * 16 * 40, y: 16 * 40, w: 16 * 40, h: 16 * 40 };
+            this.rightSprs[i] = { x: i * 16 * 40, y: 32 * 40, w: 16 * 40, h: 16 * 40 };
+            this.upSprs[i] = { x: i * 16 * 40, y: 48 * 40, w: 16 * 40, h: 16 * 40 };
         }
     }
     // Overrides super method
@@ -62,7 +62,7 @@ class Player extends Entity {
                 this.bounds.y -= this.speed;
                 this.cutBounds = this.upSprs[this.animIndex];
             }
-            else if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) {
+            if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) {
                 this.dir = "down";
                 this.bounds.y += this.speed;
                 this.cutBounds = this.downSprs[this.animIndex];
@@ -72,7 +72,7 @@ class Player extends Entity {
                 this.bounds.x -= this.speed;
                 this.cutBounds = this.leftSprs[this.animIndex];
             }
-            else if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) {
+            if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) {
                 this.dir = "right";
                 this.bounds.x += this.speed;
                 this.cutBounds = this.rightSprs[this.animIndex];
