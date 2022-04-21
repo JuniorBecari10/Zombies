@@ -6,6 +6,7 @@ var mousePos = { x: 0, y: 0 };
 var isMousePressed = false;
 //const entitySize: number = 40;
 //const mapScale: number = 4;
+const pixelSize = 40;
 const upArrowCode = 38;
 const rightArrowCode = 39;
 const downArrowCode = 40;

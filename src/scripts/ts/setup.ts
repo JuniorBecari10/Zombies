@@ -11,6 +11,8 @@ var isMousePressed: boolean = false;
 //const entitySize: number = 40;
 //const mapScale: number = 4;
 
+const pixelSize = 40;
+
 const upArrowCode: number = 38;
 const rightArrowCode: number = 39;
 const downArrowCode: number = 40;

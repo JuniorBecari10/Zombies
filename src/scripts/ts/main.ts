@@ -1,4 +1,4 @@
-const player: Player = new Player({x: 0, y: 0, w: 40, h: 40}, playerSpritesheet, {x: 0, y: 0, w: 16, h: 16});
+const player: Player = new Player({x: 0, y: 0, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16, h: 16});
 
 var entities: Entity[] = [];
 
@@ -27,11 +27,11 @@ document.addEventListener("mouseup", function (event: MouseEvent) {
     isMousePressed = false;
 });
 
-function removeEquals<T>(arr: T[]) {
+/*function removeEquals<T>(arr: T[]) {
     let sett: Set<T> = new Set(arr);
     
     return Array.from(sett.values());
-}
+}*/
 
 // ------
 

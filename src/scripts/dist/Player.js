@@ -92,5 +92,8 @@ class Player extends Entity {
                 this.cutBounds = this.rightSprs[0];
             }
         }
+        camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
+        camera.y = clamp(this.bounds.y - (g.canvas.height / 2), 0, map.height * 16 - g.canvas.height);
+        console.log(this.bounds.x);
     }
 }

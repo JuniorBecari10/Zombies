@@ -1,5 +1,5 @@
 "use strict";
-const player = new Player({ x: 0, y: 0, w: 40, h: 40 }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
+const player = new Player({ x: 0, y: 0, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
 var entities = [];
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
@@ -20,10 +20,11 @@ document.addEventListener("mousedown", function (event) {
 document.addEventListener("mouseup", function (event) {
     isMousePressed = false;
 });
-function removeEquals(arr) {
-    let sett = new Set(arr);
+/*function removeEquals<T>(arr: T[]) {
+    let sett: Set<T> = new Set(arr);
+    
     return Array.from(sett.values());
-}
+}*/
 // ------
 function defineSize() {
     g.canvas.width = window.innerWidth;
