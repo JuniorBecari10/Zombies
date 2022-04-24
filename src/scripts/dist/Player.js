@@ -62,7 +62,7 @@ class Player extends Entity {
                 this.bounds.y -= this.speed;
                 this.cutBounds = this.upSprs[this.animIndex];
             }
-            if ((keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) && !collideWithAny({ x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h })) {
+            else if ((keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) && !collideWithAny({ x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "down";
                 this.bounds.y += this.speed;
                 this.cutBounds = this.downSprs[this.animIndex];
@@ -72,7 +72,7 @@ class Player extends Entity {
                 this.bounds.x -= this.speed;
                 this.cutBounds = this.leftSprs[this.animIndex];
             }
-            if ((keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) && !collideWithAny({ x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h })) {
+            else if ((keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) && !collideWithAny({ x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "right";
                 this.bounds.x += this.speed;
                 this.cutBounds = this.rightSprs[this.animIndex];

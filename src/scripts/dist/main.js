@@ -1,5 +1,5 @@
 "use strict";
-const player = new Player({ x: 0, y: 0, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
+const player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16, h: 16 });
 var entities = [];
 document.addEventListener("keydown", function (event) {
     keyPressed = event;

@@ -17,3 +17,4 @@ const sCode = 83;
 const aCode = 65;
 const spaceCode = 32;
 const collisions = [{ x: 384, y: 204, w: 92, h: 195 }];
+// multiply the map by 4x !!!
