@@ -11,7 +11,7 @@ var isMousePressed: boolean = false;
 //const entitySize: number = 40;
 //const mapScale: number = 4;
 
-const pixelSize = 40;
+const pixelSize = 60;
 
 const upArrowCode: number = 38;
 const rightArrowCode: number = 39;
@@ -25,6 +25,6 @@ const aCode: number = 65;
 
 const spaceCode: number = 32;
 
-const collisions: Rectangle[] = [{x: 384, y: 204, w: 92, h: 195}];
+const collisions: Rectangle[] = [];
 
 // multiply the map by 4x !!!

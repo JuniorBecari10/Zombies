@@ -1,7 +1,7 @@
 type Direction = "up" | "down" | "left" | "right";
 
 class Player extends Entity {
-    speed: number = 3;
+    speed: number = 4; // 3
     dir: Direction = "down";
     
     upSprs: Rectangle[] = [];
@@ -23,19 +23,24 @@ class Player extends Entity {
     dashCount: number = 0;
     maxDashCount: number = 60;
     
+    up: boolean = false;
+    down: boolean = false;
+    left: boolean = false;
+    right: boolean = false;
+    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle) {
         super(bounds, spritesheet, cutBounds);
         
-        this.dashDownSpr = {x: 80 * 40, y: 0, w: 16 * 40, h: 16 * 40};
-        this.dashLeftSpr = {x: 80 * 40, y: 16 * 40, w: 16 * 40, h: 16 * 40};
-        this.dashRightSpr = {x: 80 * 40, y: 32 * 40, w: 16 * 40, h: 16 * 40};
-        this.dashUpSpr = {x: 80 * 40, y: 48 * 40, w: 16 * 40, h: 16 * 40};
+        this.dashDownSpr = {x: 70 * 70, y: 0, w: 16 * 70, h: 16 * 70};
+        this.dashLeftSpr = {x: 70 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70};
+        this.dashRightSpr = {x: 70 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70};
+        this.dashUpSpr = {x: 70 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70};
         
         for (let i = 0; i < this.maxAnimIndex; i++) {
-            this.downSprs[i] = {x: i * 16 * 40, y: 0, w: 16 * 40, h: 16 * 40};
-            this.leftSprs[i] = {x: i * 16 * 40, y: 16 * 40, w: 16 * 40, h: 16 * 40};
-            this.rightSprs[i] = {x: i * 16 * 40, y: 32 * 40, w: 16 * 40, h: 16 * 40};
-            this.upSprs[i] = {x: i * 16 * 40, y: 48 * 40, w: 16 * 40, h: 16 * 40};
+            this.downSprs[i] = {x: i * 16 * 70, y: 0, w: 16 * 70, h: 16 * 70};
+            this.leftSprs[i] = {x: i * 16 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70};
+            this.rightSprs[i] = {x: i * 16 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70};
+            this.upSprs[i] = {x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70};
         }
     }
     
@@ -78,23 +83,45 @@ class Player extends Entity {
                 }
             }
             
-            if ((keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode) && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h})) {
+            if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode)
+                this.up = true;
+            else if (keyPressed.keyCode != upArrowCode || keyPressed.keyCode != wCode)
+                this.up = false;
+            
+            if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode)
+                this.down = true;
+            else if (keyPressed.keyCode != downArrowCode || keyPressed.keyCode != sCode)
+                this.down = false;
+            
+            if (keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode)
+                this.left = true;
+            else if (keyPressed.keyCode != leftArrowCode || keyPressed.keyCode != aCode)
+                this.left = false;
+            
+            if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode)
+                this.right = true;
+            else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
+                this.right = false;
+            
+            // --------------------------------------------------
+            
+            if (this.up && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h})) {
                 this.dir = "up";
                 this.bounds.y -= this.speed;
                 this.cutBounds = this.upSprs[this.animIndex];
             }
-            else if ((keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode) && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h})) {
+            else if (this.down && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h})) {
                 this.dir = "down";
                 this.bounds.y += this.speed;
                 this.cutBounds = this.downSprs[this.animIndex];
             }
             
-            if ((keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode) && !collideWithAny({x: this.bounds.x - this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
+            if (this.left && !collideWithAny({x: this.bounds.x - this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
                 this.dir = "left";
                 this.bounds.x -= this.speed;
                 this.cutBounds = this.leftSprs[this.animIndex];
             }
-            else if ((keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode) && !collideWithAny({x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
+            else if (this.right && !collideWithAny({x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
                 this.dir = "right";
                 this.bounds.x += this.speed;
                 this.cutBounds = this.rightSprs[this.animIndex];
