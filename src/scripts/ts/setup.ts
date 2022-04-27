@@ -25,6 +25,6 @@ const aCode: number = 65;
 
 const spaceCode: number = 32;
 
-const collisions: Rectangle[] = [];
+//setCollisions(imageToImageData(collision));
 
 // multiply the map by 4x !!!

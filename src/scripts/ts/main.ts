@@ -65,6 +65,10 @@ function render(): void {
     for (let o of entities) {
         o.render(g);
     }
+    
+    // draw weapons
+    
+    
 }
 
 function loop(): void {

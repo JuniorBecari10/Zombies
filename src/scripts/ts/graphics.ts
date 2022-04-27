@@ -5,6 +5,8 @@ class Graphics {
     constructor(canvasId: string) {
         this.canvas = document.getElementById(canvasId) as HTMLCanvasElement;
         this.ctx = this.canvas.getContext("2d");
+        
+        this.ctx!.imageSmoothingEnabled = false;
     }
 }
 

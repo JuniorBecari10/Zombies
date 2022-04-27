@@ -28,6 +28,8 @@ class Player extends Entity {
     left: boolean = false;
     right: boolean = false;
     
+    weapons: Weapon[];
+    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle) {
         super(bounds, spritesheet, cutBounds);
         
@@ -42,6 +44,8 @@ class Player extends Entity {
             this.rightSprs[i] = {x: i * 16 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70};
             this.upSprs[i] = {x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70};
         }
+        
+        this.weapons = [];
     }
     
     // Overrides super method
@@ -144,7 +148,5 @@ class Player extends Entity {
         
         camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
         camera.y = clamp(this.bounds.y - (g.canvas.height / 2), 0, map.height * 16 - g.canvas.height);
-        
-        console.log(this.bounds.x);
     }
 }
