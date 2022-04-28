@@ -17,7 +17,7 @@ class Bullet extends Entity {
     }
     
     tick(): void {
-        this.x += this.dx * this.speed;
-        this.y += this.dy * this.speed;
+        this.bounds.x += this.dx * this.speed;
+        this.bounds.y += this.dy * this.speed;
     }
 }

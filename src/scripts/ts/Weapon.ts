@@ -14,6 +14,9 @@ class Weapon extends Entity {
      ammoLoaded: number, name: string) {
         super(bounds, spritesheet, cutBounds);
         
+        this.bullet = bullet;
+        this.bulletAmount = bulletAmount;
+        
         this.cooldown = cooldown;
         this.ammoTotal = ammoTotal;
         this.ammoLoaded = ammoLoaded;
