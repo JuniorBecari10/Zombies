@@ -5,6 +5,8 @@
     font-family: sans-serif;
     
     overflow: hidden;
+    
+    cursor: url("../sprites/crosshair.png"), default;
 }
 
 canvas {
