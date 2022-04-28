@@ -42,7 +42,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b;
+    var _a, _b, _c, _d;
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
@@ -50,7 +50,11 @@ function render() {
     for (let o of entities) {
         o.render(g);
     }
-    // draw weapons
+    // draw slots
+    for (let i = 0; i < 4; i++)
+        (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
+    for (let i = 0; i < 3; i++)
+        (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
 }
 function loop() {
     defineSize();
