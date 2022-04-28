@@ -27,6 +27,9 @@ document.addEventListener("mouseup", function (event: MouseEvent) {
     isMousePressed = false;
 });
 
+// disable right click
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 /*function removeEquals<T>(arr: T[]) {
     let sett: Set<T> = new Set(arr);
     
