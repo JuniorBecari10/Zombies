@@ -1,6 +1,7 @@
 const playerSpritesheet: HTMLImageElement = loadImage("player-spritesheet");
 const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
+const weapons: HTMLImageElement = loadImage("weapons");
 
 function loadImage(id: string): HTMLImageElement {
     return document.getElementById(id) as HTMLImageElement;

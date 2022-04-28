@@ -2,6 +2,7 @@
 const playerSpritesheet = loadImage("player-spritesheet");
 const map = loadImage("map");
 const collision = loadImage("collision");
+const weapons = loadImage("weapons");
 function loadImage(id) {
     return document.getElementById(id);
 }

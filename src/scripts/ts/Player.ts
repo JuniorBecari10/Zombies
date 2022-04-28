@@ -46,6 +46,8 @@ class Player extends Entity {
         }
         
         this.weapons = [];
+        
+        this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 10, h: 16 * 10}, weapons, {x: 16 * 10, y: 0, w: 16 * 10, h: 16 * 10}, 2, 10, 1, 200, 280, 10, "Pistol");
     }
     
     // Overrides super method

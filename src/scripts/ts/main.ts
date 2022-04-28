@@ -70,8 +70,12 @@ function render(): void {
     }
     
     // draw slots
-    for (let i = 0; i < 4; i++)
+    for (let i = 0; i < player.weapons.length; i++) {
         g.ctx?.drawImage(playerSpritesheet, i == 0 ? 48 * 70 : 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
+        
+        if (i == 2)
+            player.weapons[i].render(g);
+    }
     
     for (let i = 0; i < 3; i++)
         g.ctx?.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
