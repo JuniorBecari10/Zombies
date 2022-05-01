@@ -29,7 +29,6 @@ class Bullet extends Entity {
         
         if (this.lifeCount >= this.lifeTime) {
             this.lifeCount = 0;
-            
             this.destroy();
         }
     }

@@ -28,6 +28,9 @@ class Player extends Entity {
     left: boolean = false;
     right: boolean = false;
     
+    shootCount = 0;
+    
+    
     weapons: Weapon[];
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle) {
@@ -47,7 +50,7 @@ class Player extends Entity {
         
         this.weapons = new Array(3);
         
-        this.weapons[1] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 10, 1, 200, 280, 10, "Pistol");
+        this.weapons[1] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 10, 1, 200, 280, 10, 0, "Pistol");
     }
     
     // Overrides super method
@@ -160,12 +163,15 @@ class Player extends Entity {
         }
         
         if (isMousePressed) {
-            let angle: number = toDegrees(Math.atan2(mousePos.y - (this.bounds.y - camera.y), mousePos.x - (this.bounds.x - camera.x)));
+            let mx = (mousePos.x / 5) + camera.x;
+            let my = (mousePos.y / 5) + camera.y;
+            
+            let angle: number = toDegrees(Math.atan2(my - (this.bounds.y - camera.y), mx - (this.bounds.x - camera.x)));
             
             let dx: number = Math.cos(angle);
             let dy: number = Math.sin(angle);
             
-            
+            entities.push(new Bullet({x: this.bounds.x, y: this.bounds.y, w: 4 * 3, h: 4 * 3}, weapons, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
         
         camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
