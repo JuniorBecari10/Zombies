@@ -28,7 +28,7 @@ document.addEventListener("mouseup", function (event: MouseEvent) {
 });
 
 // disable right click
-document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener("contextmenu", event => event.preventDefault());
 
 /*function removeEquals<T>(arr: T[]) {
     let sett: Set<T> = new Set(arr);
@@ -71,10 +71,17 @@ function render(): void {
     
     // draw slots
     for (let i = 0; i < player.weapons.length; i++) {
-        g.ctx?.drawImage(playerSpritesheet, i == 0 ? 48 * 70 : 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
+        let x: number = 32 * 70;
         
-        if (i == 2)
+        if (i == 0) x = 48 * 70;
+        if (i == weaponSelected) x = 64 * 70;
+        
+        g.ctx?.drawImage(playerSpritesheet, x, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
+        
+        if (player.weapons[i] !== undefined) {
+            player.weapons[i].bounds = {x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i) + 10, y: g.canvas.height - 70, w: 16 * 3, h: 16 * 3};
             player.weapons[i].render(g);
+        }
     }
     
     for (let i = 0; i < 3; i++)

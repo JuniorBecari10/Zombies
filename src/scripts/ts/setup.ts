@@ -25,6 +25,12 @@ const aCode: number = 65;
 
 const spaceCode: number = 32;
 
+const oneCode = 49;
+const twoCode = 50;
+const threeCode = 51;
+
+var weaponSelected: number = 1;
+
 //setCollisions(imageToImageData(collision));
 
 // multiply the map by 4x !!!
