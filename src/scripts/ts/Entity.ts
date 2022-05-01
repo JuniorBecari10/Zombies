@@ -1,3 +1,5 @@
+var entities: Entity[] = [];
+
 class Entity implements ITickable, IRenderable {
     bounds: Rectangle;
     spritesheet: HTMLImageElement;
@@ -15,5 +17,9 @@ class Entity implements ITickable, IRenderable {
         g.ctx?.drawImage(this.spritesheet, this.cutBounds.x,
          this.cutBounds.y, this.cutBounds.w, this.cutBounds.h,
          this.bounds.x - camera.x, this.bounds.y - camera.y, this.bounds.w, this.bounds.h);
+    }
+    
+    destroy(): void {
+        entities.splice(entities.indexOf(this), 1);
     }
 }

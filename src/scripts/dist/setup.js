@@ -20,5 +20,8 @@ const oneCode = 49;
 const twoCode = 50;
 const threeCode = 51;
 var weaponSelected = 1;
+function toDegrees(radians) {
+    return radians * (180 / Math.PI);
+}
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

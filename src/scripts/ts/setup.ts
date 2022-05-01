@@ -31,6 +31,10 @@ const threeCode = 51;
 
 var weaponSelected: number = 1;
 
+function toDegrees(radians: number) {
+    return radians * (180 / Math.PI);
+}
+
 //setCollisions(imageToImageData(collision));
 
 // multiply the map by 4x !!!

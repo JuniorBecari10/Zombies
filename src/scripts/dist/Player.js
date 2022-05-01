@@ -122,6 +122,11 @@ class Player extends Entity {
                 this.cutBounds = this.rightSprs[0];
             }
         }
+        if (isMousePressed) {
+            let angle = toDegrees(Math.atan2(mousePos.y - (this.bounds.y - camera.y), mousePos.x - (this.bounds.x - camera.x)));
+            let dx = Math.cos(angle);
+            let dy = Math.sin(angle);
+        }
         camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
         camera.y = clamp(this.bounds.y - (g.canvas.height / 2), 0, map.height * 16 - g.canvas.height);
     }
