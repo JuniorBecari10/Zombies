@@ -18,7 +18,7 @@ class Player extends Entity {
         this.down = false;
         this.left = false;
         this.right = false;
-        this.shootCount = 0;
+        this.cooldownCount = 0;
         this.dashDownSpr = { x: 70 * 70, y: 0, w: 16 * 70, h: 16 * 70 };
         this.dashLeftSpr = { x: 70 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70 };
         this.dashRightSpr = { x: 70 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70 };
@@ -30,7 +30,7 @@ class Player extends Entity {
             this.upSprs[i] = { x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70 };
         }
         this.weapons = new Array(3);
-        this.weapons[1] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 10, 1, 200, 280, 10, 0, "Pistol");
+        this.weapons[1] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 10, 1, 20 /*200*/, 280, 10, 0, "Pistol");
     }
     // Overrides super method
     tick() {
@@ -123,14 +123,18 @@ class Player extends Entity {
                 this.cutBounds = this.rightSprs[0];
             }
         }
-        if (isMousePressed) {
+        this.cooldownCount++;
+        if (isMousePressed && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
+            this.cooldownCount = 0;
             let mx = (mousePos.x) + camera.x;
             let my = (mousePos.y) + camera.y;
-            let angle = Math.atan2(my - (this.bounds.y), mx - (this.bounds.x));
+            let px = this.bounds.w / 2;
+            let py = this.bounds.h / 2;
+            let angle = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
             console.log(toDegrees(angle));
             let dx = Math.cos(angle);
             let dy = Math.sin(angle);
-            entities.push(new Bullet({ x: this.bounds.x, y: this.bounds.y, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
+            entities.push(new Bullet({ x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
         camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
         camera.y = clamp(this.bounds.y - (g.canvas.height / 2), 0, map.height * 16 - g.canvas.height);
