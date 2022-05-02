@@ -124,9 +124,10 @@ class Player extends Entity {
             }
         }
         if (isMousePressed) {
-            let mx = (mousePos.x / 5) + camera.x;
-            let my = (mousePos.y / 5) + camera.y;
-            let angle = toDegrees(Math.atan2(my - (this.bounds.y - camera.y), mx - (this.bounds.x - camera.x)));
+            let mx = (mousePos.x) + camera.x;
+            let my = (mousePos.y) + camera.y;
+            let angle = Math.atan2(my - (this.bounds.y), mx - (this.bounds.x));
+            console.log(toDegrees(angle));
             let dx = Math.cos(angle);
             let dy = Math.sin(angle);
             entities.push(new Bullet({ x: this.bounds.x, y: this.bounds.y, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));

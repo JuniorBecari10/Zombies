@@ -163,10 +163,12 @@ class Player extends Entity {
         }
         
         if (isMousePressed) {
-            let mx = (mousePos.x / 5) + camera.x;
-            let my = (mousePos.y / 5) + camera.y;
+            let mx: number = (mousePos.x) + camera.x;
+            let my: number = (mousePos.y) + camera.y;
             
-            let angle: number = toDegrees(Math.atan2(my - (this.bounds.y - camera.y), mx - (this.bounds.x - camera.x)));
+            let angle: number = Math.atan2(my - (this.bounds.y), mx - (this.bounds.x));
+            
+            console.log(toDegrees(angle));
             
             let dx: number = Math.cos(angle);
             let dy: number = Math.sin(angle);
