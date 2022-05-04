@@ -69,7 +69,7 @@ Attack: 2, 7 (bomb)
 Ability: Explodes when touches the player
 Immune to: Nothing
 
-Obs: When hit by an explosive weapon, trigger the bomb
+Obs: When hit by an explosive weapon, trigger the bomb, then die
 
 ---
 
@@ -82,6 +82,6 @@ Attack: 3
 Ability: Put player on fire when touch him.
 Immune to: Fire Weapons and Fire Bullets perk
 
-Obs: When hit by an explosive weapon, trigger the bomb
+Obs: When hit by an explosive weapon, trigger the bomb, then die
 
 ---

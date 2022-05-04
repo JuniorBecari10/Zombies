@@ -10,6 +10,8 @@ class Zombie extends Entity {
     
     immunity: Immunity;
     
+    name: string; // used in death messages and debugging
+    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
     hp: number, defense: number, attack: number, immunity: Immunity) {
         super(bounds, spritesheet, cutBounds);

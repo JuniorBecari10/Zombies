@@ -9,6 +9,8 @@ var isKeyPressed: boolean = false;
 var mousePos: Point = {x: 0, y: 0};
 var isMousePressed: boolean = false;
 
+var waveNumber: number = 1;
+
 //const entitySize: number = 40;
 //const mapScale: number = 4;
 
