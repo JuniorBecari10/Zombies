@@ -1,5 +1,5 @@
 "use strict";
-const collisions = [];
+const collisions = [{ x: 1484, y: 1844, w: 84, h: 196 }, { x: 1596, y: 1796, w: 66, h: 256 }];
 function collide(rect1, rect2) {
     return rect1.x < rect2.x + rect2.w &&
         rect1.x + rect1.w > rect2.x &&
