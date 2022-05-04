@@ -7,4 +7,7 @@ class Zombie extends Entity {
         this.attack = attack;
         this.immune = immune;
     }
+    tick() {
+        // basic following system
+    }
 }

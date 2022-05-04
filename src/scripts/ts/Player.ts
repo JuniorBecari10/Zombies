@@ -4,6 +4,9 @@ class Player extends Entity {
     speed: number = 4; // 3
     dir: Direction = "down";
     
+    hp: number = 10;
+    totalHp: number = 10;
+    
     upSprs: Rectangle[] = [];
     downSprs: Rectangle[] = [];
     leftSprs: Rectangle[] = [];
@@ -173,8 +176,6 @@ class Player extends Entity {
             let py: number = this.bounds.h / 2;
             
             let angle: number = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
-            
-            console.log(toDegrees(angle));
             
             let dx: number = Math.cos(angle);
             let dy: number = Math.sin(angle);

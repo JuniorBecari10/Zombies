@@ -4,6 +4,8 @@ class Player extends Entity {
         super(bounds, spritesheet, cutBounds);
         this.speed = 4; // 3
         this.dir = "down";
+        this.hp = 10;
+        this.totalHp = 10;
         this.upSprs = [];
         this.downSprs = [];
         this.leftSprs = [];
@@ -131,7 +133,6 @@ class Player extends Entity {
             let px = this.bounds.w / 2;
             let py = this.bounds.h / 2;
             let angle = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
-            console.log(toDegrees(angle));
             let dx = Math.cos(angle);
             let dy = Math.sin(angle);
             entities.push(new Bullet({ x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));

@@ -43,7 +43,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
@@ -66,6 +66,9 @@ function render() {
     }
     for (let i = 0; i < 3; i++)
         (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
+    for (let i = 0; i < player.totalHp; i++) {
+        (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
+    }
 }
 function loop() {
     defineSize();
