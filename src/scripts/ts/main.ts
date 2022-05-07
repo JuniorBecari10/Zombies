@@ -73,7 +73,7 @@ function tick(): void {
         
         zombieSpawnCount++;
         
-        if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount) {
+        if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
             zombieSpawnCount = 0;
             waveCount++;
         }
@@ -88,7 +88,8 @@ function tick(): void {
         zombie!.bounds.x = pos.x;
         zombie!.bounds.y = pos.y;
         
-        entities.push(zombie!);
+        if (zombieSpawnCount < waves[waveCount - 1].zombieAmount)
+            entities.push(zombie!);
     }
 }
 

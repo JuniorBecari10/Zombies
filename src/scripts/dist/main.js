@@ -52,7 +52,7 @@ function tick() {
     if (spawnSpeedCount >= spawnSpeed) {
         spawnSpeedCount = 0;
         zombieSpawnCount++;
-        if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount) {
+        if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
             zombieSpawnCount = 0;
             waveCount++;
         }
@@ -63,7 +63,8 @@ function tick() {
             zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 1, 1, "none", "Basic Zombie");
         zombie.bounds.x = pos.x;
         zombie.bounds.y = pos.y;
-        entities.push(zombie);
+        if (zombieSpawnCount < waves[waveCount - 1].zombieAmount)
+            entities.push(zombie);
     }
 }
 function render() {

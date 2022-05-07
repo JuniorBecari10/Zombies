@@ -31,3 +31,15 @@ class Entity implements ITickable, IRenderable {
         return this;
     }
 }
+
+// sounds contradictory, no?
+function zombiesAliveAmount(): number {
+    let amount: number = 0;
+    
+    for (let e of entities) {
+        if (e instanceof Zombie)
+            amount++;
+    }
+    
+    return amount;
+}

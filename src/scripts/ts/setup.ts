@@ -38,7 +38,7 @@ function toDegrees(radians: number) {
     return radians * (180 / Math.PI);
 }
 
-function normalize(p: Point) {
+function normalize(p: Point): Point {
     let mag /* magnitude */: number = Math.sqrt(p.x * p.x + p.y * p.y);
     
     p.x = p.x / mag;
@@ -47,7 +47,7 @@ function normalize(p: Point) {
     return p;
 }
 
-function random(min: number, max: number) {
+function random(min: number, max: number): number {
     return Math.floor(Math.random() * max) + min;
 }
 

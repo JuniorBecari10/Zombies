@@ -22,3 +22,12 @@ class Entity {
         return this;
     }
 }
+// sounds contradictory, no?
+function zombiesAliveAmount() {
+    let amount = 0;
+    for (let e of entities) {
+        if (e instanceof Zombie)
+            amount++;
+    }
+    return amount;
+}
