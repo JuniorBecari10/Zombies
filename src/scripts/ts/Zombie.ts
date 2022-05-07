@@ -38,11 +38,6 @@ class Zombie extends Entity {
     }
 }
 
-function newZombie(z: Zombie) {
-    return new Zombie(z.bounds, z.spritesheet, z.cutBounds, z.hp, z.defense, z.attack,
-    z.immunity, z.name);
-}
-
 type ZombieType = "basic-zombie";
 
 type Wave = {
@@ -55,4 +50,4 @@ type Wave = {
 
 // temporary
 
-const waves: Wave[] = [{zombieAmount: 8, zombieTypes: ["basic-zombie"]}];
+const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"]}];

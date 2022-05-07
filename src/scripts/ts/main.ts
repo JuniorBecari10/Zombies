@@ -68,6 +68,13 @@ function tick(): void {
     if (spawnSpeedCount >= spawnSpeed) {
         spawnSpeedCount = 0;
         
+        zombieSpawnCount++;
+        
+        if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount) {
+            zombieSpawnCount = 0;
+            waveCount++;
+        }
+        
         var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
         var pos: Point = zombiePositions[random(0, zombiePositions.length)];
         var zombie: Zombie | null = null;
