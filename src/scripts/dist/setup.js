@@ -24,5 +24,14 @@ var weaponSelected = 1;
 function toDegrees(radians) {
     return radians * (180 / Math.PI);
 }
+function normalize(p) {
+    let mag /* magnitude */ = Math.sqrt(p.x * p.x + p.y * p.y);
+    p.x = p.x / mag;
+    p.y = p.y / mag;
+    return p;
+}
+function random(min, max) {
+    return Math.floor(Math.random() * max) + min;
+}
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

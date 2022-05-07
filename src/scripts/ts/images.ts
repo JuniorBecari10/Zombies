@@ -1,5 +1,5 @@
 const playerSpritesheet: HTMLImageElement = loadImage("player-spritesheet");
-const basicZombieSpr: HTMLImageElement = loadImage("basicZombie");
+const basicZombieSpr: HTMLImageElement = loadImage("basic-zombie");
 const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
 const weapons: HTMLImageElement = loadImage("weapons");

@@ -38,6 +38,19 @@ function toDegrees(radians: number) {
     return radians * (180 / Math.PI);
 }
 
+function normalize(p: Point) {
+    let mag /* magnitude */: number = Math.sqrt(p.x * p.x + p.y * p.y);
+    
+    p.x = p.x / mag;
+    p.y = p.y / mag;
+    
+    return p;
+}
+
+function random(min: number, max: number) {
+    return Math.floor(Math.random() * max) + min;
+}
+
 //setCollisions(imageToImageData(collision));
 
 // multiply the map by 4x !!!

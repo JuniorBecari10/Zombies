@@ -1,5 +1,10 @@
 "use strict";
 const player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
+const zombiePositions = [{ x: 1148, y: 1940 }];
+var waveCount = 1;
+var spawnSpeedCount = 0;
+const spawnSpeed = 200;
+var zombieSpawnCount = 0;
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
@@ -40,6 +45,15 @@ function init() {
 function tick() {
     for (let o of entities) {
         o.tick();
+    }
+    spawnSpeedCount++;
+    if (spawnSpeedCount >= spawnSpeed) {
+        spawnSpeedCount = 0;
+        var zombie = newZombie(waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)]);
+        var pos = zombiePositions[random(0, zombiePositions.length)];
+        zombie.bounds.x = pos.x;
+        zombie.bounds.y = pos.y;
+        entities.push(zombie);
     }
 }
 function render() {

@@ -34,7 +34,19 @@ class Zombie extends Entity {
     }
 }
 
-var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: 70 * 16, h: 70 * 16}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
+function newZombie(z: Zombie) {
+    return new Zombie(z.bounds, z.spritesheet, z.cutBounds, z.hp, z.defense, z.attack,
+    z.immunity, z.name);
+}
+
+type Wave = {
+    zombieAmount: number;
+    zombieTypes: Zombie[];
+}
+
+var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
 5, 1, 1, "none", "Basic Zombie");
 
-const zombies: Zombie[] = [basicZombie];
+// temporary
+
+const waves: Wave[] = [{zombieAmount: 8, zombieTypes: [basicZombie]}];

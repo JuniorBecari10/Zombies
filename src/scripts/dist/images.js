@@ -1,6 +1,6 @@
 "use strict";
 const playerSpritesheet = loadImage("player-spritesheet");
-const basicZombieSpr = loadImage("basicZombie");
+const basicZombieSpr = loadImage("basic-zombie");
 const map = loadImage("map");
 const collision = loadImage("collision");
 const weapons = loadImage("weapons");
