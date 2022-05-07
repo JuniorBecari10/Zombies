@@ -34,7 +34,12 @@ class Zombie extends Entity {
         if (this.bounds.x > player.bounds.x) this.bounds.x -= this.speed;
         
         if (this.bounds.y < player.bounds.y) this.bounds.y += this.speed;
-        if (this.bounds.y < player.bounds.y) this.bounds.y -= this.speed;
+        if (this.bounds.y > player.bounds.y) this.bounds.y -= this.speed;
+        
+        if (this.collideWithEntity() instanceof Player && player.immunityCount >= player.immunityTotal) {
+            player.hp--;
+            player.immunityCount = 0;
+        }
     }
 }
 

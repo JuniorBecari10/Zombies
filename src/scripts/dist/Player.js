@@ -7,6 +7,8 @@ class Player extends Entity {
         this.dir = "down";
         this.hp = 10;
         this.totalHp = 10;
+        this.immunityCount = 0;
+        this.immunityTotal = 50;
         this.upSprs = [];
         this.downSprs = [];
         this.leftSprs = [];
@@ -140,5 +142,7 @@ class Player extends Entity {
         }
         camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
         camera.y = clamp((this.bounds.y - (g.canvas.height / 2)) + (camFollowMouse ? (mousePos.y / 4) : 0), 0, map.height * 16 - g.canvas.height);
+        if (this.immunityCount < this.immunityTotal)
+            this.immunityCount++;
     }
 }

@@ -9,6 +9,9 @@ class Player extends Entity {
     hp: number = 10;
     totalHp: number = 10;
     
+    immunityCount: number = 0;
+    immunityTotal: number = 50;
+    
     upSprs: Rectangle[] = [];
     downSprs: Rectangle[] = [];
     leftSprs: Rectangle[] = [];
@@ -187,5 +190,8 @@ class Player extends Entity {
         
         camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
         camera.y = clamp((this.bounds.y - (g.canvas.height / 2)) + (camFollowMouse ? (mousePos.y / 4) : 0), 0, map.height * 16 - g.canvas.height);
+        
+        if (this.immunityCount < this.immunityTotal)
+            this.immunityCount++;
     }
 }
