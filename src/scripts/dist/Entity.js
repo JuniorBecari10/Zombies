@@ -14,4 +14,11 @@ class Entity {
     destroy() {
         entities.splice(entities.indexOf(this), 1);
     }
+    collideWithEntity() {
+        for (let e of entities) {
+            if (collide(this.bounds, e.bounds))
+                return e;
+        }
+        return this;
+    }
 }

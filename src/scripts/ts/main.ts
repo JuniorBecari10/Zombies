@@ -68,13 +68,17 @@ function tick(): void {
     if (spawnSpeedCount >= spawnSpeed) {
         spawnSpeedCount = 0;
         
-        var zombie: Zombie = newZombie(waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)]);
+        var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
         var pos: Point = zombiePositions[random(0, zombiePositions.length)];
+        var zombie: Zombie | null = null;
         
-        zombie.bounds.x = pos.x;
-        zombie.bounds.y = pos.y;
+        if (zombieType === "basic-zombie")
+            zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 5, 1, 1, "none", "Basic Zombie");
         
-        entities.push(zombie);
+        zombie!.bounds.x = pos.x;
+        zombie!.bounds.y = pos.y;
+        
+        entities.push(zombie!);
     }
 }
 

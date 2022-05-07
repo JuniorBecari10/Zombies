@@ -22,4 +22,12 @@ class Entity implements ITickable, IRenderable {
     destroy(): void {
         entities.splice(entities.indexOf(this), 1);
     }
+    
+    collideWithEntity(): Entity {
+        for (let e of entities) {
+            if (collide(this.bounds, e.bounds)) return e;
+        }
+        
+        return this;
+    }
 }

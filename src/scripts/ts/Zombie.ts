@@ -3,7 +3,7 @@ class Zombie extends Entity {
     defense: number;
     attack: number;
     
-    speed: number = 3;
+    speed: number = 1.5;
     
     //ability: () => void
     // will not have ability yet
@@ -31,6 +31,10 @@ class Zombie extends Entity {
         if (this.bounds.x > player.bounds.x) this.bounds.x -= this.speed;
         if (this.bounds.y < player.bounds.y) this.bounds.y += this.speed;
         if (this.bounds.y < player.bounds.y) this.bounds.y -= this.speed;
+        
+        if (this.collideWithEntity() instanceof Bullet) {
+            this.destroy();
+        }
     }
 }
 
@@ -39,14 +43,16 @@ function newZombie(z: Zombie) {
     z.immunity, z.name);
 }
 
+type ZombieType = "basic-zombie";
+
 type Wave = {
     zombieAmount: number;
-    zombieTypes: Zombie[];
+    zombieTypes: ZombieType[];
 }
 
-var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
-5, 1, 1, "none", "Basic Zombie");
+//var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
+//5, 1, 1, "none", "Basic Zombie");
 
 // temporary
 
-const waves: Wave[] = [{zombieAmount: 8, zombieTypes: [basicZombie]}];
+const waves: Wave[] = [{zombieAmount: 8, zombieTypes: ["basic-zombie"]}];
