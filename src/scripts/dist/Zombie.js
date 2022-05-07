@@ -1,12 +1,13 @@
 "use strict";
 class Zombie extends Entity {
-    constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity) {
+    constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, name) {
         super(bounds, spritesheet, cutBounds);
         this.speed = 3;
         this.hp = hp;
         this.defense = defense;
         this.attack = attack;
         this.immunity = immunity;
+        this.name = name;
     }
     tick() {
         // basic following system

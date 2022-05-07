@@ -13,7 +13,7 @@ class Zombie extends Entity {
     name: string; // used in death messages and debugging
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
-    hp: number, defense: number, attack: number, immunity: Immunity) {
+    hp: number, defense: number, attack: number, immunity: Immunity, name: string) {
         super(bounds, spritesheet, cutBounds);
         
         this.hp = hp;
@@ -21,6 +21,8 @@ class Zombie extends Entity {
         this.attack = attack;
         
         this.immunity = immunity;
+        
+        this.name = name;
     }
     
     tick(): void {

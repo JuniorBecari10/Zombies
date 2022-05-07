@@ -1,4 +1,5 @@
 "use strict";
+var camFollowMouse = false;
 class Player extends Entity {
     constructor(bounds, spritesheet, cutBounds) {
         super(bounds, spritesheet, cutBounds);
@@ -137,7 +138,7 @@ class Player extends Entity {
             let dy = Math.sin(angle);
             entities.push(new Bullet({ x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
-        camera.x = clamp(this.bounds.x - (g.canvas.width / 2), 0, map.width * 16 - g.canvas.width);
-        camera.y = clamp(this.bounds.y - (g.canvas.height / 2), 0, map.height * 16 - g.canvas.height);
+        camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
+        camera.y = clamp((this.bounds.y - (g.canvas.height / 2)) + (camFollowMouse ? (mousePos.y / 4) : 0), 0, map.height * 16 - g.canvas.height);
     }
 }
