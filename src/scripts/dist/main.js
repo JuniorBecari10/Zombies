@@ -5,6 +5,8 @@ var waveCount = 1;
 var spawnSpeedCount = 0;
 const spawnSpeed = 200;
 var zombieSpawnCount = 0;
+const titleFontSize = 20;
+const fontSize = 15;
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
@@ -65,7 +67,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
@@ -91,6 +93,10 @@ function render() {
     for (let i = 0; i < player.totalHp; i++) {
         (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
     }
+    g.ctx.font = titleFontSize + "px Pixel";
+    g.ctx.fillStyle = "white";
+    let text = "Wave " + waveCount;
+    (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText(text, g.canvas.width - (text.length * titleFontSize) - 20, g.canvas.height / 2 - (titleFontSize / 2));
 }
 function loop() {
     defineSize();

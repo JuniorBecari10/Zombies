@@ -50,4 +50,4 @@ type Wave = {
 
 // temporary
 
-const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"]}];
+const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"]}, {zombieAmount: 11, zombieTypes: ["basic-zombie"]}];

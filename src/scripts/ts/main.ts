@@ -8,6 +8,9 @@ const spawnSpeed: number = 200;
 
 var zombieSpawnCount: number = 0;
 
+const titleFontSize: number = 20;
+const fontSize: number = 15;
+
 document.addEventListener("keydown", function (event: KeyboardEvent) {
     keyPressed = event;
     isKeyPressed = true;
@@ -121,6 +124,13 @@ function render(): void {
     for (let i = 0; i < player.totalHp; i++) {
         g.ctx?.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
     }
+    
+    g.ctx!.font = titleFontSize + "px Pixel";
+    g.ctx!.fillStyle = "white";
+    
+    let text: string = "Wave " + waveCount;
+    
+    g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 20, g.canvas.height / 2 - (titleFontSize / 2));
 }
 
 function loop(): void {
