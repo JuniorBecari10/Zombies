@@ -1,5 +1,5 @@
 type GameState = "menu" | "game" | "pause";
-type Immunity = "fire" | "ice" | "explosive";
+type Immunity = "none" | "fire" | "ice" | "explosive";
 
 var gameState: GameState = "game";
 
