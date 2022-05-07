@@ -10,6 +10,8 @@ class Zombie extends Entity {
         this.name = name;
     }
     tick() {
+        if (this.hp == 0)
+            this.destroy();
         // basic following system
         if (this.bounds.x < player.bounds.x)
             this.bounds.x += this.speed;
@@ -19,9 +21,6 @@ class Zombie extends Entity {
             this.bounds.y += this.speed;
         if (this.bounds.y < player.bounds.y)
             this.bounds.y -= this.speed;
-        if (this.collideWithEntity() instanceof Bullet) {
-            this.destroy();
-        }
     }
 }
 function newZombie(z) {
