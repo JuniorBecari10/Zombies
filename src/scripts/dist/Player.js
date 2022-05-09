@@ -5,7 +5,7 @@ class Player extends Entity {
         super(bounds, spritesheet, cutBounds);
         this.speed = 4; // 3
         this.dir = "down";
-        this.hp = 10;
+        this.hp = 1;
         this.totalHp = 10;
         this.immunityCount = 0;
         this.immunityTotal = 50;
@@ -144,5 +144,8 @@ class Player extends Entity {
         camera.y = clamp((this.bounds.y - (g.canvas.height / 2)) + (camFollowMouse ? (mousePos.y / 4) : 0), 0, map.height * 16 - g.canvas.height);
         if (this.immunityCount < this.immunityTotal)
             this.immunityCount++;
+        if (this.hp === 0) {
+            gameState = "gameover";
+        }
     }
 }

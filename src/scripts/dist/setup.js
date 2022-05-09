@@ -17,6 +17,7 @@ const dCode = 68;
 const sCode = 83;
 const aCode = 65;
 const spaceCode = 32;
+const enterCode = 13;
 const oneCode = 49;
 const twoCode = 50;
 const threeCode = 51;

@@ -1,4 +1,4 @@
-type GameState = "menu" | "game" | "pause";
+type GameState = "menu" | "game" | "pause" | "gameover";
 type Immunity = "none" | "fire" | "ice" | "explosive";
 
 var gameState: GameState = "game";
@@ -27,6 +27,7 @@ const sCode: number = 83;
 const aCode: number = 65;
 
 const spaceCode: number = 32;
+const enterCode: number = 13;
 
 const oneCode = 49;
 const twoCode = 50;
