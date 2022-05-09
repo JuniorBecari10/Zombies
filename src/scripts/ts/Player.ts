@@ -6,11 +6,14 @@ class Player extends Entity {
     speed: number = 4; // 3
     dir: Direction = "down";
     
-    hp: number = 1;
+    hp: number = 10;
     totalHp: number = 10;
     
     immunityCount: number = 0;
     immunityTotal: number = 50;
+    
+    regenCount: number = 0;
+    maxRegenCount: number = 200;
     
     upSprs: Rectangle[] = [];
     downSprs: Rectangle[] = [];
@@ -193,6 +196,15 @@ class Player extends Entity {
         
         if (this.immunityCount < this.immunityTotal)
             this.immunityCount++;
+        
+        this.regenCount++;
+        
+        if (this.regenCount >= this.maxRegenCount) {
+            this.regenCount = 0;
+            
+            if (this.hp < 10)
+                this.hp++;
+        }
         
         if (this.hp === 0) {
             gameState = "gameover";
