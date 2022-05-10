@@ -39,6 +39,12 @@ class Player extends Entity {
     left: boolean = false;
     right: boolean = false;
     
+    dx: number = 0;
+    dy: number = 0;
+    
+    dashSpeed: number = 4;
+    constDashSpeed: number = 4;
+    
     cooldownCount = 0;
     
     weapons: Weapon[];
@@ -46,10 +52,10 @@ class Player extends Entity {
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle) {
         super(bounds, spritesheet, cutBounds);
         
-        this.dashDownSpr = {x: 70 * 70, y: 0, w: 16 * 70, h: 16 * 70};
-        this.dashLeftSpr = {x: 70 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70};
-        this.dashRightSpr = {x: 70 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70};
-        this.dashUpSpr = {x: 70 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70};
+        this.dashDownSpr = {x: 80 * 70, y: 0, w: 16 * 70, h: 16 * 70};
+        this.dashLeftSpr = {x: 80 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70};
+        this.dashRightSpr = {x: 80 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70};
+        this.dashUpSpr = {x: 80 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70};
         
         for (let i = 0; i < this.maxAnimIndex; i++) {
             this.downSprs[i] = {x: i * 16 * 70, y: 0, w: 16 * 70, h: 16 * 70};
@@ -65,6 +71,12 @@ class Player extends Entity {
     
     // Overrides super method
     tick(): void {
+        this.bounds.x += this.dx * this.dashSpeed * 2;
+        this.bounds.y += this.dy * this.dashSpeed * 2;
+        
+        if (this.dashSpeed > 0)
+            this.dashSpeed -= 0.1;
+        
         if (this.dashCount < this.maxDashCount)
            this.dashCount++;
         
@@ -83,21 +95,47 @@ class Player extends Entity {
             
             if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
+                this.dashSpeed = this.constDashSpeed;
+                
+                /*let mx: number = (mousePos.x) + camera.x;
+                let my: number = (mousePos.y) + camera.y;
+                
+                let px: number = this.bounds.w / 2;
+                let py: number = this.bounds.h / 2;
+                
+                let angle: number = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
+                
+                this.dx = Math.cos(angle);
+                this.dy = Math.sin(angle);*/
+                
+                //return;
                 
                 if (this.dir == "up") {// && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed * 20, w: this.bounds.w, h: this.bounds.h})) {
-                    this.bounds.y -= this.speed * 20;
+                    //this.bounds.y -= this.speed * 20;
+                    this.dx = 0;
+                    this.dy = -1;
+                    
                     this.cutBounds = this.dashUpSpr;
                 }
                 if (this.dir == "down") {// && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed * 20, w: this.bounds.w, h: this.bounds.h})) {
-                    this.bounds.y += this.speed * 20;
+                    //this.bounds.y += this.speed * 20;
+                    this.dx = 0;
+                    this.dy = 1;
+                    
                     this.cutBounds = this.dashDownSpr;
                 }
                 if (this.dir == "left") {// && !collideWithAny({x: this.bounds.x - this.speed * 20, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
-                    this.bounds.x -= this.speed * 20;
+                    //this.bounds.x -= this.speed * 20;
+                    this.dx = -1;
+                    this.dy = 0;
+                    
                     this.cutBounds = this.dashLeftSpr;
                 }
                 if (this.dir == "right") {// && !collideWithAny({x: this.bounds.x + this.speed * 20, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) {
-                    this.bounds.x += this.speed * 20;
+                    //this.bounds.x += this.speed * 20;
+                    this.dx = 1;
+                    this.dy = 0;
+                    
                     this.cutBounds = this.dashRightSpr;
                 }
             }
