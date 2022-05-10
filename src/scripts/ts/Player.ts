@@ -71,8 +71,11 @@ class Player extends Entity {
     
     // Overrides super method
     tick(): void {
-        this.bounds.x += this.dx * this.dashSpeed * 2;
-        this.bounds.y += this.dy * this.dashSpeed * 2;
+        if (!collideWithAny({x: this.bounds.x, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h}))
+            this.bounds.x += this.dx * this.dashSpeed * 2;
+        
+        if (!collideWithAny({x: this.bounds.x, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h}))
+            this.bounds.y += this.dy * this.dashSpeed * 2;
         
         if (this.dashSpeed > 0)
             this.dashSpeed -= 0.1;
