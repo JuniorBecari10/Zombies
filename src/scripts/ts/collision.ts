@@ -1,4 +1,4 @@
-const collisions: Rectangle[] = [{x: 1484, y: 1844, w: 84, h: 196}, {x: 1596, y: 1796, w: 66, h: 256}];
+const collisions: Rectangle[] = [{x: 1484, y: 1844, w: 84, h: 196}, {x: 1596, y: 1796, w: 66, h: 256}, {x: 1660, y: 1988, w: 284, h: 64}];
 
 function collide(rect1: Rectangle, rect2: Rectangle): boolean {
     return rect1.x < rect2.x + rect2.w &&
