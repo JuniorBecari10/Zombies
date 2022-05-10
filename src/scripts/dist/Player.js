@@ -5,7 +5,7 @@ class Player extends Entity {
         super(bounds, spritesheet, cutBounds);
         this.speed = 4; // 3
         this.dir = "down";
-        this.hp = 10;
+        this.hp = 1;
         this.totalHp = 10;
         this.immunityCount = 0;
         this.immunityTotal = 50;
@@ -180,7 +180,7 @@ class Player extends Entity {
             if (this.hp < 10)
                 this.hp++;
         }
-        if (this.hp === 0) {
+        if (this.hp <= 0) {
             gameState = "gameover";
         }
     }

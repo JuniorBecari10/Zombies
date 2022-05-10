@@ -1,6 +1,6 @@
-const player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
+var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
 
-const zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
+var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
 var waveCount: number = 1;
 
 var spawnSpeedCount: number = 0;
@@ -47,9 +47,21 @@ document.addEventListener("contextmenu", event => event.preventDefault());
 
 // ------
 
-function defineSize() {
+function defineSize(): void {
     g.canvas.width = window.innerWidth;
     g.canvas.height = window.innerHeight;
+}
+
+function reset(): void {
+    entities = [];
+    gameState = "game";
+    
+    player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
+    waveCount = 1;
+    
+    entities.push(player);
+    
+    zombiePositions = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
 }
 
 // ----------------------------------------
@@ -95,7 +107,7 @@ function tick(): void {
     }
     else if (gameState === "gameover") {
         if (keyPressed.keyCode === enterCode) {
-            window.location.reload();
+            reset();
         }
     }
 }

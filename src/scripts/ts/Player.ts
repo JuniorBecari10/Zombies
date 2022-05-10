@@ -6,7 +6,7 @@ class Player extends Entity {
     speed: number = 4; // 3
     dir: Direction = "down";
     
-    hp: number = 10;
+    hp: number = 1;
     totalHp: number = 10;
     
     immunityCount: number = 0;
@@ -244,7 +244,7 @@ class Player extends Entity {
                 this.hp++;
         }
         
-        if (this.hp === 0) {
+        if (this.hp <= 0) {
             gameState = "gameover";
         }
     }

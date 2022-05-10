@@ -18,7 +18,7 @@ class Zombie extends Entity {
         this.animFrames = animFrames;
     }
     tick() {
-        if (this.hp == 0)
+        if (this.hp <= 0)
             this.destroy();
         this.animCount++;
         if (this.animCount >= this.maxAnimCount) {
