@@ -176,6 +176,24 @@ function render(): void {
         let text: string = "Wave " + waveCount;
         
         g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
+        
+        // draw stats
+        
+        g.ctx!.font = "20px Pixel";
+        g.ctx!.fillStyle = "white";
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx?.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
+        let x: number = 25;
+        
+        if (player.coins >= 10 && player.coins < 100) x = 45;
+        else if (player.coins >= 100 && player.coins < 1000) x = 65;
+        else if (player.coins >= 1000 && player.coins < 100000) x = 105;
+        else if (player.coins >= 100000 && player.coins < 1000000) x = 125;
+        else if (player.coins >= 1000000) x = 145;
+        
+        g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        
     }
     
     else if (gameState === "gameover") {

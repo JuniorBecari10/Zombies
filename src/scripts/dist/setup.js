@@ -4,7 +4,7 @@ var keyPressed;
 var isKeyPressed = false;
 var mousePos = { x: 0, y: 0 };
 var isMousePressed = false;
-var waveNumber = 1;
+var waveNumber = 100000;
 //const entitySize: number = 40;
 //const mapScale: number = 4;
 const pixelSize = 60;
