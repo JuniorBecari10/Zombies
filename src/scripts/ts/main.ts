@@ -100,6 +100,12 @@ function tick(): void {
             
             zombie!.bounds.x = pos.x;
             zombie!.bounds.y = pos.y;
+            for (let i = 0; i < player.weapons.length; i++) {
+                // detect click
+                if (collide({x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed && player.weapons[i] !== undefined) {
+                    weaponSelected = i;
+                }
+            }
             
             if (zombieSpawnCount < waves[waveCount - 1].zombieAmount)
                 entities.push(zombie!);
@@ -149,11 +155,6 @@ function render(): void {
                 
                 g.ctx?.fillText(text, mousePos.x + 10, mousePos.y);
             }
-            
-            // detect click
-            if (collide({x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed && player.weapons[i] !== undefined) {
-                weaponSelected = i;
-            }
         }
         
         for (let i = 0; i < 3; i++)
@@ -163,12 +164,18 @@ function render(): void {
             g.ctx?.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
         }
         
+        g.ctx!.globalAlpha = 0.4;
+        g.ctx!.fillStyle = "black";
+        
+        g.ctx?.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 200, 200, 400);
+        
         g.ctx!.font = titleFontSize + "px Pixel";
         g.ctx!.fillStyle = "white";
+        g.ctx!.globalAlpha = 1;
         
         let text: string = "Wave " + waveCount;
         
-        g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 20, g.canvas.height / 2 - (titleFontSize / 2));
+        g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
     }
     
     else if (gameState === "gameover") {

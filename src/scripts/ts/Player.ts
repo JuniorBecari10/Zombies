@@ -12,7 +12,7 @@ class Player extends Entity {
     coins: number = 0;
     
     immunityCount: number = 0;
-    immunityTotal: number = 50;
+    immunityTotal: number = 20;
     
     regenCount: number = 0;
     maxRegenCount: number = 200;

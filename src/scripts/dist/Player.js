@@ -9,7 +9,7 @@ class Player extends Entity {
         this.totalHp = 10;
         this.coins = 0;
         this.immunityCount = 0;
-        this.immunityTotal = 50;
+        this.immunityTotal = 20;
         this.regenCount = 0;
         this.maxRegenCount = 200;
         this.upSprs = [];
