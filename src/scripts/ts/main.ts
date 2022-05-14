@@ -139,6 +139,16 @@ function render(): void {
                 player.weapons[i].bounds = {x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i) + 10, y: g.canvas.height - 70, w: 16 * 3, h: 16 * 3};
                 player.weapons[i].render(g);
             }
+            
+            if (collide({x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && player.weapons[i] !== undefined) {
+                g.ctx!.font = "15px Pixel";
+                g.ctx!.fillStyle = "white";
+                g.ctx!.globalAlpha = 1;
+                
+                let text: string = player.weapons[i].name;
+                
+                g.ctx?.fillText(text, mousePos.x + 10, mousePos.y);
+            }
         }
         
         for (let i = 0; i < 3; i++)
