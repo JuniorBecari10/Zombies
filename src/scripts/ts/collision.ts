@@ -18,9 +18,17 @@ function collide(rect1: Rectangle, rect2: Rectangle): boolean {
        rect1.y + rect1.h > rect2.y
 }
 
-function collideWithAny(rect: Rectangle) {
+function collideWithAny(rect: Rectangle): boolean {
     for (let r of collisions) {
         if (collide(rect, r)) return true;
+    }
+    
+    return false;
+}
+
+function collideWithAnyEntity(rect: Rectangle): boolean {
+    for (let e of entities) {
+        if (collide(rect, e.bounds)) return true;
     }
     
     return false;

@@ -5,7 +5,7 @@ const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zom
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, name, animFrames) {
         super(bounds, spritesheet, cutBounds);
-        this.speed = 1.5;
+        this.speed = 2;
         this.animCount = 0;
         this.maxAnimCount = 8;
         this.animIndex = 0;

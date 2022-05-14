@@ -15,7 +15,7 @@ class Zombie extends Entity {
     defense: number;
     attack: number;
     
-    speed: number = 1.5;
+    speed: number = 2;
     
     animCount: number = 0;
     maxAnimCount: number = 8;
