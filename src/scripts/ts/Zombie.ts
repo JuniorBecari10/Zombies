@@ -50,7 +50,7 @@ class Zombie extends Entity {
     tick(): void {
         if (this.hp <= 0) {
             this.destroy();
-            player.coins += 50;
+            player.coins += 20;
         }
         
         this.animCount++;
