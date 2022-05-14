@@ -21,7 +21,7 @@ const enterCode = 13;
 const oneCode = 49;
 const twoCode = 50;
 const threeCode = 51;
-var weaponSelected = 1;
+var weaponSelected = 2;
 function toDegrees(radians) {
     return radians * (180 / Math.PI);
 }

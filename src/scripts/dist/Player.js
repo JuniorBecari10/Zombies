@@ -42,7 +42,7 @@ class Player extends Entity {
             this.upSprs[i] = { x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70 };
         }
         this.weapons = new Array(3);
-        this.weapons[1] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20 /*200*/, 280, 10, 0, "Pistol");
+        this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20 /*200*/, 280, 10, 0, "Pistol");
     }
     // Overrides super method
     tick() {

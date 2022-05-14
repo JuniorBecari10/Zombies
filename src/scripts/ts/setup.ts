@@ -33,7 +33,7 @@ const oneCode = 49;
 const twoCode = 50;
 const threeCode = 51;
 
-var weaponSelected: number = 1;
+var weaponSelected: number = 2;
 
 function toDegrees(radians: number) {
     return radians * (180 / Math.PI);
