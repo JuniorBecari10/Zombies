@@ -102,11 +102,11 @@ class Player extends Entity {
                     this.cutBounds = this.dashRightSpr;
                 }
             }
-            if (keyPressed.keyCode == oneCode)
+            if (keyPressed.keyCode == oneCode && this.weapons[2] !== undefined)
                 weaponSelected = 2;
-            else if (keyPressed.keyCode == twoCode)
+            else if (keyPressed.keyCode == twoCode && this.weapons[1] !== undefined)
                 weaponSelected = 1;
-            else if (keyPressed.keyCode == threeCode)
+            else if (keyPressed.keyCode == threeCode && this.weapons[0] !== undefined)
                 weaponSelected = 0;
             // ------------------------------------
             if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode)

@@ -149,6 +149,11 @@ function render(): void {
                 
                 g.ctx?.fillText(text, mousePos.x + 10, mousePos.y);
             }
+            
+            // detect click
+            if (collide({x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed && player.weapons[i] !== undefined) {
+                weaponSelected = i;
+            }
         }
         
         for (let i = 0; i < 3; i++)
