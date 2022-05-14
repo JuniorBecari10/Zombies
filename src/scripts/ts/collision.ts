@@ -5,8 +5,11 @@ const collisions: Rectangle[] = [{x: 1484, y: 1844, w: 84, h: 196},
                                  {x: 1100, y: 1580, w: 840, h: 88},
                                  {x: 1728, y: 1668, w: 138, h: 88},
                                  {x: 1060, y: 1852, w: 88, h: 628},
-                                 {x: 1060, y: 1668, w: 88, h: 72},
-                                 {x: 1940, y: 1988, w: 80, h: 192}];
+                                 {x: 1060, y: 1668, w: 88, h: 72 },
+                                 {x: 1940, y: 1988, w: 80, h: 192},
+                                 {x: 1916, y: 2148, w: 24, h: 32 },
+                                 {x: 1916, y: 2292, w: 308, h: 192},
+                                 {x: 1148, y: 2372, w: 832, h: 152}];
 
 function collide(rect1: Rectangle, rect2: Rectangle): boolean {
     return rect1.x < rect2.x + rect2.w &&
