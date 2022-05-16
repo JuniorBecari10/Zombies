@@ -1,9 +1,10 @@
 "use strict";
 class Barrier extends Entity {
-    constructor(bounds, spritesheet, cutBounds, place, price) {
+    constructor(bounds, spritesheet, cutBounds, place, price, newPositions) {
         super(bounds, spritesheet, cutBounds);
         this.place = place;
         this.price = price;
+        this.newPositions = newPositions;
         collisions.push(bounds);
     }
     tick() {
@@ -11,6 +12,9 @@ class Barrier extends Entity {
         if (player.coins >= this.price &&
             collide({ x: mousePos.x + camera.x, y: mousePos.y + camera.y, w: 1, h: 1 }, this.bounds) &&
             isMousePressed) {
+            player.coins -= this.price;
+            for (let n of this.newPositions)
+                zombiePositions.push(n);
             collisions.splice(collisions.indexOf(this.bounds), 1);
             this.destroy();
         }
