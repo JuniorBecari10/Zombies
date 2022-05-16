@@ -49,6 +49,8 @@ function reset() {
 // ----------------------------------------
 function init() {
     entities.push(player);
+    // add barriers
+    entities.push(new Barrier({ x: 1076, y: 1740, w: 36, h: 111 }, barrier, { x: 0, y: 0, w: 36, h: 111 }, "Hotel", 700));
     g.canvas.style.imageRendering = "pixelated";
     window.requestAnimationFrame(loop);
 }

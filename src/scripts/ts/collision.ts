@@ -26,14 +26,6 @@ function collideWithAny(rect: Rectangle): boolean {
     return false;
 }
 
-function collideWithAnyEntity(rect: Rectangle): boolean {
-    for (let e of entities) {
-        if (collide(rect, e.bounds)) return true;
-    }
-    
-    return false;
-}
-
 /*function setCollisions(img: ImageData) {
     for (let x = 0; x < img.width; x += 4) {
         for (let y = 0; y < img.height; y += 4) {

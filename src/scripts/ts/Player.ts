@@ -9,7 +9,7 @@ class Player extends Entity {
     hp: number = 10;
     totalHp: number = 10;
     
-    coins: number = 0;
+    coins: number = 1000;
     
     immunityCount: number = 0;
     immunityTotal: number = 20;

@@ -3,6 +3,7 @@ const basicZombieSpr: HTMLImageElement = loadImage("basic-zombie");
 const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
 const weapons: HTMLImageElement = loadImage("weapons");
+const barrier: HTMLImageElement = loadImage("barrier");
 
 function loadImage(id: string): HTMLImageElement {
     return document.getElementById(id) as HTMLImageElement;
