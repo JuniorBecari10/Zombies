@@ -61,6 +61,8 @@ function reset(): void {
     
     entities.push(player);
     
+    addBarriers();
+    
     zombiePositions = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
 }
 
@@ -69,12 +71,15 @@ function reset(): void {
 function init(): void {
     entities.push(player);
     
-    // add barriers
-    entities.push(new Barrier({x: 1076, y: 1740, w: 36, h: 111}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Hotel", 700, [{x: 1000, y: 1280}, {x: 216, y: 2192}, {x: 168, y: 916}]));
-    entities.push(new Barrier({x: 1968, y: 2180, w: 36, h: 111}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Office", 500, []));
+    addBarriers();
     
     g.canvas.style.imageRendering = "pixelated";
     window.requestAnimationFrame(loop);
+}
+
+function addBarriers() {
+    entities.push(new Barrier({x: 1076, y: 1740, w: 36, h: 111}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Hotel", 700, [{x: 1000, y: 1280}, {x: 216, y: 2192}, {x: 168, y: 916}]));
+    entities.push(new Barrier({x: 1968, y: 2180, w: 36, h: 111}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Office", 500, []));
 }
 
 function tick(): void {
