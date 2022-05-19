@@ -68,7 +68,7 @@ class Player extends Entity {
         
         this.weapons = new Array(3);
         
-        this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20 /*200*/, 280, 10, 0, "Pistol");
+        this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 280, 10, "Pistol");
     }
     
     // Overrides super method
@@ -231,6 +231,7 @@ class Player extends Entity {
             let dx: number = Math.cos(angle);
             let dy: number = Math.sin(angle);
             
+            this.weapons[weaponSelected].ammo--;
             entities.push(new Bullet({x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3}, weapons, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
         

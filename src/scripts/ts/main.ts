@@ -186,6 +186,14 @@ function render(): void {
         
         g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
         
+        g.ctx!.font = "15px Pixel";
+        g.ctx!.fillStyle = "white";
+        g.ctx!.globalAlpha = 1;
+        
+        text = player.weapons[weaponSelected].ammoTotal + " | " + player.weapons[weaponSelected].ammo;
+        
+        g.ctx?.fillText(text, (g.canvas.width / 2) - (15 * (text.length / 4)), g.canvas.height - 150);
+        
         // draw stats
         
         g.ctx!.font = "20px Pixel";

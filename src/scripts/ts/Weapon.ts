@@ -6,6 +6,7 @@ class Weapon extends Entity {
     
     cooldown: number;
     ammoTotal: number;
+    ammoTotalConst: number;
     ammoLoaded: number;
     
     ammo: number;
@@ -14,7 +15,7 @@ class Weapon extends Entity {
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
      bulletDamage: number, bulletSpeed: number, bulletAmount: number, cooldown: number, ammoTotal: number,
-     ammoLoaded: number, ammo: number, name: string) {
+     ammoLoaded: number, name: string) {
         super(bounds, spritesheet, cutBounds);
         
         this.bulletDamage = bulletDamage;
@@ -23,12 +24,18 @@ class Weapon extends Entity {
         
         this.cooldown = cooldown;
         this.ammoTotal = ammoTotal;
+        this.ammoTotalConst = ammoTotal;
         this.ammoLoaded = ammoLoaded;
         
-        this.ammo = ammo;
+        this.ammo = ammoLoaded;
         
         this.name = name;
     }
+    
+    recharge(): void {
+        
+    }
+    
     
     render(g: Graphics): void {
         g.ctx?.drawImage(this.spritesheet, this.cutBounds.x,

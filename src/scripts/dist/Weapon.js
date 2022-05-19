@@ -1,15 +1,18 @@
 "use strict";
 class Weapon extends Entity {
-    constructor(bounds, spritesheet, cutBounds, bulletDamage, bulletSpeed, bulletAmount, cooldown, ammoTotal, ammoLoaded, ammo, name) {
+    constructor(bounds, spritesheet, cutBounds, bulletDamage, bulletSpeed, bulletAmount, cooldown, ammoTotal, ammoLoaded, name) {
         super(bounds, spritesheet, cutBounds);
         this.bulletDamage = bulletDamage;
         this.bulletSpeed = bulletSpeed; // pode ser hardcoded tbm
         this.bulletAmount = bulletAmount;
         this.cooldown = cooldown;
         this.ammoTotal = ammoTotal;
+        this.ammoTotalConst = ammoTotal;
         this.ammoLoaded = ammoLoaded;
-        this.ammo = ammo;
+        this.ammo = ammoLoaded;
         this.name = name;
+    }
+    recharge() {
     }
     render(g) {
         var _a;

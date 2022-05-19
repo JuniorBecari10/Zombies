@@ -95,7 +95,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -138,11 +138,16 @@ function render() {
         g.ctx.globalAlpha = 1;
         let text = "Wave " + waveCount;
         (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
+        g.ctx.font = "15px Pixel";
+        g.ctx.fillStyle = "white";
+        g.ctx.globalAlpha = 1;
+        text = player.weapons[weaponSelected].ammoTotal + " | " + player.weapons[weaponSelected].ammo;
+        (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.fillText(text, (g.canvas.width / 2) - (15 * (text.length / 4)), g.canvas.height - 150);
         // draw stats
         g.ctx.font = "20px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
+        (_k = g.ctx) === null || _k === void 0 ? void 0 : _k.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
         let x = 25;
         if (player.coins >= 10 && player.coins < 100)
             x = 45;
@@ -154,22 +159,22 @@ function render() {
             x = 125;
         else if (player.coins >= 1000000)
             x = 145;
-        (_k = g.ctx) === null || _k === void 0 ? void 0 : _k.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
     }
     else if (gameState === "gameover") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "red";
-        (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillRect(0, 0, g.canvas.width, g.canvas.height);
         let fontSize = 30;
         let text = "Game Over!";
         g.ctx.font = fontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
+        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
         fontSize = 15;
         text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
-        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
+        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
     }
 }
 function loop() {
