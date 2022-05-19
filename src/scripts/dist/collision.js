@@ -13,7 +13,8 @@ const collisions = [{ x: 1484, y: 1844, w: 84, h: 196 },
     { x: 1148, y: 2372, w: 832, h: 152 },
     { x: 1060, y: 1040, w: 80, h: 632 },
     { x: 688, y: 1124, w: 372, h: 40 },
-    { x: 688, y: 1164, w: 44, h: 372 }];
+    { x: 688, y: 1164, w: 44, h: 372 },
+    { x: 0, y: 1124, w: 416, h: 1080 }];
 function collide(rect1, rect2) {
     return rect1.x < rect2.x + rect2.w &&
         rect1.x + rect1.w > rect2.x &&
