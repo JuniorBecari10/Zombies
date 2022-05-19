@@ -13,6 +13,15 @@ class Weapon extends Entity {
         this.name = name;
     }
     recharge() {
+        let diff = this.ammoLoaded - this.ammo;
+        if (diff <= 0)
+            return;
+        this.ammo += diff;
+        this.ammoTotal -= diff;
+        if (this.ammoTotal < 0) {
+            this.ammoTotal = 0;
+            this.ammo = 0;
+        }
     }
     render(g) {
         var _a;

@@ -42,7 +42,7 @@ class Player extends Entity {
             this.upSprs[i] = { x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70 };
         }
         this.weapons = new Array(3);
-        this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20, 280, 10, "Pistol");
+        this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20, 20, 10, "Pistol");
     }
     // Overrides super method
     tick() {
@@ -163,6 +163,8 @@ class Player extends Entity {
         }
         this.cooldownCount++;
         if (isMousePressed && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
+            if (this.weapons[weaponSelected].ammo <= 0)
+                return;
             this.cooldownCount = 0;
             let mx = (mousePos.x) + camera.x;
             let my = (mousePos.y) + camera.y;
@@ -172,6 +174,8 @@ class Player extends Entity {
             let dx = Math.cos(angle);
             let dy = Math.sin(angle);
             this.weapons[weaponSelected].ammo--;
+            if (this.weapons[weaponSelected].ammo === 0)
+                this.weapons[weaponSelected].recharge();
             entities.push(new Bullet({ x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
         camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
