@@ -68,7 +68,7 @@ class Player extends Entity {
         
         this.weapons = new Array(3);
         
-        this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 20, 10, "Pistol");
+        this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 280, 10, "Pistol");
     }
     
     // Overrides super method
@@ -175,6 +175,9 @@ class Player extends Entity {
                 this.right = true;
             else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
                 this.right = false;
+            
+            if (keyPressed.keyCode == rCode)
+                this.weapons[weaponSelected].recharge();
             
             // --------------------------------------------------
             

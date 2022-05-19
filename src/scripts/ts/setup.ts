@@ -26,6 +26,8 @@ const dCode: number = 68;
 const sCode: number = 83;
 const aCode: number = 65;
 
+const rCode = 82;
+
 const spaceCode: number = 32;
 const enterCode: number = 13;
 
