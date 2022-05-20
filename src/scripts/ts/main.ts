@@ -74,6 +74,7 @@ function init(): void {
     addBarriers();
     
     g.canvas.style.imageRendering = "pixelated";
+    
     window.requestAnimationFrame(loop);
 }
 
@@ -83,10 +84,18 @@ function addBarriers() {
 }
 
 function tick(): void {
-    if (gameState === "game") {
+    if (gameState === "game" || gameState === "menu") {
+        if (gameState === "menu") {
+            if (keyPressed !== undefined && keyPressed.keyCode === enterCode) {
+                gameState = "game";
+            }
+        }
+        
         for (let o of entities) {
             o.tick();
         }
+        
+        if (gameState === "menu") return;
     
         spawnSpeedCount++;
         
@@ -213,9 +222,7 @@ function render(): void {
         else if (player.coins >= 1000000) x = 145;
         
         g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
-        
     }
-    
     else if (gameState === "gameover") {
         g.ctx!.globalAlpha = 0.2;
         
@@ -240,6 +247,22 @@ function render(): void {
         text = "You were killed by " + player.deathCause;
         
          g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+    }
+    else if (gameState === "menu") {
+        g.ctx!.globalAlpha = 0.2;
+        
+        g.ctx!.fillStyle = "black";
+        g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        
+        let text = "Press Enter to start";
+        
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx!.fillStyle = "white";
+        g.ctx!.font = "15px Pixel";
+        
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        g.ctx?.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 

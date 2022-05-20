@@ -55,7 +55,7 @@ class Player extends Entity {
             this.dashSpeed -= 0.1;
         if (this.dashCount < this.maxDashCount)
             this.dashCount++;
-        if (isKeyPressed) {
+        if (isKeyPressed && gameState === "game") {
             this.animCount++;
             if (this.animCount >= this.maxAnimCount) {
                 this.animCount = 0;
@@ -64,7 +64,7 @@ class Player extends Entity {
                     this.animIndex = 0;
                 }
             }
-            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
+            if (keyPressed.keyCode == spaceCode && gameState === "game" && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
                 this.dashSpeed = this.constDashSpeed;
                 /*let mx: number = (mousePos.x) + camera.x;

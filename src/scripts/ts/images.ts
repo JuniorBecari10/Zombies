@@ -1,3 +1,4 @@
+const logo: HTMLImageElement = loadImage("logo");
 const playerSpritesheet: HTMLImageElement = loadImage("player-spritesheet");
 const basicZombieSpr: HTMLImageElement = loadImage("basic-zombie");
 const basicSkeletonSpr: HTMLImageElement = loadImage("basic-skeleton");

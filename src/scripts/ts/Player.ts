@@ -87,7 +87,7 @@ class Player extends Entity {
         if (this.dashCount < this.maxDashCount)
            this.dashCount++;
         
-        if (isKeyPressed) {
+        if (isKeyPressed && gameState === "game") {
             this.animCount++;
             
             if (this.animCount >= this.maxAnimCount) {
@@ -100,7 +100,7 @@ class Player extends Entity {
                 }
             }
             
-            if (keyPressed.keyCode == spaceCode && this.dashCount >= this.maxDashCount) { // dash
+            if (keyPressed.keyCode == spaceCode && gameState === "game" && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
                 this.dashSpeed = this.constDashSpeed;
                 

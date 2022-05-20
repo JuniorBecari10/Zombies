@@ -59,10 +59,17 @@ function addBarriers() {
     entities.push(new Barrier({ x: 1968, y: 2180, w: 36, h: 111 }, barrier, { x: 0, y: 0, w: 36, h: 111 }, "Office", 500, []));
 }
 function tick() {
-    if (gameState === "game") {
+    if (gameState === "game" || gameState === "menu") {
+        if (gameState === "menu") {
+            if (keyPressed !== undefined && keyPressed.keyCode === enterCode) {
+                gameState = "game";
+            }
+        }
         for (let o of entities) {
             o.tick();
         }
+        if (gameState === "menu")
+            return;
         spawnSpeedCount++;
         if (spawnSpeedCount >= spawnSpeed) {
             spawnSpeedCount = 0;
@@ -97,7 +104,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -179,6 +186,17 @@ function render() {
         (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
         text = "You were killed by " + player.deathCause;
         (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+    }
+    else if (gameState === "menu") {
+        g.ctx.globalAlpha = 0.2;
+        g.ctx.fillStyle = "black";
+        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        let text = "Press Enter to start";
+        g.ctx.globalAlpha = 1;
+        g.ctx.fillStyle = "white";
+        g.ctx.font = "15px Pixel";
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 function loop() {

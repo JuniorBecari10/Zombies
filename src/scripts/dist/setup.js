@@ -1,5 +1,5 @@
 "use strict";
-var gameState = "game";
+var gameState = "menu";
 var keyPressed;
 var isKeyPressed = false;
 var mousePos = { x: 0, y: 0 };

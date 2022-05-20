@@ -1,7 +1,7 @@
 type GameState = "menu" | "game" | "pause" | "gameover";
 type Immunity = "none" | "fire" | "ice" | "explosive";
 
-var gameState: GameState = "game";
+var gameState: GameState = "menu";
 
 var keyPressed: KeyboardEvent;
 var isKeyPressed: boolean = false;
