@@ -11,6 +11,8 @@ class Player extends Entity {
     
     coins: number = 1000;
     
+    deathCause: string = "";
+    
     immunityCount: number = 0;
     immunityTotal: number = 20;
     

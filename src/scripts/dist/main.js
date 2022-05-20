@@ -76,6 +76,8 @@ function tick() {
             var zombie = null;
             if (zombieType === "basic-zombie")
                 zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 1, 1, "none", "Basic Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+            else if (zombieType === "basic-skeleton")
+                zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 0, 2, "none", "Basic Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
             zombie.bounds.x = pos.x;
             zombie.bounds.y = pos.y;
             for (let i = 0; i < player.weapons.length; i++) {
@@ -95,7 +97,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -175,6 +177,8 @@ function render() {
         text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
         (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
+        text = "You were killed by " + player.deathCause;
+        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
     }
 }
 function loop() {
