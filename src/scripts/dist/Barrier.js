@@ -8,7 +8,7 @@ class Barrier extends Entity {
         collisions.push(bounds);
     }
     tick() {
-        let doubleBounds = { x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4 };
+        let doubleBounds = { x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 2 };
         if (player.coins >= this.price &&
             collide(player.bounds, doubleBounds) &&
             keyPressed.keyCode === enterCode) {
@@ -20,9 +20,9 @@ class Barrier extends Entity {
         }
     }
     render(g) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         super.render(g);
-        let doubleBounds = { x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4 };
+        let doubleBounds = { x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 2 };
         if (collide(player.bounds, doubleBounds)) {
             g.ctx.font = "20px Pixel";
             g.ctx.fillStyle = "white";
@@ -31,6 +31,10 @@ class Barrier extends Entity {
             g.ctx.font = "15px Pixel";
             (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.fillText("Press Enter to Unlock", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
+            if (player.coins < this.price) {
+                g.ctx.fillStyle = "#FF4545";
+                (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
         }
     }
 }

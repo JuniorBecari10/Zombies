@@ -17,7 +17,7 @@ class Barrier extends Entity {
     }
     
     tick(): void {
-        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4};
+        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 2};
         
         if (player.coins >= this.price && 
             collide(player.bounds, doubleBounds) && 
@@ -35,7 +35,7 @@ class Barrier extends Entity {
     render(g: Graphics): void {
         super.render(g);
         
-        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4};
+        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 2};
         
         if (collide(player.bounds, doubleBounds)) {
             g.ctx!.font = "20px Pixel";
@@ -48,6 +48,11 @@ class Barrier extends Entity {
             
             g.ctx?.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             g.ctx?.fillText("Press Enter to Unlock", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
+            
+            if (player.coins < this.price) {
+                g.ctx!.fillStyle = "#FF4545";
+                g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
         }
     }
 }
