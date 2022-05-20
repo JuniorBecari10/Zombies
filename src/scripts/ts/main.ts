@@ -4,7 +4,7 @@ var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876
 var waveCount: number = 1;
 
 var spawnSpeedCount: number = 0;
-const spawnSpeed: number = 200;
+var spawnSpeed: number = 300; // 200 is too fast
 
 var zombieSpawnCount: number = 0;
 
@@ -107,6 +107,7 @@ function tick(): void {
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
                 waveCount++;
+                spawnSpeed += 20;
             }
             
             var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];

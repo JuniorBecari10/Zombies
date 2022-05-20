@@ -3,7 +3,7 @@ var player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, player
 var zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
 var waveCount = 1;
 var spawnSpeedCount = 0;
-const spawnSpeed = 200;
+var spawnSpeed = 300; // 200 is too fast
 var zombieSpawnCount = 0;
 const titleFontSize = 20;
 const fontSize = 15;
@@ -77,6 +77,7 @@ function tick() {
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
                 waveCount++;
+                spawnSpeed += 20;
             }
             var zombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
             var pos = zombiePositions[random(0, zombiePositions.length)];
