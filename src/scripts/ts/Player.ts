@@ -222,7 +222,7 @@ class Player extends Entity {
         
         this.cooldownCount++;
         
-        if (isMousePressed && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
+        if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
             if (this.weapons[weaponSelected].ammo <= 0) return;
             
             this.cooldownCount = 0;

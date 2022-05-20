@@ -17,11 +17,11 @@ class Barrier extends Entity {
     }
     
     tick(): void {
-        let doubleBounds: Rectangle = this.bounds;
+        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4};
         
         if (player.coins >= this.price && 
-            collide({x: mousePos.x + camera.x, y: mousePos.y + camera.y, w: 1, h: 1}, this.bounds) && 
-            isMousePressed) {
+            collide(player.bounds, doubleBounds) && 
+            keyPressed.keyCode === enterCode) {
             player.coins -= this.price;
             
             for (let n of this.newPositions)
@@ -35,17 +35,19 @@ class Barrier extends Entity {
     render(g: Graphics): void {
         super.render(g);
         
-        if (collide({x: mousePos.x + camera.x, y: mousePos.y + camera.y, w: 1, h: 1}, this.bounds)) {
+        let doubleBounds: Rectangle = {x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 4};
+        
+        if (collide(player.bounds, doubleBounds)) {
             g.ctx!.font = "20px Pixel";
             g.ctx!.fillStyle = "white";
             g.ctx!.globalAlpha = 1;
             
-            g.ctx?.fillText(this.place, mousePos.x + 20, mousePos.y);
+            g.ctx?.fillText(this.place, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
             
             g.ctx!.font = "15px Pixel";
             
-            g.ctx?.fillText("$" + this.price.toString(), mousePos.x + 20, mousePos.y + 30);
-            g.ctx?.fillText("Click to Unlock", mousePos.x + 20, mousePos.y + 60);
+            g.ctx?.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
+            g.ctx?.fillText("Press Enter to Unlock", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
         }
     }
 }

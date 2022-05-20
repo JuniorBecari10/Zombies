@@ -68,11 +68,11 @@ class Zombie extends Entity {
         }
         
         // basic following system
-        if (this.bounds.x < player.bounds.x && !collideWithAny({x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) this.bounds.x += this.speed; // right
-        if (this.bounds.x > player.bounds.x && !collideWithAny({x: this.bounds.x - this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) this.bounds.x -= this.speed; // left
+        if (this.bounds.x <= player.bounds.x && !collideWithAny({x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) this.bounds.x += this.speed; // right
+        if (this.bounds.x >= player.bounds.x && !collideWithAny({x: this.bounds.x - this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h})) this.bounds.x -= this.speed; // left
         
-        if (this.bounds.y < player.bounds.y && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h})) this.bounds.y += this.speed; // down
-        if (this.bounds.y > player.bounds.y && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h})) this.bounds.y -= this.speed; // up
+        if (this.bounds.y <= player.bounds.y && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h})) this.bounds.y += this.speed; // down
+        if (this.bounds.y >= player.bounds.y && !collideWithAny({x: this.bounds.x, y: this.bounds.y + this.speed, w: this.bounds.w, h: this.bounds.h})) this.bounds.y -= this.speed; // up
         
         if (this.collideWithEntity() instanceof Player && player.immunityCount >= player.immunityTotal) {
             player.hp -= this.attack;
