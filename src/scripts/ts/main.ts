@@ -1,7 +1,7 @@
 var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
 
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 1;
+var waveCount: number = 5;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -121,7 +121,7 @@ function tick(): void {
                 zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 5, 0, 2, "none", "Basic Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             else if (zombieType === "armored-zombie")
-                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 5, 1, 1, "none", "Basic Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
+                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 8, 2, 1, "none", "Armored Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             zombie!.bounds.x = pos.x;
             zombie!.bounds.y = pos.y;
