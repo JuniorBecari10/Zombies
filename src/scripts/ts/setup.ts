@@ -41,6 +41,10 @@ function toDegrees(radians: number) {
     return radians * (180 / Math.PI);
 }
 
+function toRadians(degrees: number) {
+    return degrees * Math.PI / 180;
+}
+
 function normalize(p: Point): Point {
     let mag /* magnitude */: number = Math.sqrt(p.x * p.x + p.y * p.y);
     

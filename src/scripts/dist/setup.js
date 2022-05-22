@@ -26,6 +26,9 @@ var weaponSelected = 2;
 function toDegrees(radians) {
     return radians * (180 / Math.PI);
 }
+function toRadians(degrees) {
+    return degrees * Math.PI / 180;
+}
 function normalize(p) {
     let mag /* magnitude */ = Math.sqrt(p.x * p.x + p.y * p.y);
     p.x = p.x / mag;

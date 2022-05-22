@@ -8,6 +8,7 @@ const map = loadImage("map");
 const collision = loadImage("collision");
 const weapons = loadImage("weapons");
 const barrier = loadImage("barrier");
+const hBarrier = loadImage("h-barrier");
 function loadImage(id) {
     return document.getElementById(id);
 }

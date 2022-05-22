@@ -7,6 +7,7 @@ const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
 const weapons: HTMLImageElement = loadImage("weapons");
 const barrier: HTMLImageElement = loadImage("barrier");
+const hBarrier: HTMLImageElement = loadImage("h-barrier");
 
 function loadImage(id: string): HTMLImageElement {
     return document.getElementById(id) as HTMLImageElement;
