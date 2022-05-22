@@ -7,7 +7,7 @@ class Player extends Entity {
         this.dir = "down";
         this.hp = 10;
         this.totalHp = 10;
-        this.coins = 0;
+        this.coins = 1000;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;

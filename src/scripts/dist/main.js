@@ -1,7 +1,7 @@
 "use strict";
 var player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
 var zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
-var waveCount = 5;
+var waveCount = 1;
 var spawnSpeedCount = 0;
 var spawnSpeed = 300; // 200 is too fast
 var zombieSpawnCount = 0;
