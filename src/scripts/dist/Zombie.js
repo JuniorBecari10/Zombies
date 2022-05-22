@@ -1,7 +1,11 @@
 "use strict";
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
 //5, 1, 1, "none", "Basic Zombie");
-const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"] }, { zombieAmount: 11, zombieTypes: ["basic-zombie"] }, { zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"] }];
+const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"] },
+    { zombieAmount: 11, zombieTypes: ["basic-zombie"] },
+    { zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"] },
+    { zombieAmount: 15, zombieTypes: ["basic-zombie", "basic-skeleton"] },
+    { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] }];
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, name, animFrames) {
         super(bounds, spritesheet, cutBounds);

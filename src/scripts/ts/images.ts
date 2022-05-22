@@ -2,6 +2,7 @@ const logo: HTMLImageElement = loadImage("logo");
 const playerSpritesheet: HTMLImageElement = loadImage("player-spritesheet");
 const basicZombieSpr: HTMLImageElement = loadImage("basic-zombie");
 const basicSkeletonSpr: HTMLImageElement = loadImage("basic-skeleton");
+const armoredZombieSpr: HTMLImageElement = loadImage("armored-zombie")
 const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
 const weapons: HTMLImageElement = loadImage("weapons");
