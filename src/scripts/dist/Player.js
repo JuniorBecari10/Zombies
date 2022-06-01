@@ -17,6 +17,9 @@ class Player extends Entity {
         this.downSprs = [];
         this.leftSprs = [];
         this.rightSprs = [];
+        this.recharging = false;
+        this.rechargeCount = 0;
+        this.rechargeMax = 60;
         this.animCount = 0;
         this.maxAnimCount = 5;
         this.animIndex = 0;
@@ -126,8 +129,9 @@ class Player extends Entity {
                 this.right = true;
             else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
                 this.right = false;
-            if (keyPressed.keyCode == rCode)
+            if (keyPressed.keyCode == rCode) {
                 this.weapons[weaponSelected].recharge();
+            }
             // --------------------------------------------------
             if (this.up && !collideWithAny({ x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "up";
@@ -165,6 +169,20 @@ class Player extends Entity {
             }
         }
         this.cooldownCount++;
+        console.log(this.weapons[weaponSelected].ammo);
+        if (this.weapons[weaponSelected].ammo === 0) {
+            if (this.recharging) {
+                this.rechargeCount++;
+                if (this.rechargeCount >= this.rechargeMax) {
+                    this.rechargeCount = 0;
+                    this.recharging = false;
+                    this.weapons[weaponSelected].recharge();
+                }
+            }
+            else {
+                this.recharging = true;
+            }
+        }
         if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
             if (this.weapons[weaponSelected].ammo <= 0)
                 return;
@@ -177,8 +195,6 @@ class Player extends Entity {
             let dx = Math.cos(angle);
             let dy = Math.sin(angle);
             this.weapons[weaponSelected].ammo--;
-            if (this.weapons[weaponSelected].ammo === 0)
-                this.weapons[weaponSelected].recharge();
             entities.push(new Bullet({ x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3 }, weapons, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
         }
         camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
