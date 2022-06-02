@@ -232,6 +232,9 @@ function render(): void {
         
         g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
         
+        // rifle positions
+        //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);
+        
         if (player.recharging) {
             let text: string = "Recharging...";
             let font: number = 15;
