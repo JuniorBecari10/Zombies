@@ -1,4 +1,4 @@
-type ZombieType = "basic-zombie" | "basic-skeleton" | "armored-zombie";
+type ZombieType = "basic-zombie" | "basic-skeleton" | "armored-zombie" | "armored-skeleton";
 
 type Wave = {
     zombieAmount: number;
@@ -12,7 +12,9 @@ const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["ba
                        {zombieAmount: 11, zombieTypes: ["basic-zombie"]},
                        {zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"]},
                        {zombieAmount: 15, zombieTypes: ["basic-zombie", "basic-skeleton"]},
-                       {zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"]}];
+                       {zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"]},
+                       {zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"]},
+                       {zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"]}];
 
 class Zombie extends Entity {
     hp: number;

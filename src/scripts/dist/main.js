@@ -87,9 +87,11 @@ function tick() {
             if (zombieType === "basic-zombie")
                 zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 1, 1, "none", "Basic Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
             else if (zombieType === "basic-skeleton")
-                zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 0, 2, "none", "Basic Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+                zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 6, 0, 1, "none", "Basic Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
             else if (zombieType === "armored-zombie")
                 zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 8, 2, 1, "none", "Armored Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+            else if (zombieType === "armored-skeleton")
+                zombie = new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 9, 0, 2, "none", "Armored Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
             zombie.bounds.x = pos.x;
             zombie.bounds.y = pos.y;
             for (let i = 0; i < player.weapons.length; i++) {

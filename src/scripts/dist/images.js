@@ -4,6 +4,7 @@ const playerSpritesheet = loadImage("player-spritesheet");
 const basicZombieSpr = loadImage("basic-zombie");
 const basicSkeletonSpr = loadImage("basic-skeleton");
 const armoredZombieSpr = loadImage("armored-zombie");
+const armoredSkeletonSpr = loadImage("armored-skeleton");
 const map = loadImage("map");
 const collision = loadImage("collision");
 const weapons = loadImage("weapons");

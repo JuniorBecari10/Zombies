@@ -5,7 +5,9 @@ const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zom
     { zombieAmount: 11, zombieTypes: ["basic-zombie"] },
     { zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"] },
     { zombieAmount: 15, zombieTypes: ["basic-zombie", "basic-skeleton"] },
-    { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] }];
+    { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] },
+    { zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"] },
+    { zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"] }];
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, name, animFrames) {
         super(bounds, spritesheet, cutBounds);
