@@ -109,7 +109,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -174,34 +174,40 @@ function render() {
         else if (player.coins >= 1000000)
             x = 145;
         (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        if (player.recharging) {
+            let text = "Recharging...";
+            let font = 15;
+            g.ctx.font = font + "px Pixel";
+            (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
+        }
     }
     else if (gameState === "gameover") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "red";
-        (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.fillRect(0, 0, g.canvas.width, g.canvas.height);
         let fontSize = 30;
         let text = "Game Over!";
         g.ctx.font = fontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
+        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
         fontSize = 15;
         text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
-        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
+        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
         text = "You were killed by " + player.deathCause;
-        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
     }
     else if (gameState === "menu") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "black";
-        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.fillRect(0, 0, g.canvas.width, g.canvas.height);
         let text = "Press Enter to start";
         g.ctx.globalAlpha = 1;
         g.ctx.fillStyle = "white";
         g.ctx.font = "15px Pixel";
-        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
-        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 function loop() {

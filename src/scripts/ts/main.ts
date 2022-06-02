@@ -228,6 +228,14 @@ function render(): void {
         else if (player.coins >= 1000000) x = 145;
         
         g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        
+        if (player.recharging) {
+            let text: string = "Recharging...";
+            let font: number = 15;
+            
+            g.ctx!.font = font + "px Pixel";
+            g.ctx?.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
+        }
     }
     else if (gameState === "gameover") {
         g.ctx!.globalAlpha = 0.2;
@@ -252,7 +260,7 @@ function render(): void {
         
         text = "You were killed by " + player.deathCause;
         
-         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
     }
     else if (gameState === "menu") {
         g.ctx!.globalAlpha = 0.2;

@@ -247,24 +247,24 @@ class Player extends Entity {
         }
         
         if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
-            if (this.weapons[weaponSelected].ammo <= 0) return;
-            
-            this.cooldownCount = 0;
-            
-            let mx: number = (mousePos.x) + camera.x;
-            let my: number = (mousePos.y) + camera.y;
-            
-            let px: number = this.bounds.w / 2;
-            let py: number = this.bounds.h / 2;
-            
-            let angle: number = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
-            
-            let dx: number = Math.cos(angle);
-            let dy: number = Math.sin(angle);
-            
-            this.weapons[weaponSelected].ammo--;
-            
-            entities.push(new Bullet({x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3}, weapons, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
+            if (this.weapons[weaponSelected].ammo > 0) {
+                this.cooldownCount = 0;
+                
+                let mx: number = (mousePos.x) + camera.x;
+                let my: number = (mousePos.y) + camera.y;
+                
+                let px: number = this.bounds.w / 2;
+                let py: number = this.bounds.h / 2;
+                
+                let angle: number = Math.atan2(my - (this.bounds.y + py), mx - (this.bounds.x + px));
+                
+                let dx: number = Math.cos(angle);
+                let dy: number = Math.sin(angle);
+                
+                this.weapons[weaponSelected].ammo--;
+                
+                entities.push(new Bullet({x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3}, weapons, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
+            }
         }
         
         camera.x = clamp((this.bounds.x - (g.canvas.width / 2)) + (camFollowMouse ? ((mousePos.x / 4) - (g.canvas.width / 6)) : 0), 0, map.width * 16 - g.canvas.width);
