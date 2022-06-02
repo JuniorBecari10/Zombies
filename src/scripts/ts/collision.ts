@@ -36,6 +36,11 @@ function collideWithAny(rect: Rectangle): boolean {
         if (collide(rect, r)) return true;
     }
     
+    for (let e of entities) {
+        if (e instanceof Barrier)
+            if (collide(rect, e.bounds)) return true;
+    }
+    
     return false;
 }
 

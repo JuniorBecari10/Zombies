@@ -13,7 +13,7 @@ class Barrier extends Entity {
         
         this.newPositions = newPositions;
         
-        collisions.push(bounds);
+        //collisions.push(bounds);
     }
     
     tick(): void {
@@ -27,7 +27,7 @@ class Barrier extends Entity {
             for (let n of this.newPositions)
                 zombiePositions.push(n);
             
-            collisions.splice(collisions.indexOf(this.bounds), 1);
+            //collisions.splice(collisions.indexOf(this.bounds), 1);
             this.destroy();
         }
     }

@@ -5,7 +5,7 @@ class Barrier extends Entity {
         this.place = place;
         this.price = price;
         this.newPositions = newPositions;
-        collisions.push(bounds);
+        //collisions.push(bounds);
     }
     tick() {
         let doubleBounds = { x: this.bounds.x - this.bounds.w, y: this.bounds.y - this.bounds.h, w: this.bounds.w * 4, h: this.bounds.h * 2 };
@@ -15,7 +15,7 @@ class Barrier extends Entity {
             player.coins -= this.price;
             for (let n of this.newPositions)
                 zombiePositions.push(n);
-            collisions.splice(collisions.indexOf(this.bounds), 1);
+            //collisions.splice(collisions.indexOf(this.bounds), 1);
             this.destroy();
         }
     }
