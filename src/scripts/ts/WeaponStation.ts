@@ -1,19 +1,13 @@
-class Barrier extends Entity {
-    place: string;
+class WeaponStation extends Entity {
+    weapon: WeaponType;
     price: number;
     
-    newPositions: Point[];
-    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
-        place: string, price: number, newPositions: Point[]) {
+    weapon: WeaponType, price: number) {
         super(bounds, spritesheet, cutBounds);
         
-        this.place = place;
+        this.weapon = weapon;
         this.price = price;
-        
-        this.newPositions = newPositions;
-        
-        //collisions.push(bounds);
     }
     
     tick(): void {
@@ -24,8 +18,7 @@ class Barrier extends Entity {
             keyPressed.keyCode === enterCode) {
             player.coins -= this.price;
             
-            for (let n of this.newPositions)
-                zombiePositions.push(n);
+            player.weapons[player.freeSlot()] = getWeapon(this.weapon)!;
             
             this.destroy();
         }
@@ -41,12 +34,12 @@ class Barrier extends Entity {
             g.ctx!.fillStyle = "white";
             g.ctx!.globalAlpha = 1;
             
-            g.ctx?.fillText(this.place, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+            g.ctx?.fillText(getWeapon(this.weapon).name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
             
             g.ctx!.font = "15px Pixel";
             
             g.ctx?.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
-            g.ctx?.fillText("Press Enter to Unlock", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
+            g.ctx?.fillText("Press Enter to Buy", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
             
             if (player.coins < this.price) {
                 g.ctx!.fillStyle = "#FF4545";

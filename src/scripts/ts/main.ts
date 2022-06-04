@@ -72,6 +72,7 @@ function init(): void {
     entities.push(player);
     
     addBarriers();
+    addWeaponStations();
     
     g.canvas.style.imageRendering = "pixelated";
     
@@ -83,6 +84,10 @@ function addBarriers() {
     entities.push(new Barrier({x: 1968, y: 2180, w: 36, h: 111}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Office", 500, []));
     entities.push(new Barrier({x: 1088, y: 904, w: 36, h: 136}, barrier, {x: 0, y: 0, w: 36, h: 111}, "Apartments", 700, []));
     entities.push(new Barrier({x: 216, y: 2464, w: 112, h: 36}, hBarrier, {x: 0, y: 0, w: 111, h: 36}, "Garden", 800, []));
+}
+
+function addWeaponStations() {
+    entities.push(new WeaponStation({x: 912, y: 2392, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, "rifle", 500));
 }
 
 function tick(): void {

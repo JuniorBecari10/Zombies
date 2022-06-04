@@ -7,7 +7,7 @@ class Player extends Entity {
         this.dir = "down";
         this.hp = 10;
         this.totalHp = 10;
-        this.coins = 1000;
+        this.coins = 1500;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;
@@ -47,6 +47,13 @@ class Player extends Entity {
         }
         this.weapons = new Array(3);
         this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20, 280, 10, "Pistol");
+    }
+    freeSlot() {
+        if (this.weapons[1] === undefined)
+            return 1;
+        else if (this.weapons[0] === undefined)
+            return 0;
+        return -1;
     }
     // Overrides super method
     tick() {

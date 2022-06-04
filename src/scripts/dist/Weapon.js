@@ -1,4 +1,10 @@
 "use strict";
+function getWeapon(weapon) {
+    if (weapon === "rifle") {
+        return new Weapon({ x: 0, y: 0, w: 44 * 3, h: 16 * 3 }, weapons, { x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3 }, 5, 30, 1, 10, 300, 20, "Rifle");
+    }
+    return null;
+}
 class Weapon extends Entity {
     constructor(bounds, spritesheet, cutBounds, bulletDamage, bulletSpeed, bulletAmount, cooldown, ammoTotal, ammoLoaded, name) {
         super(bounds, spritesheet, cutBounds);
