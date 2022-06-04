@@ -38,5 +38,8 @@ function normalize(p) {
 function random(min, max) {
     return Math.floor(Math.random() * max) + min;
 }
+function ruleOf3(a, b, c) {
+    return (b * c) / a;
+}
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

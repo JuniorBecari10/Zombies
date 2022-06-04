@@ -34,7 +34,7 @@ class WeaponStation extends Entity {
             g.ctx!.fillStyle = "white";
             g.ctx!.globalAlpha = 1;
             
-            g.ctx?.fillText(getWeapon(this.weapon).name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+            g.ctx?.fillText(getWeapon(this.weapon)!.name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
             
             g.ctx!.font = "15px Pixel";
             

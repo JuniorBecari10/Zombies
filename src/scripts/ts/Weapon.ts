@@ -19,6 +19,8 @@ class Weapon extends Entity {
     ammoTotalConst: number;
     ammoLoaded: number;
     
+    originalWidth: number;
+    
     ammo: number;
     
     name: string;
@@ -27,6 +29,8 @@ class Weapon extends Entity {
      bulletDamage: number, bulletSpeed: number, bulletAmount: number, cooldown: number, ammoTotal: number,
      ammoLoaded: number, name: string) {
         super(bounds, spritesheet, cutBounds);
+        
+        this.originalWidth = this.bounds.w;
         
         this.bulletDamage = bulletDamage;
         this.bulletSpeed = bulletSpeed;        // pode ser hardcoded tbm

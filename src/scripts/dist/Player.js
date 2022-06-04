@@ -176,7 +176,6 @@ class Player extends Entity {
             }
         }
         this.cooldownCount++;
-        console.log(this.weapons[weaponSelected].ammo);
         if (this.weapons[weaponSelected].ammo === 0) {
             if (this.recharging) {
                 this.rechargeCount++;

@@ -58,6 +58,10 @@ function random(min: number, max: number): number {
     return Math.floor(Math.random() * max) + min;
 }
 
+function ruleOf3(a: number, b: number, c: number): number {
+    return (b * c) / a;
+}
+
 //setCollisions(imageToImageData(collision));
 
 // multiply the map by 4x !!!

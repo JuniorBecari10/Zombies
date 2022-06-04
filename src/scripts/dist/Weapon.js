@@ -8,6 +8,7 @@ function getWeapon(weapon) {
 class Weapon extends Entity {
     constructor(bounds, spritesheet, cutBounds, bulletDamage, bulletSpeed, bulletAmount, cooldown, ammoTotal, ammoLoaded, name) {
         super(bounds, spritesheet, cutBounds);
+        this.originalWidth = this.bounds.w;
         this.bulletDamage = bulletDamage;
         this.bulletSpeed = bulletSpeed; // pode ser hardcoded tbm
         this.bulletAmount = bulletAmount;
