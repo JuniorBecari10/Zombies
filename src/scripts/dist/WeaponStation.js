@@ -6,9 +6,8 @@ class WeaponStation extends Entity {
         this.price = price;
     }
     tick() {
-        let doubleBounds = getDoubleBounds(this.bounds);
         if (player.coins >= this.price &&
-            collide(player.bounds, doubleBounds) &&
+            collide(player.bounds, this.bounds) &&
             keyPressed.keyCode === enterCode) {
             player.coins -= this.price;
             player.weapons[player.freeSlot()] = getWeapon(this.weapon);
@@ -18,8 +17,7 @@ class WeaponStation extends Entity {
     render(g) {
         var _a, _b, _c, _d;
         super.render(g);
-        let doubleBounds = getDoubleBounds(this.bounds);
-        if (collide(player.bounds, doubleBounds)) {
+        if (collide(player.bounds, this.bounds)) {
             g.ctx.font = "20px Pixel";
             g.ctx.fillStyle = "white";
             g.ctx.globalAlpha = 1;
