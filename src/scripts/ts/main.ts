@@ -70,10 +70,10 @@ function reset(): void {
 // ----------------------------------------
 
 function init(): void {
-    entities.push(player);
-    
     addBarriers();
     addWeaponStations();
+    
+    entities.push(player);
     
     g.canvas.style.imageRendering = "pixelated";
     
@@ -89,6 +89,7 @@ function addBarriers() {
 
 function addWeaponStations() {
     entities.push(new WeaponStation({x: 912, y: 2392, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, "rifle", 500));
+    entities.push(new WeaponStation({x: 2748, y: 1972, w: 47 * 3, h: 16 * 3}, weapons, {x: 80 * 3, y: 0, w: 47 * 3, h: 16 * 3}, "shotgun", 500));
 }
 
 function tick(): void {
