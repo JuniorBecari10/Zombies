@@ -7,6 +7,7 @@ const armoredSkeletonSpr: HTMLImageElement = loadImage("armored-skeleton");
 const map: HTMLImageElement = loadImage("map");
 const collision: HTMLImageElement = loadImage("collision");
 const weapons: HTMLImageElement = loadImage("weapons");
+const perks: HTMLImageElement = loadImage("perks");
 const barrier: HTMLImageElement = loadImage("barrier");
 const hBarrier: HTMLImageElement = loadImage("h-barrier");
 

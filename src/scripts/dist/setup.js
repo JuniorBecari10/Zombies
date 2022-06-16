@@ -41,5 +41,8 @@ function random(min, max) {
 function ruleOf3(a, b, c) {
     return (b * c) / a;
 }
+function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.toLowerCase().substring(1);
+}
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

@@ -13,12 +13,12 @@ class WeaponStation extends Entity {
     tick(): void {
         if (player.coins >= this.price && 
             collide(player.bounds, this.bounds) && 
-            keyPressed.keyCode === enterCode) {
+            keyPressed.keyCode === enterCode && !player.hasWeapon(getWeapon(this.weapon)!.name)) {
             player.coins -= this.price;
             
             player.weapons[player.freeSlot()] = getWeapon(this.weapon)!;
             
-            this.destroy();
+            //this.destroy();
         }
     }
     
@@ -37,9 +37,13 @@ class WeaponStation extends Entity {
             g.ctx?.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             g.ctx?.fillText("Press Enter to Buy", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
             
-            if (player.coins < this.price) {
+            if (player.coins < this.price && !player.hasWeapon(getWeapon(this.weapon)!.name)) {
                 g.ctx!.fillStyle = "#FF4545";
                 g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            if (player.hasWeapon(getWeapon(this.weapon)!.name)) {
+                g.ctx!.fillStyle = "#FF4545";
+                g.ctx?.fillText("You already have this weapon!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
         }
     }

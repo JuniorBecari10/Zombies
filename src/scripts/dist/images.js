@@ -8,6 +8,7 @@ const armoredSkeletonSpr = loadImage("armored-skeleton");
 const map = loadImage("map");
 const collision = loadImage("collision");
 const weapons = loadImage("weapons");
+const perks = loadImage("perks");
 const barrier = loadImage("barrier");
 const hBarrier = loadImage("h-barrier");
 function loadImage(id) {

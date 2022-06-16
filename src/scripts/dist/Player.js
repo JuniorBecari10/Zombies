@@ -7,7 +7,7 @@ class Player extends Entity {
         this.dir = "down";
         this.hp = 10;
         this.totalHp = 10;
-        this.coins = 10000;
+        this.coins = 13000;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;
@@ -46,7 +46,9 @@ class Player extends Entity {
             this.upSprs[i] = { x: i * 16 * 70, y: 48 * 70, w: 16 * 70, h: 16 * 70 };
         }
         this.weapons = new Array(3);
+        this.perks = new Array(3);
         this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20, 380, 10, "Pistol");
+        this.perks[0] = new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, "Speed", () => { }, true, "speed");
     }
     freeSlot() {
         if (this.weapons[1] === undefined)
@@ -54,6 +56,15 @@ class Player extends Entity {
         else if (this.weapons[0] === undefined)
             return 0;
         return -1;
+    }
+    hasWeapon(name) {
+        for (let w of this.weapons) {
+            if (w === undefined)
+                continue;
+            if (w.name === capitalize(name))
+                return true;
+        }
+        return false;
     }
     // Overrides super method
     tick() {

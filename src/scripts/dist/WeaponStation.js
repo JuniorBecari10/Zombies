@@ -8,14 +8,14 @@ class WeaponStation extends Entity {
     tick() {
         if (player.coins >= this.price &&
             collide(player.bounds, this.bounds) &&
-            keyPressed.keyCode === enterCode) {
+            keyPressed.keyCode === enterCode && !player.hasWeapon(getWeapon(this.weapon).name)) {
             player.coins -= this.price;
             player.weapons[player.freeSlot()] = getWeapon(this.weapon);
-            this.destroy();
+            //this.destroy();
         }
     }
     render(g) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         super.render(g);
         if (collide(player.bounds, this.bounds)) {
             g.ctx.font = "20px Pixel";
@@ -25,9 +25,13 @@ class WeaponStation extends Entity {
             g.ctx.font = "15px Pixel";
             (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.fillText("Press Enter to Buy", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
-            if (player.coins < this.price) {
+            if (player.coins < this.price && !player.hasWeapon(getWeapon(this.weapon).name)) {
                 g.ctx.fillStyle = "#FF4545";
                 (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            if (player.hasWeapon(getWeapon(this.weapon).name)) {
+                g.ctx.fillStyle = "#FF4545";
+                (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("You already have this weapon!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
         }
     }
