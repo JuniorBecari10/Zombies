@@ -1,5 +1,14 @@
 type PerkType = "speed" | "fire" | "ice" | "quick" | "extra";
 
+function getAction(perkType: PerkType): () => void {
+    switch (perkType) {
+        case "speed":
+            return () => {if (player !== undefined) player.speed *= 2};
+    }
+    
+    return () => {};
+}
+
 class Perk extends Entity {
     name: string;
     action: () => void;
@@ -7,14 +16,17 @@ class Perk extends Entity {
     perkType: PerkType;
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
-                name: string, action: () => void, runOnce: boolean, perkType: PerkType) {
+                name: string, runOnce: boolean, perkType: PerkType) {
         super(bounds, spritesheet, cutBounds);
         
         this.name = name;
-        this.action = action;
         
         this.runOnce = runOnce;
         this.perkType = perkType;
+        
+        this.action = getAction(this.perkType);
+        
+        console.log(this.action);
         
         if (this.runOnce)
             this.action();

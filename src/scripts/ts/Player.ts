@@ -78,7 +78,7 @@ class Player extends Entity {
         this.perks = new Array(3);
         
         this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 380, 10, "Pistol");
-        this.perks[0] = new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 0, y: 0, w: 16 * 3, h: 16 * 3}, "Speed", () => {/*player.speed = 5*/}, true, "speed");
+        this.perks[0] = new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 0, y: 0, w: 16 * 3, h: 16 * 3}, "Speed", true, "speed");
     }
     
     freeSlot(): number {

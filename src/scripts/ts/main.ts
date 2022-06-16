@@ -195,6 +195,10 @@ function render(): void {
             }
         }
         
+        for (let i = 0; i < player.perks.length; i++) {
+            
+        }
+        
         for (let i = 0; i < 3; i++)
             g.ctx?.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
         
