@@ -36,4 +36,10 @@ class Perk extends Entity {
         if (!this.runOnce)
             this.action();
     }
+    
+    render(g: Graphics): void {
+        g.ctx?.drawImage(this.spritesheet, this.cutBounds.x,
+         this.cutBounds.y, this.cutBounds.w, this.cutBounds.h,
+         this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+    }
 }

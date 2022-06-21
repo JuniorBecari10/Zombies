@@ -195,13 +195,29 @@ function render(): void {
             }
         }
         
+        // draw perks
         for (let i = 0; i < player.perks.length; i++) {
+            g.ctx?.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
             
+            if (player.perks[i] !== undefined) {
+                player.perks[i].bounds = {x: g.canvas.width / 2 + (70 / 2) + 75 /* one time */ + (75 * i) + 10, y: g.canvas.height - 80, w: 16 * 3, h: 16 * 3};
+                player.perks[i].render(g);
+            }
         }
         
-        for (let i = 0; i < 3; i++)
-            g.ctx?.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
+        for (let i = 0; i < player.perks.length; i++) {
+            if (collide({x: g.canvas.width / 2 + (70 / 2) + 75 /* one time */ + (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && player.perks[i] !== undefined) {
+                g.ctx!.font = "15px Pixel";
+                g.ctx!.fillStyle = "white";
+                g.ctx!.globalAlpha = 1;
+                
+                let text: string = player.perks[i].name;
+                
+                g.ctx?.fillText(text, mousePos.x + 10, mousePos.y);
+            }
+        }
         
+        // draw health
         for (let i = 0; i < player.totalHp; i++) {
             g.ctx?.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
         }

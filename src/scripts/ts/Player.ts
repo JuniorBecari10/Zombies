@@ -9,7 +9,7 @@ class Player extends Entity {
     hp: number = 10;
     totalHp: number = 10;
     
-    coins: number = 13000;
+    coins: number = 0;
     
     deathCause: string = "";
     
