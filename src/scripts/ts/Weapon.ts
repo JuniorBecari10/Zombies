@@ -18,6 +18,7 @@ class Weapon extends Entity {
     bulletAmount: number;
     
     cooldown: number;
+    constCooldown: number;
     ammoTotal: number;
     ammoTotalConst: number;
     ammoLoaded: number;
@@ -40,6 +41,7 @@ class Weapon extends Entity {
         this.bulletAmount = bulletAmount;
         
         this.cooldown = cooldown;
+        this.constCooldown = cooldown;
         this.ammoTotal = ammoTotal;
         this.ammoTotalConst = ammoTotal;
         this.ammoLoaded = ammoLoaded;

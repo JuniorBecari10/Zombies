@@ -4,6 +4,8 @@ var camFollowMouse: boolean = false;
 
 class Player extends Entity {
     speed: number = 4; // 3
+    constSpeed: number = this.speed;
+    
     dir: Direction = "down";
     
     hp: number = 10;
@@ -78,7 +80,8 @@ class Player extends Entity {
         this.perks = new Array(3);
         
         this.weapons[2] = new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 380, 10, "Pistol");
-        this.perks[0] = new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 0, y: 0, w: 16 * 3, h: 16 * 3}, "Speed", true, "speed");
+        //this.perks[0] = new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 0, y: 0, w: 16 * 3, h: 16 * 3}, "Speed", false, "speed");
+        this.perks[0] = new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3}, "Quick Cooldown", false, "quick");
     }
     
     freeSlot(): number {
@@ -302,6 +305,14 @@ class Player extends Entity {
         
         if (this.hp <= 0) {
             gameState = "gameover";
+        }
+        
+        this.speed = this.constSpeed;
+        //this.dashSpeed = this.constDashSpeed;
+        
+        for (let p of this.perks) {
+            if (p !== undefined)
+                p.tick();
         }
     }
 }

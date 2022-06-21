@@ -3,7 +3,10 @@ type PerkType = "speed" | "fire" | "ice" | "quick" | "extra";
 function getAction(perkType: PerkType): () => void {
     switch (perkType) {
         case "speed":
-            return () => {if (player !== undefined) player.speed *= 2};
+            return () => {if (player !== undefined) player.speed = player.constSpeed * 2};
+        
+        case "quick":
+            return () => {if (player !== undefined) player.weapons[weaponSelected].cooldown = player.weapons[weaponSelected].constCooldown / 2};
     }
     
     return () => {};
@@ -25,8 +28,6 @@ class Perk extends Entity {
         this.perkType = perkType;
         
         this.action = getAction(this.perkType);
-        
-        console.log(this.action);
         
         if (this.runOnce)
             this.action();

@@ -16,6 +16,7 @@ class Weapon extends Entity {
         this.bulletSpeed = bulletSpeed; // pode ser hardcoded tbm
         this.bulletAmount = bulletAmount;
         this.cooldown = cooldown;
+        this.constCooldown = cooldown;
         this.ammoTotal = ammoTotal;
         this.ammoTotalConst = ammoTotal;
         this.ammoLoaded = ammoLoaded;
