@@ -1,4 +1,19 @@
-type PerkType = "speed" | "fire" | "ice" | "quick" | "extra";
+type PerkType = "speed" | "fire" | "ice" | "quick" | "extra" | "regen";
+
+function getPerk(perkType: PerkType): Perk | null {
+    switch (perkType) {
+        case "speed":
+            return new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 0, y: 0, w: 16 * 3, h: 16 * 3}, "Speed", false, "speed");
+        
+        case "quick":
+            return new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3}, "Quick Cooldown", false, "quick");
+        
+        case "regen":
+            return new Perk({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, perks, {x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3}, "Regeneration", false, "regen");
+    }
+    
+    return null;
+}
 
 function getAction(perkType: PerkType): () => void {
     switch (perkType) {
@@ -7,6 +22,9 @@ function getAction(perkType: PerkType): () => void {
         
         case "quick":
             return () => {if (player !== undefined) player.weapons[weaponSelected].cooldown = player.weapons[weaponSelected].constCooldown / 2};
+            
+        case "regen":
+            return () => {if (player !== undefined) player.maxRegenCount = player.constMaxRegenCount / 4};
     }
     
     return () => {};
