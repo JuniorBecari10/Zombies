@@ -27,6 +27,7 @@ class Zombie extends Entity {
         if (this.hp <= 0) {
             this.destroy();
             player.coins += 20;
+            zombieKills++;
         }
         this.animCount++;
         if (this.animCount >= this.maxAnimCount) {

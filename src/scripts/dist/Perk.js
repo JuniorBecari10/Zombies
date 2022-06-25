@@ -1,4 +1,11 @@
 "use strict";
+function containsPerk(perkType) {
+    for (let p of player.perks) {
+        if (p.perkType === perkType)
+            return true;
+    }
+    return false;
+}
 function getPerk(perkType) {
     switch (perkType) {
         case "speed":

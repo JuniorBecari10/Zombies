@@ -7,6 +7,7 @@ var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
 
 var zombieSpawnCount: number = 0;
+var zombieKills: number = 0;
 
 const titleFontSize: number = 20;
 const fontSize: number = 15;
@@ -118,6 +119,7 @@ function tick(): void {
                 zombieSpawnCount = 0;
                 waveCount++;
                 spawnSpeed += 20;
+                zombieKills = 0;
             }
             
             var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
@@ -252,13 +254,29 @@ function render(): void {
         g.ctx?.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
         let x: number = 25;
         
-        if (player.coins >= 10 && player.coins < 100) x = 45;
+        if (player.coins < 10) x = 25;
+        else if (player.coins >= 10 && player.coins < 100) x = 45;
         else if (player.coins >= 100 && player.coins < 1000) x = 65;
         else if (player.coins >= 1000 && player.coins < 100000) x = 105;
         else if (player.coins >= 100000 && player.coins < 1000000) x = 125;
         else if (player.coins >= 1000000) x = 145;
         
         g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        
+        // ----
+        
+        let alive: number = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
+        
+        g.ctx?.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
+        
+        if (alive < 10) x = 25;
+        else if (alive >= 10 && alive < 100) x = 45;
+        else if (alive >= 100 && alive < 1000) x = 65;
+        else if (alive >= 1000 && alive < 100000) x = 105;
+        else if (alive >= 100000 && alive < 1000000) x = 125;
+        else if (alive >= 1000000) x = 145;
+        
+         g.ctx?.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 57); // 87 - right below
         
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);

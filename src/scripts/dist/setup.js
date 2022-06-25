@@ -42,7 +42,12 @@ function ruleOf3(a, b, c) {
     return (b * c) / a;
 }
 function capitalize(s) {
-    return s.charAt(0).toUpperCase() + s.toLowerCase().substring(1);
+    //return s.charAt(0).toUpperCase() + s.toLowerCase().substring(1);
+    const words = s.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    return words.join(" ");
 }
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

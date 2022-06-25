@@ -1,5 +1,13 @@
 type PerkType = "speed" | "fire" | "ice" | "quick" | "extra" | "regen";
 
+function containsPerk(perkType: PerkType): boolean {
+    for (let p of player.perks) {
+        if (p.perkType === perkType) return true;
+    }
+    
+    return false;
+}
+
 function getPerk(perkType: PerkType): Perk | null {
     switch (perkType) {
         case "speed":
@@ -22,7 +30,7 @@ function getAction(perkType: PerkType): () => void {
         
         case "quick":
             return () => {if (player !== undefined) player.weapons[weaponSelected].cooldown = player.weapons[weaponSelected].constCooldown / 2};
-            
+        
         case "regen":
             return () => {if (player !== undefined) player.maxRegenCount = player.constMaxRegenCount / 4};
     }
