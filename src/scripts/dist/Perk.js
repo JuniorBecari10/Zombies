@@ -1,6 +1,8 @@
 "use strict";
 function containsPerk(perkType) {
     for (let p of player.perks) {
+        if (p === undefined)
+            continue;
         if (p.perkType === perkType)
             return true;
     }
@@ -14,6 +16,8 @@ function getPerk(perkType) {
             return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Quick Cooldown", false, "quick");
         case "regen":
             return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Regeneration", false, "regen");
+        case "extra":
+            return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Extra Weapon", false, "extra");
     }
     return null;
 }

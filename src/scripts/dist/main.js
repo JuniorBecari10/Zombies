@@ -157,7 +157,7 @@ function render() {
         // draw slots
         for (let i = 0; i < player.weapons.length; i++) {
             let x = 32 * 70;
-            if (i == 0)
+            if (!containsPerk("extra") && i == 0)
                 x = 48 * 70;
             if (i == weaponSelected)
                 x = 64 * 70;

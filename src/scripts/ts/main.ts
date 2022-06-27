@@ -209,7 +209,7 @@ function render(): void {
         for (let i = 0; i < player.weapons.length; i++) {
             let x: number = 32 * 70;
             
-            if (i == 0) x = 48 * 70;
+            if (!containsPerk("extra") && i == 0) x = 48 * 70;
             if (i == weaponSelected) x = 64 * 70;
             
             g.ctx?.drawImage(playerSpritesheet, x, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);

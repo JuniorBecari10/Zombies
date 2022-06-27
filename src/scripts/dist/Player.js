@@ -52,14 +52,14 @@ class Player extends Entity {
         this.perks = new Array(3);
         // set pistol in 'first' slot
         this.weapons[2] = new Weapon({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, weapons, { x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, 2, 30, 1, 20, 380, 10, "Pistol");
-        //this.perks[0] = getPerk("regen")!;
+        this.perks[0] = getPerk("extra");
     }
     freeSlot() {
         if (this.weapons[1] === undefined)
             return 1;
         else if (this.weapons[0] === undefined)
             return 0;
-        return -1;
+        return weaponSelected; // yes - it will override
     }
     hasWeapon(name) {
         for (let w of this.weapons) {
