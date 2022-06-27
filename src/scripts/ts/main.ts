@@ -8,6 +8,7 @@ var spawnSpeed: number = 300; // 200 is too fast
 
 var zombieSpawnCount: number = 0;
 var zombieKills: number = 0;
+var totalZombieKills: number = 0;
 
 const titleFontSize: number = 20;
 const fontSize: number = 15;
@@ -133,10 +134,10 @@ function tick(): void {
                 zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 6, 0, 1, "none", "Basic Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             else if (zombieType === "armored-zombie")
-                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 8, 2, 1, "none", "Armored Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
+                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 8, 1, 1, "none", "Armored Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             else if (zombieType === "armored-skeleton")
-                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 9, 0, 2, "none", "Armored Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
+                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 9, 1, 2, "none", "Armored Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             zombie!.bounds.x = pos.x;
             zombie!.bounds.y = pos.y;
@@ -276,7 +277,20 @@ function render(): void {
         else if (alive >= 100000 && alive < 1000000) x = 125;
         else if (alive >= 1000000) x = 145;
         
-         g.ctx?.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 57); // 87 - right below
+        g.ctx?.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 57); // 87 - right below
+        
+        // ----
+        
+        g.ctx?.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
+        
+        if (totalZombieKills < 10) x = 25;
+        else if (totalZombieKills >= 10 && totalZombieKills < 100) x = 45;
+        else if (totalZombieKills >= 100 && totalZombieKills < 1000) x = 65;
+        else if (totalZombieKills >= 1000 && totalZombieKills < 100000) x = 105;
+        else if (totalZombieKills >= 100000 && totalZombieKills < 1000000) x = 125;
+        else if (totalZombieKills >= 1000000) x = 145;
+        
+         g.ctx?.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
         
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);

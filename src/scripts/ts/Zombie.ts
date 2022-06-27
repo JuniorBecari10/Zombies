@@ -58,6 +58,7 @@ class Zombie extends Entity {
             this.destroy();
             player.coins += 20;
             zombieKills++;
+            totalZombieKills++;
         }
         
         this.animCount++;
