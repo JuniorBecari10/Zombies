@@ -47,6 +47,11 @@ function defineSize() {
 function reset() {
     entities = [];
     gameState = "game";
+    zombieKills = 0;
+    totalZombieKills = 0;
+    sec = 0;
+    min = 0;
+    hour = 0;
     player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
     waveCount = 1;
     entities.push(player);
@@ -257,8 +262,7 @@ function render() {
         (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
         // ----
         let time = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */ (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
-        console.log(time);
-        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 688, 5056, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
         /*
         if (time.length < 10) x = 25;
         else if (time.length >= 10 && time.length < 100) x = 45;
