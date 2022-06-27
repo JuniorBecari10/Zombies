@@ -206,6 +206,8 @@ function render() {
         (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
         // ----
         let alive = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
+        if (alive < 0)
+            alive = 0;
         (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
         if (alive < 10)
             x = 25;
@@ -248,18 +250,25 @@ function render() {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "red";
         (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillRect(0, 0, g.canvas.width, g.canvas.height);
-        let fontSize = 30;
-        let text = "Game Over!";
+        //let fontSize: number = 30;
+        //let text: string = "Game Over!";
+        /*
+        g.ctx!.font = fontSize + "px Pixel";
+        g.ctx!.fillStyle = "white";
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
+        */
+        g.ctx.globalAlpha = 1;
+        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
+        let fontSize = 15;
+        let text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
         g.ctx.fillStyle = "white";
-        g.ctx.globalAlpha = 1;
-        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
-        fontSize = 15;
-        text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
-        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
+        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         text = "You were killed by " + player.deathCause;
-        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
     }
     else if (gameState === "menu") {
         g.ctx.globalAlpha = 0.2;

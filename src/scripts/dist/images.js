@@ -1,5 +1,6 @@
 "use strict";
 const logo = loadImage("logo");
+const gameOver = loadImage("game-over");
 const playerSpritesheet = loadImage("player-spritesheet");
 const basicZombieSpr = loadImage("basic-zombie");
 const basicSkeletonSpr = loadImage("basic-skeleton");

@@ -268,6 +268,8 @@ function render(): void {
         
         let alive: number = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
         
+        if (alive < 0) alive = 0;
+        
         g.ctx?.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
         
         if (alive < 10) x = 25;
@@ -309,24 +311,32 @@ function render(): void {
         g.ctx!.fillStyle = "red";
         g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
         
-        let fontSize: number = 30;
-        let text: string = "Game Over!";
-        
+        //let fontSize: number = 30;
+        //let text: string = "Game Over!";
+        /*
         g.ctx!.font = fontSize + "px Pixel";
         g.ctx!.fillStyle = "white";
         g.ctx!.globalAlpha = 1;
         
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
+        */
         
-        fontSize = 15;
-        text = "Press Enter to restart";
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx?.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
+        
+        let fontSize: number = 15;
+        let text: string = "Press Enter to restart";
         
         g.ctx!.font = fontSize + "px Pixel";
-        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 200);
+        g.ctx!.fillStyle = "white";
+        
+        g.ctx!.font = fontSize + "px Pixel";
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         
         text = "You were killed by " + player.deathCause;
         
-        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 140);
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
     }
     else if (gameState === "menu") {
         g.ctx!.globalAlpha = 0.2;
