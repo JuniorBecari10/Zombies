@@ -9,6 +9,10 @@ var zombieKills = 0;
 var totalZombieKills = 0;
 const titleFontSize = 20;
 const fontSize = 15;
+var sec = 0;
+var min = 0;
+var hour = 0;
+var count = 0;
 document.addEventListener("keydown", function (event) {
     keyPressed = event;
     isKeyPressed = true;
@@ -81,6 +85,20 @@ function tick() {
         }
         if (gameState === "menu")
             return;
+        // timer / stopwatch
+        count++;
+        if (count >= 60) {
+            count = 0;
+            sec++;
+            if (sec >= 60) {
+                sec = 0;
+                min++;
+                if (min >= 60) {
+                    min = 0;
+                    hour++;
+                }
+            }
+        }
         spawnSpeedCount++;
         if (spawnSpeedCount >= spawnSpeed) {
             spawnSpeedCount = 0;
@@ -121,7 +139,7 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -237,19 +255,33 @@ function render() {
         else if (totalZombieKills >= 1000000)
             x = 145;
         (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
+        // ----
+        let time = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */ (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
+        console.log(time);
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 688, 5056, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        /*
+        if (time.length < 10) x = 25;
+        else if (time.length >= 10 && time.length < 100) x = 45;
+        else if (time.length >= 100 && time.length < 1000) x = 65;
+        else if (time.length >= 1000 && time.length < 100000) x = 105;
+        else if (time.length >= 100000 && time.length < 1000000) x = 125;
+        else if (time.length >= 1000000) x = 145;
+        */
+        x = 105;
+        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 47);
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);
         if (player.recharging) {
             let text = "Recharging...";
             let font = 15;
             g.ctx.font = font + "px Pixel";
-            (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
+            (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
         }
     }
     else if (gameState === "gameover") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "red";
-        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.fillRect(0, 0, g.canvas.width, g.canvas.height);
         //let fontSize: number = 30;
         //let text: string = "Game Over!";
         /*
@@ -260,26 +292,26 @@ function render() {
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
         */
         g.ctx.globalAlpha = 1;
-        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
+        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
         let fontSize = 15;
         let text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.font = fontSize + "px Pixel";
-        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_x = g.ctx) === null || _x === void 0 ? void 0 : _x.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         text = "You were killed by " + player.deathCause;
-        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
+        (_y = g.ctx) === null || _y === void 0 ? void 0 : _y.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
     }
     else if (gameState === "menu") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "black";
-        (_x = g.ctx) === null || _x === void 0 ? void 0 : _x.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_z = g.ctx) === null || _z === void 0 ? void 0 : _z.fillRect(0, 0, g.canvas.width, g.canvas.height);
         let text = "Press Enter to start";
         g.ctx.globalAlpha = 1;
         g.ctx.fillStyle = "white";
         g.ctx.font = "15px Pixel";
-        (_y = g.ctx) === null || _y === void 0 ? void 0 : _y.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
-        (_z = g.ctx) === null || _z === void 0 ? void 0 : _z.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+        (_0 = g.ctx) === null || _0 === void 0 ? void 0 : _0.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_1 = g.ctx) === null || _1 === void 0 ? void 0 : _1.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 function loop() {

@@ -13,6 +13,12 @@ var totalZombieKills: number = 0;
 const titleFontSize: number = 20;
 const fontSize: number = 15;
 
+var sec: number = 0;
+var min: number = 0;
+var hour: number = 0;
+
+var count: number = 0;
+
 document.addEventListener("keydown", function (event: KeyboardEvent) {
     keyPressed = event;
     isKeyPressed = true;
@@ -108,6 +114,25 @@ function tick(): void {
         }
         
         if (gameState === "menu") return;
+        
+        // timer / stopwatch
+        
+        count++;
+        
+        if (count >= 60) {
+            count = 0;
+            sec++;
+            
+            if (sec >= 60) {
+                sec = 0;
+                min++;
+                
+                if (min >= 60) {
+                    min = 0;
+                    hour++;
+                }
+            }
+        }
     
         spawnSpeedCount++;
         
@@ -292,7 +317,27 @@ function render(): void {
         else if (totalZombieKills >= 100000 && totalZombieKills < 1000000) x = 125;
         else if (totalZombieKills >= 1000000) x = 145;
         
-         g.ctx?.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
+        g.ctx?.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
+        
+        // ----
+        
+        let time: string = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */(min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
+        console.log(time);
+        
+        g.ctx?.drawImage(playerSpritesheet, 688, 5056, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        /*
+        if (time.length < 10) x = 25;
+        else if (time.length >= 10 && time.length < 100) x = 45;
+        else if (time.length >= 100 && time.length < 1000) x = 65;
+        else if (time.length >= 1000 && time.length < 100000) x = 105;
+        else if (time.length >= 100000 && time.length < 1000000) x = 125;
+        else if (time.length >= 1000000) x = 145;
+        */
+        
+        x = 105;
+        
+        g.ctx?.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 47);
+        
         
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);
