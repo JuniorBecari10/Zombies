@@ -209,11 +209,11 @@ class Player extends Entity {
                 this.right = true;
             else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
                 this.right = false;
-            
+            /*
             if (keyPressed.keyCode == rCode) {
                 this.weapons[weaponSelected].recharge();
             }
-            
+            */
             // --------------------------------------------------
             
             if (this.up && !collideWithAny({x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h})) {
@@ -253,10 +253,21 @@ class Player extends Entity {
             }
         }
         
-        this.cooldownCount++;
+        if (this.weapons[weaponSelected].ammo === this.weapons[weaponSelected].ammoLoaded)
+            this.recharging = false;
         
-        if (this.weapons[weaponSelected].ammo === 0) {
-            if (this.recharging) {
+        this.cooldownCount++;
+        //console.log(this.rechargeCount);
+        if (this.weapons[weaponSelected].ammo == 0 || (keyPressed !== undefined && keyPressed.keyCode == rCode)) {
+            if (!this.recharging) {
+                this.recharging = true;
+            }
+            /*else {
+                this.recharging = true;
+            }*/
+        }
+        
+        if (this.recharging) {
                 this.rechargeCount++;
                 
                 if (this.rechargeCount >= this.rechargeMax) {
@@ -266,10 +277,6 @@ class Player extends Entity {
                     this.weapons[weaponSelected].recharge();
                 }
             }
-            else {
-                this.recharging = true;
-            }
-        }
         
         if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
             if (this.weapons[weaponSelected].ammo > 0) {

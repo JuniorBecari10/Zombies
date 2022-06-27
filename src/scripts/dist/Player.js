@@ -151,9 +151,11 @@ class Player extends Entity {
                 this.right = true;
             else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
                 this.right = false;
+            /*
             if (keyPressed.keyCode == rCode) {
                 this.weapons[weaponSelected].recharge();
             }
+            */
             // --------------------------------------------------
             if (this.up && !collideWithAny({ x: this.bounds.x, y: this.bounds.y - this.speed, w: this.bounds.w, h: this.bounds.h })) {
                 this.dir = "up";
@@ -190,18 +192,24 @@ class Player extends Entity {
                 this.cutBounds = this.rightSprs[0];
             }
         }
+        if (this.weapons[weaponSelected].ammo === this.weapons[weaponSelected].ammoLoaded)
+            this.recharging = false;
         this.cooldownCount++;
-        if (this.weapons[weaponSelected].ammo === 0) {
-            if (this.recharging) {
-                this.rechargeCount++;
-                if (this.rechargeCount >= this.rechargeMax) {
-                    this.rechargeCount = 0;
-                    this.recharging = false;
-                    this.weapons[weaponSelected].recharge();
-                }
-            }
-            else {
+        //console.log(this.rechargeCount);
+        if (this.weapons[weaponSelected].ammo == 0 || (keyPressed !== undefined && keyPressed.keyCode == rCode)) {
+            if (!this.recharging) {
                 this.recharging = true;
+            }
+            /*else {
+                this.recharging = true;
+            }*/
+        }
+        if (this.recharging) {
+            this.rechargeCount++;
+            if (this.rechargeCount >= this.rechargeMax) {
+                this.rechargeCount = 0;
+                this.recharging = false;
+                this.weapons[weaponSelected].recharge();
             }
         }
         if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
