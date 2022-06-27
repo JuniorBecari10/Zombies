@@ -134,10 +134,10 @@ function tick(): void {
                 zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 6, 0, 1, "none", "Basic Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             else if (zombieType === "armored-zombie")
-                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 8, 1, 1, "none", "Armored Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
+                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 6, 1, 1, "none", "Armored Zombie", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             else if (zombieType === "armored-skeleton")
-                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 9, 1, 2, "none", "Armored Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
+                zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 7, 1, 2, "none", "Armored Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
             
             zombie!.bounds.x = pos.x;
             zombie!.bounds.y = pos.y;
