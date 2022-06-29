@@ -41,9 +41,13 @@ class WeaponStation extends Entity {
                 g.ctx!.fillStyle = "#FF4545";
                 g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
-            if (player.hasWeapon(getWeapon(this.weapon)!.name)) {
+            else if (player.hasWeapon(getWeapon(this.weapon)!.name)) {
                 g.ctx!.fillStyle = "#FF4545";
                 g.ctx?.fillText("You already have this weapon!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            else if (player.freeSlot() < 0) {
+                g.ctx!.fillStyle = "#DDDD45";
+                g.ctx?.fillText("Your current weapon will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
         }
     }

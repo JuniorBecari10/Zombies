@@ -29,7 +29,7 @@ class PerkStation extends Entity {
                 g.ctx.fillStyle = "#FF4545";
                 (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
-            if (player.hasPerk(getPerk(this.perk).name)) {
+            else if (player.hasPerk(getPerk(this.perk).name)) {
                 g.ctx.fillStyle = "#FF4545";
                 (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("You already have this perk!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }

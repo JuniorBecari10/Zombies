@@ -13,6 +13,8 @@ var totalZombieKills: number = 0;
 const titleFontSize: number = 20;
 const fontSize: number = 15;
 
+var powerOn: boolean = false;
+
 var sec: number = 0;
 var min: number = 0;
 var hour: number = 0;

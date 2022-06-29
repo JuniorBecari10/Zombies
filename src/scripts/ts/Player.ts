@@ -13,7 +13,7 @@ class Player extends Entity {
     
     defense: number = 0;
     
-    coins: number = 1000;
+    coins: number = 1200;
     
     deathCause: string = "";
     
@@ -89,6 +89,8 @@ class Player extends Entity {
     }
     
     freeSlot(): number {
+        //if (1 == 1) return -1;
+        
         if (this.weapons[2] === undefined) return 2;
         else if (this.weapons[1] === undefined) return 1;
         else if (this.weapons[0] === undefined || !containsPerk("extra")) return 0;

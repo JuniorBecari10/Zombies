@@ -15,7 +15,7 @@ class WeaponStation extends Entity {
         }
     }
     render(g) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         super.render(g);
         if (collide(player.bounds, this.bounds)) {
             g.ctx.font = "20px Pixel";
@@ -29,9 +29,13 @@ class WeaponStation extends Entity {
                 g.ctx.fillStyle = "#FF4545";
                 (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
-            if (player.hasWeapon(getWeapon(this.weapon).name)) {
+            else if (player.hasWeapon(getWeapon(this.weapon).name)) {
                 g.ctx.fillStyle = "#FF4545";
                 (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("You already have this weapon!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            else if (player.freeSlot() < 0) {
+                g.ctx.fillStyle = "#DDDD45";
+                (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Your current weapon will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
         }
     }

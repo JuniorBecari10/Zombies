@@ -9,6 +9,7 @@ var zombieKills = 0;
 var totalZombieKills = 0;
 const titleFontSize = 20;
 const fontSize = 15;
+var powerOn = false;
 var sec = 0;
 var min = 0;
 var hour = 0;
