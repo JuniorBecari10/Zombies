@@ -257,10 +257,11 @@ function render(): void {
             g.ctx?.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
         }
         
+        // draw stats bg
         g.ctx!.globalAlpha = 0.4;
         g.ctx!.fillStyle = "black";
         
-        g.ctx?.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 200, 200, 400);
+        g.ctx?.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 150, 200, 300);
         
         g.ctx!.font = titleFontSize + "px Pixel";
         g.ctx!.fillStyle = "white";
@@ -268,7 +269,7 @@ function render(): void {
         
         let text: string = "Wave " + waveCount;
         
-        g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
+        g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
         
         g.ctx!.font = "15px Pixel";
         g.ctx!.fillStyle = "white";
@@ -284,7 +285,7 @@ function render(): void {
         g.ctx!.fillStyle = "white";
         g.ctx!.globalAlpha = 1;
         
-        g.ctx?.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
+        g.ctx?.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
         let x: number = 25;
         
         if (player.coins < 10) x = 25;
@@ -294,7 +295,7 @@ function render(): void {
         else if (player.coins >= 100000 && player.coins < 1000000) x = 125;
         else if (player.coins >= 1000000) x = 145;
         
-        g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        g.ctx?.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 57);
         
         // ----
         
@@ -302,7 +303,7 @@ function render(): void {
         
         if (alive < 0) alive = 0;
         
-        g.ctx?.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
+        g.ctx?.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
         
         if (alive < 10) x = 25;
         else if (alive >= 10 && alive < 100) x = 45;
@@ -311,11 +312,11 @@ function render(): void {
         else if (alive >= 100000 && alive < 1000000) x = 125;
         else if (alive >= 1000000) x = 145;
         
-        g.ctx?.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 57); // 87 - right below
+        g.ctx?.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 7); // 87 - right below
         
         // ----
         
-        g.ctx?.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
+        g.ctx?.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
         
         if (totalZombieKills < 10) x = 25;
         else if (totalZombieKills >= 10 && totalZombieKills < 100) x = 45;
@@ -324,13 +325,13 @@ function render(): void {
         else if (totalZombieKills >= 100000 && totalZombieKills < 1000000) x = 125;
         else if (totalZombieKills >= 1000000) x = 145;
         
-        g.ctx?.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
+        g.ctx?.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 + 47);
         
         // ----
         
         let time: string = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */(min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
         
-        g.ctx?.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        g.ctx?.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 70, 7 * 5, 10 * 5);
         /*
         if (time.length < 10) x = 25;
         else if (time.length >= 10 && time.length < 100) x = 45;
@@ -342,7 +343,7 @@ function render(): void {
         
         x = 105;
         
-        g.ctx?.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 47);
+        g.ctx?.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 97);
         
         
         // rifle positions

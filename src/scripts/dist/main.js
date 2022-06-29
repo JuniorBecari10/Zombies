@@ -195,14 +195,15 @@ function render() {
         for (let i = 0; i < player.totalHp; i++) {
             (_g = g.ctx) === null || _g === void 0 ? void 0 : _g.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
         }
+        // draw stats bg
         g.ctx.globalAlpha = 0.4;
         g.ctx.fillStyle = "black";
-        (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 200, 200, 400);
+        (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 150, 200, 300);
         g.ctx.font = titleFontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
         let text = "Wave " + waveCount;
-        (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 150);
+        (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
         g.ctx.font = "15px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
@@ -212,7 +213,7 @@ function render() {
         g.ctx.font = "20px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 130, 7 * 5, 10 * 5);
+        (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
         let x = 25;
         if (player.coins < 10)
             x = 25;
@@ -226,12 +227,12 @@ function render() {
             x = 125;
         else if (player.coins >= 1000000)
             x = 145;
-        (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 107);
+        (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 57);
         // ----
         let alive = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
         if (alive < 0)
             alive = 0;
-        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
+        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
         if (alive < 10)
             x = 25;
         else if (alive >= 10 && alive < 100)
@@ -244,9 +245,9 @@ function render() {
             x = 125;
         else if (alive >= 1000000)
             x = 145;
-        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 57); // 87 - right below
+        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 7); // 87 - right below
         // ----
-        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
+        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
         if (totalZombieKills < 10)
             x = 25;
         else if (totalZombieKills >= 10 && totalZombieKills < 100)
@@ -259,10 +260,10 @@ function render() {
             x = 125;
         else if (totalZombieKills >= 1000000)
             x = 145;
-        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 - 7);
+        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 + 47);
         // ----
         let time = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */ (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
-        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 70, 7 * 5, 10 * 5);
         /*
         if (time.length < 10) x = 25;
         else if (time.length >= 10 && time.length < 100) x = 45;
@@ -272,7 +273,7 @@ function render() {
         else if (time.length >= 1000000) x = 145;
         */
         x = 105;
-        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 47);
+        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 97);
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);
         if (player.recharging) {

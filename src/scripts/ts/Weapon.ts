@@ -1,7 +1,10 @@
-type WeaponType = "rifle" | "shotgun"
+type WeaponType = "pistol" | "rifle" | "shotgun"
 
 function getWeapon(weapon: WeaponType): Weapon | null {
-    if (weapon === "rifle") {
+    if (weapon === "pistol") {
+        return new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 380, 10, "Pistol");
+    }
+    else if (weapon === "rifle") {
         return new Weapon({x: 0, y: 0, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, 5, 30, 1, 10, 400, 20, "Rifle");
     }
     else if (weapon === "shotgun") {
