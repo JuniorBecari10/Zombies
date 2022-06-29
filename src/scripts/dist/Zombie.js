@@ -29,6 +29,7 @@ class Zombie extends Entity {
         this.maxAnimIndex = 3;
         this.dying = false;
         this.hp = hp;
+        this.maxHp = hp;
         this.defense = defense;
         this.attack = attack;
         this.immunity = immunity;

@@ -33,6 +33,7 @@ const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["ba
 
 class Zombie extends Entity {
     hp: number;
+    maxHp: number;
     defense: number;
     attack: number;
     
@@ -61,6 +62,7 @@ class Zombie extends Entity {
         super(bounds, spritesheet, cutBounds);
         
         this.hp = hp;
+        this.maxHp = hp;
         this.defense = defense;
         this.attack = attack;
         
