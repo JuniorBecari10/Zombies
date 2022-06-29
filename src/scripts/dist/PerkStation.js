@@ -21,7 +21,7 @@ class PerkStation extends Entity {
             g.ctx.font = "20px Pixel";
             g.ctx.fillStyle = "white";
             g.ctx.globalAlpha = 1;
-            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText(getPerk(this.perk).name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText("Perk | " + getPerk(this.perk).name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
             g.ctx.font = "15px Pixel";
             (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.fillText("Press Enter to Buy", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);

@@ -78,6 +78,7 @@ function reset(): void {
     
     addBarriers();
     addWeaponStations();
+    addPerkStations();
     
     zombiePositions = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
 }
@@ -87,6 +88,7 @@ function reset(): void {
 function init(): void {
     addBarriers();
     addWeaponStations();
+    addPerkStations();
     
     entities.push(player);
     
@@ -106,6 +108,10 @@ function addBarriers() {
 function addWeaponStations() {
     entities.push(new WeaponStation({x: 912, y: 2392, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, "rifle", 500));
     entities.push(new WeaponStation({x: 2680, y: 1972, w: 47 * 3, h: 16 * 3}, weapons, {x: 80 * 3, y: 0, w: 47 * 3, h: 16 * 3}, "shotgun", 500));
+}
+
+function addPerkStations() {
+    entities.push(new PerkStation({x: 792, y: 1200, w: 16 * 3, h: 16 * 3}, perks, {x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3}, "regen", 700));
 }
 
 function tick(): void {

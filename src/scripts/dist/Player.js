@@ -64,12 +64,12 @@ class Player extends Entity {
         return weaponSelected; // yes - it will override
     }
     freePerkSlot() {
-        if (this.perks[2] === undefined)
-            return 2;
+        if (this.perks[0] === undefined)
+            return 0;
         else if (this.perks[1] === undefined)
             return 1;
-        else if (this.perks[0] === undefined)
-            return 0;
+        else if (this.perks[2] === undefined)
+            return 2;
         return -1;
     }
     hasWeapon(name) {

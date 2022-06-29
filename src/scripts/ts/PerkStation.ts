@@ -30,7 +30,7 @@ class PerkStation extends Entity {
             g.ctx!.fillStyle = "white";
             g.ctx!.globalAlpha = 1;
             
-            g.ctx?.fillText(getPerk(this.perk)!.name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+            g.ctx?.fillText("Perk | " + getPerk(this.perk)!.name, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
             
             g.ctx!.font = "15px Pixel";
             
