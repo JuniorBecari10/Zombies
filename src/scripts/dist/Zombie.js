@@ -16,6 +16,7 @@ class Zombie extends Entity {
         this.maxAnimCount = 8;
         this.animIndex = 0;
         this.maxAnimIndex = 3;
+        this.dying = false;
         this.hp = hp;
         this.defense = defense;
         this.attack = attack;
@@ -24,8 +25,18 @@ class Zombie extends Entity {
         this.animFrames = animFrames;
     }
     tick() {
+        if (this.dying) {
+            this.bounds.x += 3;
+            this.bounds.y += 3;
+            this.bounds.w -= 6;
+            this.bounds.h -= 6;
+            if (this.bounds.w === 0 || this.bounds.h === 0)
+                this.destroy();
+            return;
+        }
         if (this.hp <= 0) {
-            this.destroy();
+            //this.destroy();
+            this.dying = true;
             player.coins += 20;
             zombieKills++;
             totalZombieKills++;
