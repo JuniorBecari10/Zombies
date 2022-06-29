@@ -218,7 +218,9 @@ function render() {
             x = 45;
         else if (player.coins >= 100 && player.coins < 1000)
             x = 65;
-        else if (player.coins >= 1000 && player.coins < 100000)
+        else if (player.coins >= 1000 && player.coins < 10000)
+            x = 85;
+        else if (player.coins >= 10000 && player.coins < 100000)
             x = 105;
         else if (player.coins >= 100000 && player.coins < 1000000)
             x = 125;
@@ -236,7 +238,9 @@ function render() {
             x = 45;
         else if (alive >= 100 && alive < 1000)
             x = 65;
-        else if (alive >= 1000 && alive < 100000)
+        else if (alive >= 1000 && alive < 10000)
+            x = 85;
+        else if (alive >= 10000 && alive < 100000)
             x = 105;
         else if (alive >= 100000 && alive < 1000000)
             x = 125;
@@ -251,7 +255,9 @@ function render() {
             x = 45;
         else if (totalZombieKills >= 100 && totalZombieKills < 1000)
             x = 65;
-        else if (totalZombieKills >= 1000 && totalZombieKills < 100000)
+        else if (totalZombieKills >= 1000 && totalZombieKills < 10000)
+            x = 85;
+        else if (totalZombieKills >= 10000 && totalZombieKills < 100000)
             x = 105;
         else if (totalZombieKills >= 100000 && totalZombieKills < 1000000)
             x = 125;

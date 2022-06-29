@@ -9,7 +9,7 @@ class Player extends Entity {
         this.hp = 10;
         this.totalHp = 10;
         this.defense = 0;
-        this.coins = 10000;
+        this.coins = 1000;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;

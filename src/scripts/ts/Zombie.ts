@@ -17,7 +17,7 @@ function getZombie(zombieType: ZombieType): Zombie | null {
     else if (zombieType === "armored-skeleton")
         return new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, armoredSkeletonSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70}, 7, 1, 2, "none", "Armored Skeleton", [{x: 0, y: 0, w: 16 * 70, h: 16 * 70}, {x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70}, {x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70}]);
     
-    return null
+    return null;
 }
 
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},

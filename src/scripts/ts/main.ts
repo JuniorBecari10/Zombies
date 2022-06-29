@@ -163,12 +163,11 @@ function tick(): void {
             
             var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
             var pos: Point = zombiePositions[random(0, zombiePositions.length)];
-            var zombie: Zombie | null = getZombie(zombieType);
+            var zombie: Zombie = getZombie(zombieType)!;
             
+            zombie.bounds.x = pos.x;
+            zombie.bounds.y = pos.y;
             
-            
-            zombie!.bounds.x = pos.x;
-            zombie!.bounds.y = pos.y;
             for (let i = 0; i < player.weapons.length; i++) {
                 // detect click
                 if (collide({x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), y: g.canvas.height - 90, w: 70, h: 70}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed && player.weapons[i] !== undefined) {
@@ -177,7 +176,7 @@ function tick(): void {
             }
             
             if (zombieSpawnCount < waves[waveCount - 1].zombieAmount)
-                entities.push(zombie!);
+                entities.push(zombie);
         }
     }
     else if (gameState === "gameover") {
@@ -287,7 +286,8 @@ function render(): void {
         if (player.coins < 10) x = 25;
         else if (player.coins >= 10 && player.coins < 100) x = 45;
         else if (player.coins >= 100 && player.coins < 1000) x = 65;
-        else if (player.coins >= 1000 && player.coins < 100000) x = 105;
+        else if (player.coins >= 1000 && player.coins < 10000) x = 85;
+        else if (player.coins >= 10000 && player.coins < 100000) x = 105;
         else if (player.coins >= 100000 && player.coins < 1000000) x = 125;
         else if (player.coins >= 1000000) x = 145;
         
@@ -304,7 +304,8 @@ function render(): void {
         if (alive < 10) x = 25;
         else if (alive >= 10 && alive < 100) x = 45;
         else if (alive >= 100 && alive < 1000) x = 65;
-        else if (alive >= 1000 && alive < 100000) x = 105;
+        else if (alive >= 1000 && alive < 10000) x = 85;
+        else if (alive >= 10000 && alive < 100000) x = 105;
         else if (alive >= 100000 && alive < 1000000) x = 125;
         else if (alive >= 1000000) x = 145;
         
@@ -317,7 +318,8 @@ function render(): void {
         if (totalZombieKills < 10) x = 25;
         else if (totalZombieKills >= 10 && totalZombieKills < 100) x = 45;
         else if (totalZombieKills >= 100 && totalZombieKills < 1000) x = 65;
-        else if (totalZombieKills >= 1000 && totalZombieKills < 100000) x = 105;
+        else if (totalZombieKills >= 1000 && totalZombieKills < 10000) x = 85;
+        else if (totalZombieKills >= 10000 && totalZombieKills < 100000) x = 105;
         else if (totalZombieKills >= 100000 && totalZombieKills < 1000000) x = 125;
         else if (totalZombieKills >= 1000000) x = 145;
         
