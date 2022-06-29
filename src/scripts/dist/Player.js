@@ -9,7 +9,7 @@ class Player extends Entity {
         this.hp = 10;
         this.totalHp = 10;
         this.defense = 0;
-        this.coins = 1200;
+        this.coins = 10000;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;
@@ -55,12 +55,11 @@ class Player extends Entity {
         //this.perks[0] = getPerk("extra")!;
     }
     freeSlot() {
-        //if (1 == 1) return -1;
         if (this.weapons[2] === undefined)
             return 2;
         else if (this.weapons[1] === undefined)
             return 1;
-        else if (this.weapons[0] === undefined || !containsPerk("extra"))
+        else if (this.weapons[0] === undefined && containsPerk("extra"))
             return 0;
         return weaponSelected; // yes - it will override
     }

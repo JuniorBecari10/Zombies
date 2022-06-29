@@ -33,7 +33,7 @@ class WeaponStation extends Entity {
                 g.ctx.fillStyle = "#FF4545";
                 (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("You already have this weapon!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
-            else if (player.freeSlot() < 0) {
+            else if (player.freeSlot() === weaponSelected) {
                 g.ctx.fillStyle = "#DDDD45";
                 (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Your current weapon will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }

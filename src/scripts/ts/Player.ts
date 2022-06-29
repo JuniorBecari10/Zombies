@@ -13,7 +13,7 @@ class Player extends Entity {
     
     defense: number = 0;
     
-    coins: number = 1200;
+    coins: number = 10000;
     
     deathCause: string = "";
     
@@ -84,16 +84,13 @@ class Player extends Entity {
         
         // set pistol in 'first' slot
         this.weapons[2] = getWeapon("pistol")!;
-        
         //this.perks[0] = getPerk("extra")!;
     }
     
     freeSlot(): number {
-        //if (1 == 1) return -1;
-        
         if (this.weapons[2] === undefined) return 2;
         else if (this.weapons[1] === undefined) return 1;
-        else if (this.weapons[0] === undefined || !containsPerk("extra")) return 0;
+        else if (this.weapons[0] === undefined && containsPerk("extra")) return 0;
         
         return weaponSelected; // yes - it will override
     }
