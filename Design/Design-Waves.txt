@@ -22,4 +22,5 @@ Wave 8 - 20 zombies - Armored Zombie and Armored Skeleton
 Wave 9 - 26 zombies - Bomb Zombie and Basic Skeleton
 Wave 10 - 1 zombie - Bombie (boss #1)
 Wave 11 - 26 zombies - Armored Zombie and Fire Zombie
-Wave 12 - 
+Wave 12 - 28 zombies - Fire Zombie and Bomb Zombie
+Wave 13 - 28 zombies - 

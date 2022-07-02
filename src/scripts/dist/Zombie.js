@@ -1,13 +1,15 @@
 "use strict";
 function getZombie(zombieType) {
     if (zombieType === "basic-zombie")
-        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 0, 1, "none", "Basic Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 5, 0, 1, "none", () => { }, "Basic Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
     else if (zombieType === "basic-skeleton")
-        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 6, 0, 1, "none", "Basic Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, basicSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 6, 0, 1, "none", () => { }, "Basic Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
     else if (zombieType === "armored-zombie")
-        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 6, 1, 1, "none", "Armored Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 6, 1, 1, "none", () => { }, "Armored Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
     else if (zombieType === "armored-skeleton")
-        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 7, 1, 2, "none", "Armored Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 7, 1, 2, "none", () => { }, "Armored Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+    else if (zombieType === "fire-zombie")
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, fireZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 7, 1, 2, "fire", () => { }, "Fire Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
     return null;
 }
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
@@ -16,11 +18,12 @@ const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zom
     { zombieAmount: 11, zombieTypes: ["basic-zombie"] },
     { zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"] },
     { zombieAmount: 15, zombieTypes: ["basic-zombie", "basic-skeleton"] },
+    { zombieAmount: 19, zombieTypes: ["armored-zombie"] },
     { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] },
     { zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"] },
     { zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"] }];
 class Zombie extends Entity {
-    constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, name, animFrames) {
+    constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, ability, name, animFrames) {
         super(bounds, spritesheet, cutBounds);
         this.speed = 2;
         this.animCount = 0;
@@ -33,6 +36,7 @@ class Zombie extends Entity {
         this.defense = defense;
         this.attack = attack;
         this.immunity = immunity;
+        this.ability = ability;
         this.name = name;
         this.animFrames = animFrames;
     }
