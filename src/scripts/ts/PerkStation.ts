@@ -12,8 +12,9 @@ class PerkStation extends Entity {
     
     tick(): void {
         if (player.coins >= this.price && 
-            collide(player.bounds, this.bounds) && 
-            keyPressed.keyCode === enterCode && !player.hasPerk(getPerk(this.perk)!.name)) {
+                collide(player.bounds, this.bounds) && 
+                keyPressed.keyCode === enterCode && !player.hasPerk(getPerk(this.perk)!.name) &&
+                powerOn) {
             player.coins -= this.price;
             
             player.perks[player.freePerkSlot()] = getPerk(this.perk)!;
@@ -37,7 +38,11 @@ class PerkStation extends Entity {
             g.ctx?.fillText("$" + this.price.toString(), player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
             g.ctx?.fillText("Press Enter to Buy", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
             
-            if (player.coins < this.price && !player.hasPerk(getPerk(this.perk)!.name)) {
+            if (!powerOn) {
+                g.ctx!.fillStyle = "#FF4545";
+                g.ctx?.fillText("Requires Power!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            else if (player.coins < this.price && !player.hasPerk(getPerk(this.perk)!.name)) {
                 g.ctx!.fillStyle = "#FF4545";
                 g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
