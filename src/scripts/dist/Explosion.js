@@ -9,6 +9,7 @@ class Explosion extends Entity {
         let bw = this.bounds.w;
         let bh = this.bounds.h;
         this.bounds = { x: bounds.x + bw / 2, y: bounds.y + bh / 2, w: 0, h: 0 };
+        console.log(this.bounds);
     }
     tick() {
         if (this.progressive) {

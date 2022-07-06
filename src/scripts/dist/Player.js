@@ -52,6 +52,7 @@ class Player extends Entity {
         this.perks = new Array(3);
         // set pistol in 'first' slot
         this.weapons[2] = getWeapon("pistol");
+        //this.weapons[1] = getWeapon("rocket")!;
         //this.perks[0] = getPerk("extra")!;
     }
     freeSlot() {
