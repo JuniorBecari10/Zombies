@@ -14,6 +14,7 @@ const titleFontSize: number = 20;
 const fontSize: number = 15;
 
 const powerMachinePrice: number = 1000;
+const powerMachineBounds: Rectangle = {x: 2432, y: 706, w: 260, h: 273};
 
 var powerOn: boolean = false;
 
@@ -137,7 +138,7 @@ function tick(): void {
         
         // check if the player is near the power machine
         
-        if (collide(player.bounds, {x: 2432, y: 706, w: 260, h: 273}) &&
+        if (collide(player.bounds, powerMachineBounds) &&
             keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
             powerOn = true;
         }
@@ -211,13 +212,19 @@ function render(): void {
     
     g.ctx?.drawImage(map, 0 - camera.x, 0 - camera.y, map.width, map.height);
     
+    // draw empty screen if the power isn't active
+    if (!powerOn) {
+        g.ctx!.fillStyle = "#2a2a2a";
+        g.ctx?.fillRect(2500 - camera.x, 800 - camera.y, 56, 32);
+    }
+    
     for (let o of entities) {
         o.render(g);
     }
     
     // render power machine text
     
-    if (collide(player.bounds, {x: 2432, y: 706, w: 260, h: 273})) {
+    if (collide(player.bounds, powerMachineBounds)) {
         g.ctx!.font = "20px Pixel";
         g.ctx!.fillStyle = "white";
         g.ctx!.globalAlpha = 1;

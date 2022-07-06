@@ -10,6 +10,7 @@ var totalZombieKills = 0;
 const titleFontSize = 20;
 const fontSize = 15;
 const powerMachinePrice = 1000;
+const powerMachineBounds = { x: 2432, y: 706, w: 260, h: 273 };
 var powerOn = false;
 var sec = 0;
 var min = 0;
@@ -99,7 +100,7 @@ function tick() {
             o.tick();
         }
         // check if the player is near the power machine
-        if (collide(player.bounds, { x: 2432, y: 706, w: 260, h: 273 }) &&
+        if (collide(player.bounds, powerMachineBounds) &&
             keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
             powerOn = true;
         }
@@ -151,31 +152,36 @@ function tick() {
     }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
     (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillRect(0, 0, g.canvas.width, g.canvas.height);
     (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.drawImage(map, 0 - camera.x, 0 - camera.y, map.width, map.height);
+    // draw empty screen if the power isn't active
+    if (!powerOn) {
+        g.ctx.fillStyle = "#2a2a2a";
+        (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.fillRect(2500 - camera.x, 800 - camera.y, 56, 32);
+    }
     for (let o of entities) {
         o.render(g);
     }
     // render power machine text
-    if (collide(player.bounds, { x: 2432, y: 706, w: 260, h: 273 })) {
+    if (collide(player.bounds, powerMachineBounds)) {
         g.ctx.font = "20px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_c = g.ctx) === null || _c === void 0 ? void 0 : _c.fillText("Power Machine", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+        (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("Power Machine", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
         g.ctx.font = "15px Pixel";
-        (_d = g.ctx) === null || _d === void 0 ? void 0 : _d.fillText("$" + powerMachinePrice, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
-        (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("Press Enter to Activate", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
+        (_e = g.ctx) === null || _e === void 0 ? void 0 : _e.fillText("$" + powerMachinePrice, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
+        (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Press Enter to Activate", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
         if (player.coins < powerMachinePrice) {
             g.ctx.fillStyle = "#FF4545";
-            (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            (_g = g.ctx) === null || _g === void 0 ? void 0 : _g.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
         }
         else if (powerOn) {
             g.ctx.fillStyle = "#FF4545";
-            (_g = g.ctx) === null || _g === void 0 ? void 0 : _g.fillText("Already Active!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.fillText("Already Active!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
         }
     }
     if (gameState === "game") {
@@ -186,7 +192,7 @@ function render() {
                 x = 48 * 70;
             if (i == weaponSelected)
                 x = 64 * 70;
-            (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.drawImage(playerSpritesheet, x, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
+            (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.drawImage(playerSpritesheet, x, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i), g.canvas.height - 90, 70, 70);
             if (player.weapons[i] !== undefined) {
                 player.weapons[i].bounds = { x: g.canvas.width / 2 - (70 / 2) - 75 /* one time */ - (75 * i) + 10, y: g.canvas.height - 70, w: 16 * 3, h: ruleOf3(player.weapons[i].originalWidth, 16 * 3, 16 * 3) };
                 player.weapons[i].render(g);
@@ -196,12 +202,12 @@ function render() {
                 g.ctx.fillStyle = "white";
                 g.ctx.globalAlpha = 1;
                 let text = player.weapons[i].name;
-                (_j = g.ctx) === null || _j === void 0 ? void 0 : _j.fillText(text, mousePos.x + 10, mousePos.y);
+                (_k = g.ctx) === null || _k === void 0 ? void 0 : _k.fillText(text, mousePos.x + 10, mousePos.y);
             }
         }
         // draw perks
         for (let i = 0; i < player.perks.length; i++) {
-            (_k = g.ctx) === null || _k === void 0 ? void 0 : _k.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
+            (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.drawImage(playerSpritesheet, 32 * 70, 64 * 70, 16 * 70, 16 * 70, g.canvas.width / 2 + (70 / 2) + 75 + (75 * i), g.canvas.height - 90, 70, 70);
             if (player.perks[i] !== undefined) {
                 player.perks[i].bounds = { x: g.canvas.width / 2 + (70 / 2) + 75 /* one time */ + (75 * i) + 10, y: g.canvas.height - 80, w: 16 * 3, h: 16 * 3 };
                 player.perks[i].render(g);
@@ -213,32 +219,32 @@ function render() {
                 g.ctx.fillStyle = "white";
                 g.ctx.globalAlpha = 1;
                 let text = player.perks[i].name;
-                (_l = g.ctx) === null || _l === void 0 ? void 0 : _l.fillText(text, mousePos.x + 10, mousePos.y);
+                (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.fillText(text, mousePos.x + 10, mousePos.y);
             }
         }
         // draw health
         for (let i = 0; i < player.totalHp; i++) {
-            (_m = g.ctx) === null || _m === void 0 ? void 0 : _m.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
+            (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.drawImage(playerSpritesheet, 0, i < player.hp ? 64 * 70 : 4714, 12 * 23, 10 * 23, (g.canvas.width / 2 - 90) + 24 * i, g.canvas.height - 120, 12 * 2, 10 * 2);
         }
         // draw stats bg
         g.ctx.globalAlpha = 0.4;
         g.ctx.fillStyle = "black";
-        (_o = g.ctx) === null || _o === void 0 ? void 0 : _o.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 150, 200, 300);
+        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillRect(g.canvas.width - 200, (g.canvas.height / 2) - 150, 200, 300);
         g.ctx.font = titleFontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
         let text = "Wave " + waveCount;
-        (_p = g.ctx) === null || _p === void 0 ? void 0 : _p.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
+        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
         g.ctx.font = "15px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
         text = player.weapons[weaponSelected].ammoTotal + " | " + player.weapons[weaponSelected].ammo;
-        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, (g.canvas.width / 2) - (15 * (text.length / 4)), g.canvas.height - 150);
+        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.fillText(text, (g.canvas.width / 2) - (15 * (text.length / 4)), g.canvas.height - 150);
         // draw stats
         g.ctx.font = "20px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
-        (_r = g.ctx) === null || _r === void 0 ? void 0 : _r.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
+        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
         let x = 25;
         if (player.coins < 10)
             x = 25;
@@ -254,12 +260,12 @@ function render() {
             x = 125;
         else if (player.coins >= 1000000)
             x = 145;
-        (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 57);
+        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 57);
         // ----
         let alive = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
         if (alive < 0)
             alive = 0;
-        (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
+        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
         if (alive < 10)
             x = 25;
         else if (alive >= 10 && alive < 100)
@@ -274,9 +280,9 @@ function render() {
             x = 125;
         else if (alive >= 1000000)
             x = 145;
-        (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 7); // 87 - right below
+        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.fillText(alive.toString(), g.canvas.width - x, g.canvas.height / 2 - 7); // 87 - right below
         // ----
-        (_v = g.ctx) === null || _v === void 0 ? void 0 : _v.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
+        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.drawImage(playerSpritesheet, 288, 4992, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 20, 7 * 5, 10 * 5);
         if (totalZombieKills < 10)
             x = 25;
         else if (totalZombieKills >= 10 && totalZombieKills < 100)
@@ -291,10 +297,10 @@ function render() {
             x = 125;
         else if (totalZombieKills >= 1000000)
             x = 145;
-        (_w = g.ctx) === null || _w === void 0 ? void 0 : _w.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 + 47);
+        (_x = g.ctx) === null || _x === void 0 ? void 0 : _x.fillText(totalZombieKills.toString(), g.canvas.width - x, g.canvas.height / 2 + 47);
         // ----
         let time = /*(hour < 10 ? "0" : "") + hour.toString() + ":" + */ (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
-        (_x = g.ctx) === null || _x === void 0 ? void 0 : _x.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 70, 7 * 5, 10 * 5);
+        (_y = g.ctx) === null || _y === void 0 ? void 0 : _y.drawImage(playerSpritesheet, 688, 5088, 17 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 + 70, 7 * 5, 10 * 5);
         /*
         if (time.length < 10) x = 25;
         else if (time.length >= 10 && time.length < 100) x = 45;
@@ -304,20 +310,20 @@ function render() {
         else if (time.length >= 1000000) x = 145;
         */
         x = 105;
-        (_y = g.ctx) === null || _y === void 0 ? void 0 : _y.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 97);
+        (_z = g.ctx) === null || _z === void 0 ? void 0 : _z.fillText(time, g.canvas.width - x, g.canvas.height / 2 + 97);
         // rifle positions
         //g.ctx?.drawImage(weapons, 32 * 3, 0, 44 * 3, 16 * 3, mousePos.x, mousePos.y, 44 * 3, 16 * 3);
         if (player.recharging) {
             let text = "Recharging...";
             let font = 15;
             g.ctx.font = font + "px Pixel";
-            (_z = g.ctx) === null || _z === void 0 ? void 0 : _z.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
+            (_0 = g.ctx) === null || _0 === void 0 ? void 0 : _0.fillText(text, (g.canvas.width / 2) - ((font * text.length) / 4), g.canvas.height - 175);
         }
     }
     else if (gameState === "gameover") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "red";
-        (_0 = g.ctx) === null || _0 === void 0 ? void 0 : _0.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_1 = g.ctx) === null || _1 === void 0 ? void 0 : _1.fillRect(0, 0, g.canvas.width, g.canvas.height);
         //let fontSize: number = 30;
         //let text: string = "Game Over!";
         /*
@@ -328,26 +334,26 @@ function render() {
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 100);
         */
         g.ctx.globalAlpha = 1;
-        (_1 = g.ctx) === null || _1 === void 0 ? void 0 : _1.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
+        (_2 = g.ctx) === null || _2 === void 0 ? void 0 : _2.drawImage(gameOver, g.canvas.width / 2 - 150, 100);
         let fontSize = 15;
         let text = "Press Enter to restart";
         g.ctx.font = fontSize + "px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.font = fontSize + "px Pixel";
-        (_2 = g.ctx) === null || _2 === void 0 ? void 0 : _2.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_3 = g.ctx) === null || _3 === void 0 ? void 0 : _3.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         text = "You were killed by " + player.deathCause;
-        (_3 = g.ctx) === null || _3 === void 0 ? void 0 : _3.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
+        (_4 = g.ctx) === null || _4 === void 0 ? void 0 : _4.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 240);
     }
     else if (gameState === "menu") {
         g.ctx.globalAlpha = 0.2;
         g.ctx.fillStyle = "black";
-        (_4 = g.ctx) === null || _4 === void 0 ? void 0 : _4.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        (_5 = g.ctx) === null || _5 === void 0 ? void 0 : _5.fillRect(0, 0, g.canvas.width, g.canvas.height);
         let text = "Press Enter to start";
         g.ctx.globalAlpha = 1;
         g.ctx.fillStyle = "white";
         g.ctx.font = "15px Pixel";
-        (_5 = g.ctx) === null || _5 === void 0 ? void 0 : _5.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
-        (_6 = g.ctx) === null || _6 === void 0 ? void 0 : _6.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+        (_6 = g.ctx) === null || _6 === void 0 ? void 0 : _6.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        (_7 = g.ctx) === null || _7 === void 0 ? void 0 : _7.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 function loop() {
