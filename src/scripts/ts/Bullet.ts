@@ -8,8 +8,10 @@ class Bullet extends Entity {
     lifeCount: number = 0;
     lifeTime: number;
     
+    explosive: boolean;
+    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
-    dx: number, dy: number, attack: number, speed: number, lifeTime: number) {
+    dx: number, dy: number, attack: number, speed: number, lifeTime: number, explosive: boolean) {
         super(bounds, spritesheet, cutBounds);
         
         this.dx = dx;
@@ -19,6 +21,8 @@ class Bullet extends Entity {
         this.speed = speed;
         
         this.lifeTime = lifeTime;
+        
+        this.explosive = explosive;
     }
     
     tick(): void {
@@ -30,6 +34,9 @@ class Bullet extends Entity {
         if (this.lifeCount >= this.lifeTime) {
             this.lifeCount = 0;
             this.destroy();
+            
+            if (this.explosive)
+                entities.push(new Explosion(player.bounds, explosion, {x: 0, y: 0, w: 312 + (312 / 3), h: 264 + (264 / 3)}));
         }
         
         if (this.collideWithEntity() instanceof Zombie)

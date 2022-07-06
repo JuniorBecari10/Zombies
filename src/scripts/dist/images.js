@@ -13,6 +13,7 @@ const weapons = loadImage("weapons");
 const perks = loadImage("perks");
 const barrier = loadImage("barrier");
 const hBarrier = loadImage("h-barrier");
+const explosion = loadImage("explosion");
 function loadImage(id) {
     return document.getElementById(id);
 }

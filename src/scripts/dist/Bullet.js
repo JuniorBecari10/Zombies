@@ -1,6 +1,6 @@
 "use strict";
 class Bullet extends Entity {
-    constructor(bounds, spritesheet, cutBounds, dx, dy, attack, speed, lifeTime) {
+    constructor(bounds, spritesheet, cutBounds, dx, dy, attack, speed, lifeTime, explosive) {
         super(bounds, spritesheet, cutBounds);
         this.lifeCount = 0;
         this.dx = dx;
@@ -8,6 +8,7 @@ class Bullet extends Entity {
         this.attack = attack;
         this.speed = speed;
         this.lifeTime = lifeTime;
+        this.explosive = explosive;
     }
     tick() {
         this.bounds.x += this.dx * this.speed;
@@ -16,6 +17,8 @@ class Bullet extends Entity {
         if (this.lifeCount >= this.lifeTime) {
             this.lifeCount = 0;
             this.destroy();
+            if (this.explosive)
+                entities.push(new Explosion(player.bounds, explosion, { x: 0, y: 0, w: 312 + (312 / 3), h: 264 + (264 / 3) }));
         }
         if (this.collideWithEntity() instanceof Zombie)
             this.collideWithEntity().hp -= player.weapons[weaponSelected].bulletDamage - this.collideWithEntity().defense;

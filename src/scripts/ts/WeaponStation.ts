@@ -47,7 +47,8 @@ class WeaponStation extends Entity {
             }
             else if (player.freeSlot()  === weaponSelected) {
                 g.ctx!.fillStyle = "#DDDD45";
-                g.ctx?.fillText("Your current weapon will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                g.ctx?.fillText("Your current weapon", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                g.ctx?.fillText("will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 120);
             }
         }
     }

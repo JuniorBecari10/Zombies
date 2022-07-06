@@ -12,6 +12,7 @@ const weapons: HTMLImageElement = loadImage("weapons");
 const perks: HTMLImageElement = loadImage("perks");
 const barrier: HTMLImageElement = loadImage("barrier");
 const hBarrier: HTMLImageElement = loadImage("h-barrier");
+const explosion: HTMLImageElement = loadImage("explosion");
 
 function loadImage(id: string): HTMLImageElement {
     return document.getElementById(id) as HTMLImageElement;

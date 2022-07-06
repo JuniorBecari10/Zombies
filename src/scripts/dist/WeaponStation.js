@@ -15,7 +15,7 @@ class WeaponStation extends Entity {
         }
     }
     render(g) {
-        var _a, _b, _c, _d, _e, _f;
+        var _a, _b, _c, _d, _e, _f, _g;
         super.render(g);
         if (collide(player.bounds, this.bounds)) {
             g.ctx.font = "20px Pixel";
@@ -35,7 +35,8 @@ class WeaponStation extends Entity {
             }
             else if (player.freeSlot() === weaponSelected) {
                 g.ctx.fillStyle = "#DDDD45";
-                (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Your current weapon will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("Your current weapon", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                (_g = g.ctx) === null || _g === void 0 ? void 0 : _g.fillText("will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 120);
             }
         }
     }

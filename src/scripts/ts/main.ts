@@ -96,6 +96,8 @@ function init(): void {
     
     g.canvas.style.imageRendering = "pixelated";
     
+    //entities.push(new Explosion(player.bounds, explosion, {x: 0, y: 0, w: 312 + (312 / 3), h: 264 + (264 / 3)}));
+    
     window.requestAnimationFrame(loop);
 }
 
