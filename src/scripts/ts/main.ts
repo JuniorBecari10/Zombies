@@ -76,6 +76,8 @@ function reset(): void {
     player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
     waveCount = 1;
     
+    weaponSelected = 2;
+    
     entities.push(player);
     
     addBarriers();
