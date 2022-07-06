@@ -313,7 +313,7 @@ class Player extends Entity {
                 
                 this.weapons[weaponSelected].ammo--;
                 
-                entities.push(new Bullet({x: this.bounds.x + px, y: this.bounds.y + py, w: 4 * 3, h: 4 * 3}, weapons, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
+                entities.push(new Bullet({x: this.bounds.x + px, y: this.bounds.y + py, w: this.weapons[weaponSelected].bulletBounds.w, h: this.weapons[weaponSelected].bulletBounds.h}, weapons, this.weapons[weaponSelected].bulletSprBounds, dx, dy, this.weapons[weaponSelected].bulletDamage, this.weapons[weaponSelected].bulletSpeed, 150));
             }
         }
         

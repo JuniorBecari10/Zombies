@@ -2,13 +2,13 @@ type WeaponType = "pistol" | "rifle" | "shotgun"
 
 function getWeapon(weapon: WeaponType): Weapon | null {
     if (weapon === "pistol") {
-        return new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, 2, 30, 1, 20, 380, 10, "Pistol");
+        return new Weapon({x: 0, y: 0, w: 16 * 3, h: 16 * 3}, weapons, {x: 16 * 3, y: 0, w: 16 * 3, h: 16 * 3}, {x: 0, y: 0, w: 4 * 3, h: 4 * 3}, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, 2, 30, 1, 20, 380, 10, "Pistol");
     }
     else if (weapon === "rifle") {
-        return new Weapon({x: 0, y: 0, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, 5, 30, 1, 10, 400, 20, "Rifle");
+        return new Weapon({x: 0, y: 0, w: 44 * 3, h: 16 * 3}, weapons, {x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3}, {x: 0, y: 0, w: 4 * 3, h: 4 * 3}, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, 5, 30, 1, 10, 400, 20, "Rifle");
     }
     else if (weapon === "shotgun") {
-        return new Weapon({x: 0, y: 0, w: 44 * 3, h: 16 * 3}, weapons, {x: 80 * 3, y: 0, w: 44 * 3, h: 16 * 3}, 7, 30, 1, 40, 350, 5, "Shotgun");
+        return new Weapon({x: 0, y: 0, w: 44 * 3, h: 16 * 3}, weapons, {x: 80 * 3, y: 0, w: 44 * 3, h: 16 * 3}, {x: 0, y: 0, w: 4 * 3, h: 4 * 3}, {x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3}, 7, 30, 1, 40, 350, 5, "Shotgun");
     }
     
     return null;
@@ -19,6 +19,9 @@ class Weapon extends Entity {
     bulletDamage: number;
     bulletSpeed: number;
     bulletAmount: number;
+    
+    bulletBounds: Rectangle;
+    bulletSprBounds: Rectangle;
     
     cooldown: number;
     constCooldown: number;
@@ -33,11 +36,15 @@ class Weapon extends Entity {
     name: string;
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
+     bulletBounds: Rectangle, bulletSprBounds: Rectangle,
      bulletDamage: number, bulletSpeed: number, bulletAmount: number, cooldown: number, ammoTotal: number,
      ammoLoaded: number, name: string) {
         super(bounds, spritesheet, cutBounds);
         
         this.originalWidth = this.bounds.w;
+        
+        this.bulletBounds = bulletBounds;
+        this.bulletSprBounds = bulletSprBounds;
         
         this.bulletDamage = bulletDamage;
         this.bulletSpeed = bulletSpeed;        // pode ser hardcoded tbm
