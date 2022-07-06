@@ -7,7 +7,10 @@ function getWeapon(weapon) {
         return new Weapon({ x: 0, y: 0, w: 44 * 3, h: 16 * 3 }, weapons, { x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3 }, { x: 0, y: 0, w: 4 * 3, h: 4 * 3 }, { x: 0, y: 16 * 3, w: 4 * 3, h: 4 * 3 }, 5, 30, 1, 10, 400, 20, "Rifle");
     }
     else if (weapon === "shotgun") {
-        return new Weapon({ x: 0, y: 0, w: 44 * 3, h: 16 * 3 }, weapons, { x: 80 * 3, y: 0, w: 44 * 3, h: 16 * 3 }, { x: 0, y: 0, w: 4 * 3, h: 40 }, { x: 16, y: 16 * 3, w: 4 * 3, h: 40 }, 7, 30, 1, 40, 350, 5, "Shotgun");
+        return new Weapon({ x: 0, y: 0, w: 44 * 3, h: 16 * 3 }, weapons, { x: 80 * 3, y: 0, w: 144, h: 16 * 3 }, { x: 0, y: 0, w: 4 * 3, h: 40 }, { x: 16, y: 16 * 3, w: 4 * 3, h: 40 }, 7, 30, 1, 40, 350, 5, "Shotgun");
+    }
+    else if (weapon === "rocket") {
+        return new Weapon({ x: 0, y: 0, w: 50 * 3, h: 16 * 3 }, weapons, { x: 96, y: 64, w: 50 * 3, h: 16 * 3 }, { x: 0, y: 0, w: 16 * 2, h: 16 * 2 }, { x: 32, y: 16 * 3, w: 16 * 2, h: 16 * 2 }, 10, 30, 1, 90, 250, 5, "Rocket Launcher");
     }
     return null;
 }

@@ -79,7 +79,8 @@ function addBarriers() {
 }
 function addWeaponStations() {
     entities.push(new WeaponStation({ x: 912, y: 2392, w: 44 * 3, h: 16 * 3 }, weapons, { x: 32 * 3, y: 0, w: 44 * 3, h: 16 * 3 }, "rifle", 500));
-    entities.push(new WeaponStation({ x: 2680, y: 1972, w: 47 * 3, h: 16 * 3 }, weapons, { x: 80 * 3, y: 0, w: 47 * 3, h: 16 * 3 }, "shotgun", 500));
+    entities.push(new WeaponStation({ x: 2680, y: 1972, w: 47 * 3, h: 16 * 3 }, weapons, { x: 80 * 3, y: 0, w: 144, h: 16 * 3 }, "shotgun", 500));
+    entities.push(new WeaponStation({ x: 3012, y: 576, w: 50 * 3, h: 16 * 3 }, weapons, { x: 96, y: 64, w: 50 * 3, h: 16 * 3 }, "rocket", 900));
 }
 function addPerkStations() {
     entities.push(new PerkStation({ x: 792, y: 1200, w: 16 * 3, h: 16 * 3 }, perks, { x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "regen", 700));
