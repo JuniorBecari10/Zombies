@@ -34,7 +34,8 @@ const waves: Wave[] = [{zombieAmount: 9 /* put it one more */, zombieTypes: ["ba
                        {zombieAmount: 19, zombieTypes: ["armored-zombie"]},
                        {zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"]},
                        {zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"]},
-                       {zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"]}];
+                       {zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"]},
+                       {zombieAmount: 27, zombieTypes: ["fire-zombie", "basic-skeleton"]}];
 
 class Zombie extends Entity {
     hp: number;
