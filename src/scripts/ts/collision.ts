@@ -53,7 +53,8 @@
                                  {x: 3196, y: 421, w: 96, h: 820},
                                  {x: 3128, y: 704, w: 68, h: 88},
                                  {x: 1980, y: 1156, w: 1312, h: 84},
-                                 {x: 2588, y: 684, w: 196, h: 200}];
+                                 {x: 2588, y: 684, w: 196, h: 200},
+                                 {x: 2497, y: 797, w: 65, h: 91}];
 
 function collide(rect1: Rectangle, rect2: Rectangle): boolean {
     return rect1.x < rect2.x + rect2.w &&

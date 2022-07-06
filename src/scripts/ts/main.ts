@@ -13,6 +13,8 @@ var totalZombieKills: number = 0;
 const titleFontSize: number = 20;
 const fontSize: number = 15;
 
+const powerMachinePrice: number = 1000;
+
 var powerOn: boolean = false;
 
 var sec: number = 0;
@@ -133,6 +135,13 @@ function tick(): void {
             o.tick();
         }
         
+        // check if the player is near the power machine
+        
+        if (collide(player.bounds, {x: 2432, y: 706, w: 260, h: 273}) &&
+            keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
+            powerOn = true;
+        }
+        
         if (gameState === "menu") return;
         
         // timer / stopwatch
@@ -204,6 +213,30 @@ function render(): void {
     
     for (let o of entities) {
         o.render(g);
+    }
+    
+    // render power machine text
+    
+    if (collide(player.bounds, {x: 2432, y: 706, w: 260, h: 273})) {
+        g.ctx!.font = "20px Pixel";
+        g.ctx!.fillStyle = "white";
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx?.fillText("Power Machine", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y);
+        
+        g.ctx!.font = "15px Pixel";
+        
+        g.ctx?.fillText("$" + powerMachinePrice, player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 30);
+        g.ctx?.fillText("Press Enter to Activate", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 60);
+        
+        if (player.coins < powerMachinePrice) {
+            g.ctx!.fillStyle = "#FF4545";
+            g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+        }
+        else if (powerOn) {
+            g.ctx!.fillStyle = "#FF4545";
+            g.ctx?.fillText("Already Active!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+        }
     }
     
     if (gameState === "game") {
