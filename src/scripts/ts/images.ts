@@ -3,6 +3,7 @@ const gameOver: HTMLImageElement = loadImage("game-over");
 const playerSpritesheet: HTMLImageElement = loadImage("player-spritesheet");
 const basicZombieSpr: HTMLImageElement = loadImage("basic-zombie");
 const fireZombieSpr: HTMLImageElement = loadImage("fire-zombie");
+const bombieSpr: HTMLImageElement = loadImage("bombie");
 const basicSkeletonSpr: HTMLImageElement = loadImage("basic-skeleton");
 const armoredZombieSpr: HTMLImageElement = loadImage("armored-zombie");
 const armoredSkeletonSpr: HTMLImageElement = loadImage("armored-skeleton");

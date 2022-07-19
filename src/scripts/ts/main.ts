@@ -1,7 +1,7 @@
 var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
 
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 1;
+var waveCount: number = 8;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -163,7 +163,7 @@ function tick(): void {
                 }
             }
         }
-    
+        
         spawnSpeedCount++;
         
         if (spawnSpeedCount >= spawnSpeed) {
@@ -342,7 +342,7 @@ function render(): void {
         
         // ----
         
-        let alive: number = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
+        let alive: number = waves[waveCount - 1].zombieAmount - zombieKills;
         
         if (alive < 0) alive = 0;
         

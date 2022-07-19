@@ -10,6 +10,8 @@ function getZombie(zombieType) {
         return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, armoredSkeletonSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 7, 1, 2, "none", () => { }, "Armored Skeleton", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
     else if (zombieType === "fire-zombie")
         return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, fireZombieSpr, { x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, 7, 1, 2, "fire", () => { }, "Fire Zombie", [{ x: 0, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 16 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 32 * 70, y: 0, w: 16 * 70, h: 16 * 70 }, { x: 48 * 70, y: 0, w: 16 * 70, h: 16 * 70 }]);
+    else if (zombieType === "bombie")
+        return new Zombie({ x: 0, y: 0, w: pixelSize, h: pixelSize }, bombieSpr, { x: 0, y: 0, w: 32 * 70, h: 32 * 70 }, 50, 2, 4, "none", () => { }, "Bombie", [{ x: 0, y: 0, w: 32 * 70, h: 32 * 70 }, { x: 32 * 70, y: 0, w: 32 * 70, h: 32 * 70 }, { x: 32 * 70, y: 0, w: 32 * 70, h: 32 * 70 }, { x: 48 * 70, y: 0, w: 32 * 70, h: 32 * 70 }]);
     return null;
 }
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
@@ -22,7 +24,8 @@ const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zom
     { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] },
     { zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"] },
     { zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"] },
-    { zombieAmount: 27, zombieTypes: ["fire-zombie", "basic-skeleton"] }];
+    { zombieAmount: 27, zombieTypes: ["fire-zombie", "basic-skeleton"] },
+    { zombieAmount: 1, zombieTypes: ["bombie"] }];
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, ability, name, animFrames) {
         super(bounds, spritesheet, cutBounds);

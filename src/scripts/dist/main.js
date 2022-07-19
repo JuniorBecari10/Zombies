@@ -1,7 +1,7 @@
 "use strict";
 var player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
 var zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
-var waveCount = 1;
+var waveCount = 8;
 var spawnSpeedCount = 0;
 var spawnSpeed = 300; // 200 is too fast
 var zombieSpawnCount = 0;
@@ -262,7 +262,7 @@ function render() {
             x = 145;
         (_t = g.ctx) === null || _t === void 0 ? void 0 : _t.fillText(player.coins.toString(), g.canvas.width - x, g.canvas.height / 2 - 57);
         // ----
-        let alive = waves[waveCount].zombieAmount - 3 /* constant */ - zombieKills;
+        let alive = waves[waveCount - 1].zombieAmount - zombieKills;
         if (alive < 0)
             alive = 0;
         (_u = g.ctx) === null || _u === void 0 ? void 0 : _u.drawImage(playerSpritesheet, 641, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 30, 7 * 5, 10 * 5);
