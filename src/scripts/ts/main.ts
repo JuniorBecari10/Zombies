@@ -1,7 +1,9 @@
 var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
 
+const bossSpawn: Point = {x: 1306, y: 1932};
+
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 8;
+var waveCount: number = 9;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -181,6 +183,9 @@ function tick(): void {
             var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
             var pos: Point = zombiePositions[random(0, zombiePositions.length)];
             var zombie: Zombie = getZombie(zombieType)!;
+            
+            if (zombie.isBoss)
+                pos = bossSpawn;
             
             zombie.bounds.x = pos.x;
             zombie.bounds.y = pos.y;
