@@ -100,6 +100,8 @@ function tick() {
         for (let o of entities) {
             o.tick();
         }
+        if (waveCount == 10 && zombiesAliveAmount() == 0)
+            gameState = "win";
         // check if the player is near the power machine
         if (collide(player.bounds, powerMachineBounds) &&
             keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
@@ -153,9 +155,14 @@ function tick() {
             reset();
         }
     }
+    else if (gameState === "win") {
+        if (keyPressed.keyCode === enterCode) {
+            reset();
+        }
+    }
 }
 function render() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12;
     g.ctx.globalAlpha = 1;
     // draw black bg
     g.ctx.fillStyle = "black";
@@ -357,6 +364,22 @@ function render() {
         g.ctx.font = "15px Pixel";
         (_6 = g.ctx) === null || _6 === void 0 ? void 0 : _6.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         (_7 = g.ctx) === null || _7 === void 0 ? void 0 : _7.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+    }
+    else if (gameState === "win") {
+        g.ctx.globalAlpha = 0.2;
+        g.ctx.fillStyle = "black";
+        (_8 = g.ctx) === null || _8 === void 0 ? void 0 : _8.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        let text = "Thanks for playing.";
+        g.ctx.globalAlpha = 1;
+        g.ctx.fillStyle = "white";
+        g.ctx.font = "15px Pixel";
+        (_9 = g.ctx) === null || _9 === void 0 ? void 0 : _9.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        let time = (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
+        text = "Your time was " + time + ".";
+        (_10 = g.ctx) === null || _10 === void 0 ? void 0 : _10.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 310);
+        text = "Press Enter to restart.";
+        (_11 = g.ctx) === null || _11 === void 0 ? void 0 : _11.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 360);
+        (_12 = g.ctx) === null || _12 === void 0 ? void 0 : _12.drawImage(youWin, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 function loop() {

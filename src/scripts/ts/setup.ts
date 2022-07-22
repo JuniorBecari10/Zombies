@@ -1,4 +1,4 @@
-type GameState = "menu" | "game" | "pause" | "gameover";
+type GameState = "menu" | "game" | "pause" | "gameover" | "win";
 type Immunity = "none" | "fire" | "ice" | "explosive";
 
 var gameState: GameState = "menu";

@@ -138,6 +138,9 @@ function tick(): void {
             o.tick();
         }
         
+        if (waveCount == 10 && zombiesAliveAmount() == 0)
+            gameState = "win";
+        
         // check if the player is near the power machine
         
         if (collide(player.bounds, powerMachineBounds) &&
@@ -202,6 +205,11 @@ function tick(): void {
         }
     }
     else if (gameState === "gameover") {
+        if (keyPressed.keyCode === enterCode) {
+            reset();
+        }
+    }
+    else if (gameState === "win") {
         if (keyPressed.keyCode === enterCode) {
             reset();
         }
@@ -455,6 +463,31 @@ function render(): void {
         
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
         g.ctx?.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+    }
+    else if (gameState === "win") {
+        g.ctx!.globalAlpha = 0.2;
+        
+        g.ctx!.fillStyle = "black";
+        g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
+        
+        let text = "Thanks for playing.";
+        
+        g.ctx!.globalAlpha = 1;
+        
+        g.ctx!.fillStyle = "white";
+        g.ctx!.font = "15px Pixel";
+        
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        
+        let time: string = (min < 10 ? "0" : "") + min.toString() + ":" + (sec < 10 ? "0" : "") + sec.toString();
+        
+        text = "Your time was " + time + ".";
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 310);
+        
+        text = "Press Enter to restart.";
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 360);
+        
+        g.ctx?.drawImage(youWin, (g.canvas.width / 2) - (logo.width / 2), 140);
     }
 }
 
