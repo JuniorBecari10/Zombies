@@ -140,7 +140,7 @@ class Zombie extends Entity {
             g.ctx!.font = "20px Pixel";
             g.ctx!.fillStyle = "white";
             
-            g.ctx?.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 4), 30);
+            g.ctx?.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 30);
             
             g.ctx!.fillStyle = "red";
             g.ctx?.fillRect(g.canvas.width / 2 - 150, 70, 300, 20);

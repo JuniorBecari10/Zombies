@@ -92,7 +92,7 @@ class Zombie extends Entity {
         if (this.isBoss) {
             g.ctx.font = "20px Pixel";
             g.ctx.fillStyle = "white";
-            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 4), 30);
+            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 30);
             g.ctx.fillStyle = "red";
             (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.fillRect(g.canvas.width / 2 - 150, 70, 300, 20);
             g.ctx.fillStyle = "green";

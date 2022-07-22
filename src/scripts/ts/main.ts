@@ -71,12 +71,18 @@ function reset(): void {
     entities = [];
     gameState = "game";
     
+    zombieSpawnCount = 0;
     zombieKills = 0;
     totalZombieKills = 0;
     
     sec = 0;
     min = 0;
     hour = 0;
+    
+    spawnSpeed = 300;
+    spawnSpeedCount = 0;
+    
+    powerOn = false;
     
     player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, playerSpritesheet, {x: 0, y: 0, w: 16 * 100, h: 16 * 100});
     waveCount = 1;
