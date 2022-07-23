@@ -16,15 +16,15 @@ function getZombie(zombieType) {
 }
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
 //5, 1, 1, "none", "Basic Zombie");
-const waves = [{ zombieAmount: 9 /* put it one more */, zombieTypes: ["basic-zombie"] },
-    { zombieAmount: 11, zombieTypes: ["basic-zombie"] },
-    { zombieAmount: 13, zombieTypes: ["basic-zombie", "basic-skeleton"] },
-    { zombieAmount: 15, zombieTypes: ["basic-zombie", "basic-skeleton"] },
-    { zombieAmount: 19, zombieTypes: ["armored-zombie"] },
-    { zombieAmount: 19, zombieTypes: ["armored-zombie", "basic-skeleton"] },
-    { zombieAmount: 17, zombieTypes: ["armored-zombie", "armored-skeleton"] },
-    { zombieAmount: 21, zombieTypes: ["armored-zombie", "armored-skeleton"] },
-    { zombieAmount: 2, zombieTypes: ["fire-zombie", "basic-skeleton"] },
+const waves = [{ zombieAmount: 8 /* put it one more */, zombieTypes: ["basic-zombie"] },
+    { zombieAmount: 10, zombieTypes: ["basic-zombie"] },
+    { zombieAmount: 12, zombieTypes: ["basic-zombie", "basic-skeleton"] },
+    { zombieAmount: 14, zombieTypes: ["basic-zombie", "basic-skeleton"] },
+    { zombieAmount: 18, zombieTypes: ["armored-zombie"] },
+    { zombieAmount: 18, zombieTypes: ["armored-zombie", "basic-skeleton"] },
+    { zombieAmount: 16, zombieTypes: ["armored-zombie", "armored-skeleton"] },
+    { zombieAmount: 20, zombieTypes: ["armored-zombie", "armored-skeleton"] },
+    { zombieAmount: 26, zombieTypes: ["fire-zombie", "basic-skeleton"] },
     { zombieAmount: 1, zombieTypes: ["bombie"] }];
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, ability, name, isBoss, animFrames) {

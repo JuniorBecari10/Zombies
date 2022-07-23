@@ -3,7 +3,7 @@ var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, 
 const bossSpawn: Point = {x: 1306, y: 1932};
 
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 9;
+var waveCount: number = 1;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -175,12 +175,11 @@ function tick(): void {
             }
         }
         
+        console.log(zombieSpawnCount);
         spawnSpeedCount++;
         
         if (spawnSpeedCount >= spawnSpeed) {
             spawnSpeedCount = 0;
-            
-            zombieSpawnCount++;
             
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
@@ -188,6 +187,10 @@ function tick(): void {
                 spawnSpeed += 20;
                 zombieKills = 0;
             }
+            
+            zombieSpawnCount++;
+            
+            // spawn zombie
             
             var zombieType: ZombieType = waves[waveCount - 1].zombieTypes[random(0, waves[waveCount - 1].zombieTypes.length)];
             var pos: Point = zombiePositions[random(0, zombiePositions.length)];
@@ -206,7 +209,7 @@ function tick(): void {
                 }
             }
             
-            if (zombieSpawnCount < waves[waveCount - 1].zombieAmount)
+            //if (zombieSpawnCount <= waves[waveCount - 1].zombieAmount)
                 entities.push(zombie);
         }
     }

@@ -9,7 +9,7 @@ class Player extends Entity {
         this.hp = 10;
         this.totalHp = 10;
         this.defense = 0;
-        this.coins = 10000;
+        this.coins = 0;
         this.deathCause = "";
         this.immunityCount = 0;
         this.immunityTotal = 20;
@@ -21,6 +21,7 @@ class Player extends Entity {
         this.leftSprs = [];
         this.rightSprs = [];
         this.recharging = false;
+        this.canRecharge = true;
         this.rechargeCount = 0;
         this.rechargeMax = 60;
         this.animCount = 0;
@@ -93,9 +94,9 @@ class Player extends Entity {
     }
     // Overrides super method
     tick() {
-        if (!collideWithAny({ x: this.bounds.x + this.dx * 2, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h }))
+        if (!collideWithAny({ x: this.bounds.x + this.dx * 10, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h }))
             this.bounds.x += this.dx * this.dashSpeed * 2;
-        if (!collideWithAny({ x: this.bounds.x, y: this.bounds.y + this.dy * 2, w: this.bounds.w, h: this.bounds.h }))
+        if (!collideWithAny({ x: this.bounds.x, y: this.bounds.y + this.dy * 10, w: this.bounds.w, h: this.bounds.h }))
             this.bounds.y += this.dy * this.dashSpeed * 2;
         if (this.dashSpeed > 0)
             this.dashSpeed -= 0.1;
@@ -216,8 +217,7 @@ class Player extends Entity {
         if (this.weapons[weaponSelected].ammo === this.weapons[weaponSelected].ammoLoaded)
             this.recharging = false;
         this.cooldownCount++;
-        //console.log(this.rechargeCount);
-        if (this.weapons[weaponSelected].ammo == 0 || (keyPressed !== undefined && keyPressed.keyCode == rCode)) {
+        if (this.weapons[weaponSelected].ammo === 0 || (keyPressed !== undefined && keyPressed.keyCode === rCode)) {
             if (!this.recharging) {
                 this.recharging = true;
             }

@@ -13,7 +13,7 @@ class Player extends Entity {
     
     defense: number = 0;
     
-    coins: number = 10000;
+    coins: number = 0;
     
     deathCause: string = "";
     
@@ -35,6 +35,7 @@ class Player extends Entity {
     dashRightSpr: Rectangle;
     
     recharging: boolean = false;
+    canRecharge: boolean = true;
     
     rechargeCount: number = 0;
     rechargeMax: number = 60;
@@ -126,10 +127,10 @@ class Player extends Entity {
     
     // Overrides super method
     tick(): void {
-        if (!collideWithAny({x: this.bounds.x + this.dx * 2, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h}))
+        if (!collideWithAny({x: this.bounds.x + this.dx * 10, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h}))
             this.bounds.x += this.dx * this.dashSpeed * 2;
         
-        if (!collideWithAny({x: this.bounds.x, y: this.bounds.y + this.dy * 2, w: this.bounds.w, h: this.bounds.h}))
+        if (!collideWithAny({x: this.bounds.x, y: this.bounds.y + this.dy * 10, w: this.bounds.w, h: this.bounds.h}))
             this.bounds.y += this.dy * this.dashSpeed * 2;
         
         if (this.dashSpeed > 0)
@@ -276,8 +277,8 @@ class Player extends Entity {
             this.recharging = false;
         
         this.cooldownCount++;
-        //console.log(this.rechargeCount);
-        if (this.weapons[weaponSelected].ammo == 0 || (keyPressed !== undefined && keyPressed.keyCode == rCode)) {
+        
+        if (this.weapons[weaponSelected].ammo === 0 || (keyPressed !== undefined && keyPressed.keyCode === rCode)) {
             if (!this.recharging) {
                 this.recharging = true;
             }
@@ -287,15 +288,15 @@ class Player extends Entity {
         }
         
         if (this.recharging) {
-                this.rechargeCount++;
+            this.rechargeCount++;
+            
+            if (this.rechargeCount >= this.rechargeMax) {
+                this.rechargeCount = 0;
+                this.recharging = false;
                 
-                if (this.rechargeCount >= this.rechargeMax) {
-                    this.rechargeCount = 0;
-                    this.recharging = false;
-                    
-                    this.weapons[weaponSelected].recharge();
-                }
+                this.weapons[weaponSelected].recharge();
             }
+        }
         
         if (isMousePressed && gameState === "game" && this.cooldownCount >= this.weapons[weaponSelected].cooldown) {
             if (this.weapons[weaponSelected].ammo > 0) {
