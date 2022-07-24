@@ -3,7 +3,7 @@ var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, 
 const bossSpawn: Point = {x: 1306, y: 1932};
 
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 1;
+var waveCount: number = 9;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -188,6 +188,10 @@ function tick(): void {
                 zombieKills = 0;
             }
             
+            if (zombieSpawnCount + 1 > waves[waveCount - 1].zombieAmount) {
+                return;
+            }
+            
             zombieSpawnCount++;
             
             // spawn zombie
@@ -210,6 +214,7 @@ function tick(): void {
             }
             
             //if (zombieSpawnCount <= waves[waveCount - 1].zombieAmount)
+            //if (waveCount % 10 == 0 && zombiesAliveAmount() > 0)
                 entities.push(zombie);
         }
     }
