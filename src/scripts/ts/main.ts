@@ -89,11 +89,11 @@ function reset(): void {
     
     weaponSelected = 2;
     
-    entities.push(player);
-    
     addBarriers();
     addWeaponStations();
     addPerkStations();
+    
+    entities.push(player);
     
     zombiePositions = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
 }
@@ -175,7 +175,6 @@ function tick(): void {
             }
         }
         
-        console.log(zombieSpawnCount);
         spawnSpeedCount++;
         
         if (spawnSpeedCount >= spawnSpeed) {

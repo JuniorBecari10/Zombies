@@ -63,10 +63,10 @@ function reset() {
     player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
     waveCount = 1;
     weaponSelected = 2;
-    entities.push(player);
     addBarriers();
     addWeaponStations();
     addPerkStations();
+    entities.push(player);
     zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
 }
 // ----------------------------------------
@@ -127,7 +127,6 @@ function tick() {
                 }
             }
         }
-        console.log(zombieSpawnCount);
         spawnSpeedCount++;
         if (spawnSpeedCount >= spawnSpeed) {
             spawnSpeedCount = 0;

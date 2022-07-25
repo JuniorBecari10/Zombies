@@ -16,7 +16,7 @@ function getZombie(zombieType) {
 }
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
 //5, 1, 1, "none", "Basic Zombie");
-const waves = [{ zombieAmount: 8 /* put it one more */, zombieTypes: ["basic-zombie"] },
+const waves = [{ zombieAmount: 8, zombieTypes: ["basic-zombie"] },
     { zombieAmount: 10, zombieTypes: ["basic-zombie"] },
     { zombieAmount: 12, zombieTypes: ["basic-zombie", "basic-skeleton"] },
     { zombieAmount: 14, zombieTypes: ["basic-zombie", "basic-skeleton"] },
@@ -24,7 +24,7 @@ const waves = [{ zombieAmount: 8 /* put it one more */, zombieTypes: ["basic-zom
     { zombieAmount: 18, zombieTypes: ["armored-zombie", "basic-skeleton"] },
     { zombieAmount: 16, zombieTypes: ["armored-zombie", "armored-skeleton"] },
     { zombieAmount: 20, zombieTypes: ["armored-zombie", "armored-skeleton"] },
-    { zombieAmount: 1, zombieTypes: ["fire-zombie", "basic-skeleton"] },
+    { zombieAmount: 26, zombieTypes: ["fire-zombie", "basic-skeleton"] },
     { zombieAmount: 1, zombieTypes: ["bombie"] }];
 class Zombie extends Entity {
     constructor(bounds, spritesheet, cutBounds, hp, defense, attack, immunity, ability, name, isBoss, animFrames) {
@@ -92,7 +92,7 @@ class Zombie extends Entity {
         if (this.isBoss) {
             g.ctx.font = "20px Pixel";
             g.ctx.fillStyle = "white";
-            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 30);
+            (_a = g.ctx) === null || _a === void 0 ? void 0 : _a.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 50);
             g.ctx.fillStyle = "red";
             (_b = g.ctx) === null || _b === void 0 ? void 0 : _b.fillRect(g.canvas.width / 2 - 150, 70, 300, 20);
             g.ctx.fillStyle = "green";

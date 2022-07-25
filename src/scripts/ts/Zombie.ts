@@ -30,7 +30,7 @@ function getZombie(zombieType: ZombieType): Zombie | null {
 //var basicZombie: Zombie = new Zombie({x: 0, y: 0, w: pixelSize, h: pixelSize}, basicZombieSpr, {x: 0, y: 0, w: 16 * 70, h: 16 * 70},
 //5, 1, 1, "none", "Basic Zombie");
 
-const waves: Wave[] = [{zombieAmount: 8 /* put it one more */, zombieTypes: ["basic-zombie"]},
+const waves: Wave[] = [{zombieAmount: 8, zombieTypes: ["basic-zombie"]},
                        {zombieAmount: 10, zombieTypes: ["basic-zombie"]},
                        {zombieAmount: 12, zombieTypes: ["basic-zombie", "basic-skeleton"]},
                        {zombieAmount: 14, zombieTypes: ["basic-zombie", "basic-skeleton"]},
@@ -38,7 +38,7 @@ const waves: Wave[] = [{zombieAmount: 8 /* put it one more */, zombieTypes: ["ba
                        {zombieAmount: 18, zombieTypes: ["armored-zombie", "basic-skeleton"]},
                        {zombieAmount: 16, zombieTypes: ["armored-zombie", "armored-skeleton"]},
                        {zombieAmount: 20, zombieTypes: ["armored-zombie", "armored-skeleton"]},
-                       {zombieAmount: 1, zombieTypes: ["fire-zombie", "basic-skeleton"]}, // 26
+                       {zombieAmount: 26, zombieTypes: ["fire-zombie", "basic-skeleton"]}, // 26
                        {zombieAmount: 1, zombieTypes: ["bombie"]}];
 
 class Zombie extends Entity {
@@ -140,7 +140,7 @@ class Zombie extends Entity {
             g.ctx!.font = "20px Pixel";
             g.ctx!.fillStyle = "white";
             
-            g.ctx?.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 30);
+            g.ctx?.fillText(this.name, g.canvas.width / 2 - ((this.name.length * 20) / 2), 50);
             
             g.ctx!.fillStyle = "red";
             g.ctx?.fillRect(g.canvas.width / 2 - 150, 70, 300, 20);

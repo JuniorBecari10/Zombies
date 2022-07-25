@@ -278,7 +278,7 @@ class Player extends Entity {
         
         this.cooldownCount++;
         
-        if (this.weapons[weaponSelected].ammo === 0 || (keyPressed !== undefined && keyPressed.keyCode === rCode)) {
+        if ((this.weapons[weaponSelected].ammo === 0 || (keyPressed !== undefined && keyPressed.keyCode === rCode)) && isKeyPressed && this.weapons[weaponSelected].ammo < this.weapons[weaponSelected].ammoLoaded) {
             if (!this.recharging) {
                 this.recharging = true;
             }
