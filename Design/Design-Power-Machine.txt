@@ -1,6 +1,0 @@
-Zombies Design - Power Machine
-
-The Power Machine lets you to use Perks (see Perks) when active.
-You need 1000 gold to activate it, and only one time per game.
-
-It stays on the Power Station.

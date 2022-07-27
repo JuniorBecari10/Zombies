@@ -1,9 +1,0 @@
-Zombies Design - Project
-
-Name: Zombies (or Zombeez)
-Language: TypeScript
-Target Platform: Browser
-Input: Mouse and Keyboard (PC), Touch (Mobile)
-Rendering Method: Canvas
-Screen Size: Any, responsive
-Timer: Yes, progressive. (To count highscore and best time) Maybe not.
