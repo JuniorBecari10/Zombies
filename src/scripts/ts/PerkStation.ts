@@ -17,7 +17,7 @@ class PerkStation extends Entity {
                 powerOn) {
             player.coins -= this.price;
             
-            player.perks[player.freePerkSlot()] = getPerk(this.perk)!;
+            player.perks[player.freePerkSlot() < 0 ? 0 : player.freePerkSlot()] = getPerk(this.perk)!;
             
             //this.destroy();
         }
@@ -49,6 +49,11 @@ class PerkStation extends Entity {
             else if (player.hasPerk(getPerk(this.perk)!.name)) {
                 g.ctx!.fillStyle = "#FF4545";
                 g.ctx?.fillText("You already have this perk!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            else if (player.freePerkSlot() < 0) {
+                g.ctx!.fillStyle = "#DDDD45";
+                g.ctx?.fillText("Perk #0", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                g.ctx?.fillText("will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 120);
             }
         }
     }

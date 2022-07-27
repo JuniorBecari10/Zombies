@@ -11,12 +11,12 @@ class PerkStation extends Entity {
             keyPressed.keyCode === enterCode && !player.hasPerk(getPerk(this.perk).name) &&
             powerOn) {
             player.coins -= this.price;
-            player.perks[player.freePerkSlot()] = getPerk(this.perk);
+            player.perks[player.freePerkSlot() < 0 ? 0 : player.freePerkSlot()] = getPerk(this.perk);
             //this.destroy();
         }
     }
     render(g) {
-        var _a, _b, _c, _d, _e, _f;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
         super.render(g);
         if (collide(player.bounds, this.bounds)) {
             g.ctx.font = "20px Pixel";
@@ -37,6 +37,11 @@ class PerkStation extends Entity {
             else if (player.hasPerk(getPerk(this.perk).name)) {
                 g.ctx.fillStyle = "#FF4545";
                 (_f = g.ctx) === null || _f === void 0 ? void 0 : _f.fillText("You already have this perk!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            }
+            else if (player.freePerkSlot() < 0) {
+                g.ctx.fillStyle = "#DDDD45";
+                (_g = g.ctx) === null || _g === void 0 ? void 0 : _g.fillText("Perk #0", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                (_h = g.ctx) === null || _h === void 0 ? void 0 : _h.fillText("will be replaced.", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 120);
             }
         }
     }

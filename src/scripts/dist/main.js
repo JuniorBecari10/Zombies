@@ -94,7 +94,8 @@ function addWeaponStations() {
 function addPerkStations() {
     entities.push(new PerkStation({ x: 792, y: 1200, w: 16 * 3, h: 16 * 3 }, perks, { x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "regen", 700));
     entities.push(new PerkStation({ x: 2748, y: 2137, w: 16 * 3, h: 16 * 3 }, perks, { x: 48 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "quick", 700));
-    entities.push(new PerkStation({ x: 244, y: 1076, w: 16 * 3, h: 16 * 3 }, perks, { x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, "speed", 700));
+    entities.push(new PerkStation({ x: 244, y: 1068, w: 16 * 3, h: 16 * 3 }, perks, { x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, "speed", 700));
+    entities.push(new PerkStation({ x: 1457, y: 844, w: 16 * 3, h: 16 * 3 }, perks, { x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "extra", 700));
 }
 function tick() {
     if (gameState === "game" || gameState === "menu") {

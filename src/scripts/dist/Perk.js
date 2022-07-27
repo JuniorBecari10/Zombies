@@ -13,7 +13,7 @@ function getPerk(perkType) {
         case "speed":
             return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, "Speed", false, "speed");
         case "quick":
-            return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 64 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Quick Cooldown", false, "quick");
+            return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 48 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Quick Cooldown", false, "quick");
         case "regen":
             return new Perk({ x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, perks, { x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "Regeneration", false, "regen");
         case "extra":
