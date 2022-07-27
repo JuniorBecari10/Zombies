@@ -2,7 +2,7 @@
 var player = new Player({ x: 1406, y: 1932, w: pixelSize, h: pixelSize }, playerSpritesheet, { x: 0, y: 0, w: 16 * 100, h: 16 * 100 });
 const bossSpawn = { x: 1306, y: 1932 };
 var zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
-var waveCount = 1;
+var waveCount = 9;
 var spawnSpeedCount = 0;
 var spawnSpeed = 300; // 200 is too fast
 var zombieSpawnCount = 0;
@@ -254,7 +254,10 @@ function render() {
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
         let text = "Wave " + waveCount;
-        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
+        let x = g.canvas.width - (text.length * titleFontSize) - 40;
+        if (waveCount >= 10)
+            x += 15;
+        (_q = g.ctx) === null || _q === void 0 ? void 0 : _q.fillText(text, x, g.canvas.height / 2 - (titleFontSize / 2) - 100);
         g.ctx.font = "15px Pixel";
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
@@ -265,7 +268,7 @@ function render() {
         g.ctx.fillStyle = "white";
         g.ctx.globalAlpha = 1;
         (_s = g.ctx) === null || _s === void 0 ? void 0 : _s.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
-        let x = 25;
+        x = 25;
         if (player.coins < 10)
             x = 25;
         else if (player.coins >= 10 && player.coins < 100)

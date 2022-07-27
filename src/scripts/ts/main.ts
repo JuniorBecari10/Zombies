@@ -3,7 +3,7 @@ var player: Player = new Player({x: 1406, y: 1932, w: pixelSize, h: pixelSize}, 
 const bossSpawn: Point = {x: 1306, y: 1932};
 
 var zombiePositions: Point[] = [{x: 1148, y: 1940}, {x: 1152, y: 2148}, {x: 1876, y: 1732}];
-var waveCount: number = 1;
+var waveCount: number = 9;
 
 var spawnSpeedCount: number = 0;
 var spawnSpeed: number = 300; // 200 is too fast
@@ -337,8 +337,12 @@ function render(): void {
         g.ctx!.globalAlpha = 1;
         
         let text: string = "Wave " + waveCount;
+        let x: number = g.canvas.width - (text.length * titleFontSize) - 40;
         
-        g.ctx?.fillText(text, g.canvas.width - (text.length * titleFontSize) - 40, g.canvas.height / 2 - (titleFontSize / 2) - 100);
+        if (waveCount >= 10)
+            x += 15;
+        
+        g.ctx?.fillText(text, x, g.canvas.height / 2 - (titleFontSize / 2) - 100);
         
         g.ctx!.font = "15px Pixel";
         g.ctx!.fillStyle = "white";
@@ -355,7 +359,7 @@ function render(): void {
         g.ctx!.globalAlpha = 1;
         
         g.ctx?.drawImage(playerSpritesheet, 288, 4480, 16 * 23, 26 * 23, g.canvas.width - 190, g.canvas.height / 2 - 80, 7 * 5, 10 * 5);
-        let x: number = 25;
+        x = 25;
         
         if (player.coins < 10) x = 25;
         else if (player.coins >= 10 && player.coins < 100) x = 45;
