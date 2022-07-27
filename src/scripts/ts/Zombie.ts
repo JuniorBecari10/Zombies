@@ -98,6 +98,7 @@ class Zombie extends Entity {
         
         if (this.hp <= 0) {
             //this.destroy();
+            this.hp = 0;
             this.dying = true;
             
             player.coins += 20;

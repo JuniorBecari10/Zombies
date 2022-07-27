@@ -12,7 +12,7 @@ const titleFontSize = 20;
 const fontSize = 15;
 const powerMachinePrice = 1000;
 const powerMachineBounds = { x: 2432, y: 706, w: 260, h: 273 };
-var powerOn = false;
+var powerOn = true; // true for you buy perks :)
 var sec = 0;
 var min = 0;
 var hour = 0;
@@ -94,6 +94,7 @@ function addWeaponStations() {
 function addPerkStations() {
     entities.push(new PerkStation({ x: 792, y: 1200, w: 16 * 3, h: 16 * 3 }, perks, { x: 80 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "regen", 700));
     entities.push(new PerkStation({ x: 2748, y: 2137, w: 16 * 3, h: 16 * 3 }, perks, { x: 48 * 3, y: 0, w: 16 * 3, h: 16 * 3 }, "quick", 700));
+    entities.push(new PerkStation({ x: 244, y: 1076, w: 16 * 3, h: 16 * 3 }, perks, { x: 0, y: 0, w: 16 * 3, h: 16 * 3 }, "speed", 700));
 }
 function tick() {
     if (gameState === "game" || gameState === "menu") {
