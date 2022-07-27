@@ -133,9 +133,10 @@ function tick() {
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
                 waveCount++;
-                spawnSpeed += 20;
+                spawnSpeed -= 20; // to become faster the number needs to become smaller
                 zombieKills = 0;
             }
+            // don't spawn more than expected
             if (zombieSpawnCount + 1 > waves[waveCount - 1].zombieAmount) {
                 return;
             }
