@@ -18,7 +18,7 @@ const fontSize: number = 15;
 const powerMachinePrice: number = 1000;
 const powerMachineBounds: Rectangle = {x: 2432, y: 706, w: 260, h: 273};
 
-var powerOn: boolean = true; // true for you buy perks :)
+var powerOn: boolean = false;
 
 var sec: number = 0;
 var min: number = 0;
@@ -186,7 +186,7 @@ function tick(): void {
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
                 waveCount++;
-                spawnSpeed -= 20; // to become faster the number needs to become smaller
+                spawnSpeed -= 5; // to become faster the number needs to become smaller
                 zombieKills = 0;
             }
             
