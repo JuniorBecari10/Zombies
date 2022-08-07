@@ -11,9 +11,9 @@ places!
 
 ## Controls
 
-**WASD, Arrows** - Move
-**Space** - Dash in direction you are looking in
-**R** - Recharge Weapon
-**1, 2, 3** - Select Weapon Slots
+**WASD, Arrows** - Move <br>
+**Space** - Dash in direction you are looking in <br>
+**R** - Recharge Weapon <br>
+**1, 2, 3** - Select Weapon Slots <br>
 
 Good luck!
