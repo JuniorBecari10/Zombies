@@ -1,6 +1,6 @@
 # Zombies
 
-An epic game where you have to fight various Waves of Zombies. Can you kill them all?
+An epic game where you have to fight various Waves of Zombies. Can you kill them all? <br>
 Runs directly on browser.
 
 ## How to Play
@@ -10,9 +10,8 @@ Killing zombies give you Coins, where you can buy Weapons and Perks, and also un
 places!
 
 <br>
-<br>
 
-The objective is to survive ***30*** Waves of Zombies.
+The objective is to survive **30** Waves of Zombies.
 
 ## Controls
 
