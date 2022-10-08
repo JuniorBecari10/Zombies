@@ -34,7 +34,9 @@ class Zombie extends Entity {
         this.maxAnimCount = 8;
         this.animIndex = 0;
         this.maxAnimIndex = 3;
+        this.rising = true;
         this.dying = false;
+        this.originalBounds = { x: bounds.x, y: bounds.y, w: bounds.w, h: bounds.h };
         this.hp = hp;
         this.maxHp = hp;
         this.defense = defense;
@@ -44,8 +46,19 @@ class Zombie extends Entity {
         this.ability = ability;
         this.name = name;
         this.animFrames = animFrames;
+        this.bounds.w = 0;
+        this.bounds.h = 0;
     }
     tick() {
+        if (this.rising) {
+            //this.bounds.x -= 3;
+            this.bounds.y -= 3;
+            this.bounds.w += 6;
+            this.bounds.h += 6;
+            if (this.bounds.w === this.originalBounds.w && this.bounds.h === this.originalBounds.h)
+                this.rising = false;
+            return;
+        }
         if (this.dying) {
             this.bounds.x += 3;
             this.bounds.y += 3;

@@ -140,7 +140,7 @@ function tick(): void {
                 gameState = "game";
             }
         }
-        console.log(keyPressed);
+        
         for (let o of entities) {
             o.tick();
         }

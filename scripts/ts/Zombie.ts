@@ -42,6 +42,8 @@ const waves: Wave[] = [{zombieAmount: 8, zombieTypes: ["basic-zombie"]},
                        {zombieAmount: 1, zombieTypes: ["bombie"]}];
 
 class Zombie extends Entity {
+    originalBounds: Rectangle;
+    
     hp: number;
     maxHp: number;
     defense: number;
@@ -64,12 +66,15 @@ class Zombie extends Entity {
     
     animFrames: Rectangle[];
     
+    rising: boolean = true;
     dying: boolean = false;
     
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
     hp: number, defense: number, attack: number, immunity: Immunity, ability: () => void,
     name: string, isBoss: boolean, animFrames: Rectangle[]) {
         super(bounds, spritesheet, cutBounds);
+        
+        this.originalBounds = {x: bounds.x, y: bounds.y, w: bounds.w, h: bounds.h};
         
         this.hp = hp;
         this.maxHp = hp;
@@ -82,9 +87,24 @@ class Zombie extends Entity {
         
         this.name = name;
         this.animFrames = animFrames;
+        
+        this.bounds.w = 0;
+        this.bounds.h = 0;
     }
     
     tick(): void {
+        if (this.rising) {
+            //this.bounds.x -= 3;
+            this.bounds.y -= 3;
+            this.bounds.w += 6;
+            this.bounds.h += 6;
+            
+            if (this.bounds.w === this.originalBounds.w && this.bounds.h === this.originalBounds.h)
+                this.rising = false;
+            
+            return;
+        }
+        
         if (this.dying) {
             this.bounds.x += 3;
             this.bounds.y += 3;
