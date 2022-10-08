@@ -12,18 +12,16 @@ const titleFontSize = 20;
 const fontSize = 15;
 const powerMachinePrice = 1000;
 const powerMachineBounds = { x: 2432, y: 706, w: 260, h: 273 };
-var powerOn = true; // true for you buy perks :)
+var powerOn = false;
 var sec = 0;
 var min = 0;
 var hour = 0;
 var count = 0;
 document.addEventListener("keydown", function (event) {
-    keyPressed = event;
-    isKeyPressed = true;
+    keyPressed.add(event.keyCode);
 });
 document.addEventListener("keyup", function (event) {
-    keyPressed = event;
-    isKeyPressed = false;
+    keyPressed.delete(event.keyCode);
 });
 document.addEventListener("mousemove", function (event) {
     let x = event.clientX;
@@ -100,10 +98,11 @@ function addPerkStations() {
 function tick() {
     if (gameState === "game" || gameState === "menu") {
         if (gameState === "menu") {
-            if (keyPressed !== undefined && keyPressed.keyCode === enterCode) {
+            if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
             }
         }
+        console.log(keyPressed);
         for (let o of entities) {
             o.tick();
         }
@@ -111,7 +110,7 @@ function tick() {
             gameState = "win";
         // check if the player is near the power machine
         if (collide(player.bounds, powerMachineBounds) &&
-            keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
+            isKeyPressed(enterCode) && player.coins >= powerMachinePrice && !powerOn) {
             powerOn = true;
         }
         if (gameState === "menu")
@@ -136,7 +135,7 @@ function tick() {
             if (zombieSpawnCount >= waves[waveCount - 1].zombieAmount && zombiesAliveAmount() == 0) {
                 zombieSpawnCount = 0;
                 waveCount++;
-                spawnSpeed -= 20; // to become faster the number needs to become smaller
+                spawnSpeed -= 5; // to become faster the number needs to become smaller
                 zombieKills = 0;
             }
             // don't spawn more than expected
@@ -164,12 +163,12 @@ function tick() {
         }
     }
     else if (gameState === "gameover") {
-        if (keyPressed.keyCode === enterCode) {
+        if (isKeyPressed(enterCode)) {
             reset();
         }
     }
     else if (gameState === "win") {
-        if (keyPressed.keyCode === enterCode) {
+        if (isKeyPressed(enterCode)) {
             reset();
         }
     }

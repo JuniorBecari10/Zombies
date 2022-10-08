@@ -1,7 +1,6 @@
 "use strict";
 var gameState = "menu";
-var keyPressed;
-var isKeyPressed = false;
+var keyPressed = new Set();
 var mousePos = { x: 0, y: 0 };
 var isMousePressed = false;
 var waveNumber = 100000;
@@ -48,6 +47,12 @@ function capitalize(s) {
         words[i] = words[i][0].toUpperCase() + words[i].substr(1);
     }
     return words.join(" ");
+}
+function isKeyPressed(keyCode) {
+    return keyPressed.has(keyCode);
+}
+function anyKeyPressed() {
+    return keyPressed.size > 0;
 }
 //setCollisions(imageToImageData(collision));
 // multiply the map by 4x !!!

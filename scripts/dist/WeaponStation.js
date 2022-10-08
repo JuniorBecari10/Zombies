@@ -8,7 +8,7 @@ class WeaponStation extends Entity {
     tick() {
         if (player.coins >= this.price &&
             collide(player.bounds, this.bounds) &&
-            keyPressed.keyCode === enterCode && !player.hasWeapon(getWeapon(this.weapon).name)) {
+            isKeyPressed(enterCode) && !player.hasWeapon(getWeapon(this.weapon).name)) {
             player.coins -= this.price;
             player.weapons[player.freeSlot()] = getWeapon(this.weapon);
             //this.destroy();

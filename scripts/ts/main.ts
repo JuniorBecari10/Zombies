@@ -27,13 +27,11 @@ var hour: number = 0;
 var count: number = 0;
 
 document.addEventListener("keydown", function (event: KeyboardEvent) {
-    keyPressed = event;
-    isKeyPressed = true;
+    keyPressed.add(event.keyCode);
 });
 
 document.addEventListener("keyup", function (event: KeyboardEvent) {
-    keyPressed = event;
-    isKeyPressed = false;
+    keyPressed.delete(event.keyCode);
 });
 
 document.addEventListener("mousemove", function (event: MouseEvent) {
@@ -138,11 +136,11 @@ function addPerkStations() {
 function tick(): void {
     if (gameState === "game" || gameState === "menu") {
         if (gameState === "menu") {
-            if (keyPressed !== undefined && keyPressed.keyCode === enterCode) {
+            if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
             }
         }
-        
+        console.log(keyPressed);
         for (let o of entities) {
             o.tick();
         }
@@ -153,7 +151,7 @@ function tick(): void {
         // check if the player is near the power machine
         
         if (collide(player.bounds, powerMachineBounds) &&
-            keyPressed.keyCode === enterCode && player.coins >= powerMachinePrice && !powerOn) {
+            isKeyPressed(enterCode) && player.coins >= powerMachinePrice && !powerOn) {
             powerOn = true;
         }
         
@@ -222,12 +220,12 @@ function tick(): void {
         }
     }
     else if (gameState === "gameover") {
-        if (keyPressed.keyCode === enterCode) {
+        if (isKeyPressed(enterCode)) {
             reset();
         }
     }
     else if (gameState === "win") {
-        if (keyPressed.keyCode === enterCode) {
+        if (isKeyPressed(enterCode)) {
             reset();
         }
     }

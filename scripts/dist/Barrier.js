@@ -11,7 +11,7 @@ class Barrier extends Entity {
         let doubleBounds = getDoubleBounds(this.bounds);
         if (player.coins >= this.price &&
             collide(player.bounds, doubleBounds) &&
-            keyPressed.keyCode === enterCode) {
+            isKeyPressed(enterCode)) {
             player.coins -= this.price;
             for (let n of this.newPositions)
                 zombiePositions.push(n);

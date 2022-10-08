@@ -139,7 +139,7 @@ class Player extends Entity {
         if (this.dashCount < this.maxDashCount)
            this.dashCount++;
         
-        if (isKeyPressed && gameState === "game") {
+        if (anyKeyPressed() && gameState === "game") {
             this.animCount++;
             
             if (this.animCount >= this.maxAnimCount) {
@@ -152,7 +152,7 @@ class Player extends Entity {
                 }
             }
             
-            if (keyPressed.keyCode == spaceCode && gameState === "game" && this.dashCount >= this.maxDashCount) { // dash
+            if (isKeyPressed(spaceCode) && gameState === "game" && this.dashCount >= this.maxDashCount) { // dash
                 this.dashCount = 0;
                 this.dashSpeed = this.constDashSpeed;
                 
@@ -199,35 +199,35 @@ class Player extends Entity {
                 }
             }
             
-            if (keyPressed.keyCode == oneCode && this.weapons[2] !== undefined)
+            if (isKeyPressed(oneCode) && this.weapons[2] !== undefined)
                 weaponSelected = 2;
             
-            else if (keyPressed.keyCode == twoCode && this.weapons[1] !== undefined)
+            else if (isKeyPressed(twoCode) && this.weapons[1] !== undefined)
                 weaponSelected = 1;
             
-            else if (keyPressed.keyCode == threeCode && this.weapons[0] !== undefined)
+            else if (isKeyPressed(threeCode) && this.weapons[0] !== undefined)
                 weaponSelected = 0;
             
             // ------------------------------------
             
-            if (keyPressed.keyCode == upArrowCode || keyPressed.keyCode == wCode)
+            if (isKeyPressed(upArrowCode) || isKeyPressed(wCode))
                 this.up = true;
-            else if (keyPressed.keyCode != upArrowCode || keyPressed.keyCode != wCode)
+            else if (!isKeyPressed(upArrowCode) || !isKeyPressed(wCode))
                 this.up = false;
             
-            if (keyPressed.keyCode == downArrowCode || keyPressed.keyCode == sCode)
+            if (isKeyPressed(downArrowCode) || isKeyPressed(sCode))
                 this.down = true;
-            else if (keyPressed.keyCode != downArrowCode || keyPressed.keyCode != sCode)
+            else if (!isKeyPressed(downArrowCode) || !isKeyPressed(sCode))
                 this.down = false;
             
-            if (keyPressed.keyCode == leftArrowCode || keyPressed.keyCode == aCode)
+            if (isKeyPressed(leftArrowCode) || isKeyPressed(aCode))
                 this.left = true;
-            else if (keyPressed.keyCode != leftArrowCode || keyPressed.keyCode != aCode)
+            else if (!isKeyPressed(leftArrowCode) || !isKeyPressed(aCode))
                 this.left = false;
             
-            if (keyPressed.keyCode == rightArrowCode || keyPressed.keyCode == dCode)
+            if (isKeyPressed(rightArrowCode) || isKeyPressed(dCode))
                 this.right = true;
-            else if (keyPressed.keyCode != rightArrowCode || keyPressed.keyCode != dCode)
+            else if (!isKeyPressed(rightArrowCode) || !isKeyPressed(dCode))
                 this.right = false;
             /*
             if (keyPressed.keyCode == rCode) {
@@ -278,7 +278,7 @@ class Player extends Entity {
         
         this.cooldownCount++;
         
-        if ((this.weapons[weaponSelected].ammo === 0 || (keyPressed !== undefined && keyPressed.keyCode === rCode)) && isKeyPressed && this.weapons[weaponSelected].ammo < this.weapons[weaponSelected].ammoLoaded) {
+        if ((this.weapons[weaponSelected].ammo === 0 || isKeyPressed(rCode)) && this.weapons[weaponSelected].ammo < this.weapons[weaponSelected].ammoLoaded) {
             if (!this.recharging) {
                 this.recharging = true;
             }
