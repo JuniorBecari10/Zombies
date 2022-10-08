@@ -21,7 +21,7 @@ class Barrier extends Entity {
         
         if (player.coins >= this.price && 
             collide(player.bounds, doubleBounds) && 
-            keyPressed.keyCode === enterCode) {
+            isKeyPressed(enterCode)) {
             player.coins -= this.price;
             
             for (let n of this.newPositions)

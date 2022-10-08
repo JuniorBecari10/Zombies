@@ -3,8 +3,7 @@ type Immunity = "none" | "fire" | "ice" | "explosive";
 
 var gameState: GameState = "menu";
 
-var keyPressed: KeyboardEvent;
-var isKeyPressed: boolean = false;
+var keyPressed: Set<number> = new Set();
 
 var mousePos: Point = {x: 0, y: 0};
 var isMousePressed: boolean = false;
@@ -72,6 +71,14 @@ function capitalize(s: string): string {
     }
     
     return words.join(" ");
+}
+
+function isKeyPressed(keyCode: number): boolean {
+    return keyPressed.has(keyCode);
+}
+
+function anyKeyPressed(): boolean {
+    return keyPressed.size > 0;
 }
 
 //setCollisions(imageToImageData(collision));

@@ -8,7 +8,7 @@ class PerkStation extends Entity {
     tick() {
         if (player.coins >= this.price &&
             collide(player.bounds, this.bounds) &&
-            keyPressed.keyCode === enterCode && !player.hasPerk(getPerk(this.perk).name) &&
+            isKeyPressed(enterCode) && !player.hasPerk(getPerk(this.perk).name) &&
             powerOn) {
             player.coins -= this.price;
             player.perks[player.freePerkSlot() < 0 ? 0 : player.freePerkSlot()] = getPerk(this.perk);
