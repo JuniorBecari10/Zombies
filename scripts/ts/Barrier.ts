@@ -50,7 +50,7 @@ class Barrier extends Entity {
             
             if (player.coins < this.price) {
                 g.ctx!.fillStyle = "#FF4545";
-                g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+                g.ctx?.fillText("Not Enough Coins!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
             }
         }
     }

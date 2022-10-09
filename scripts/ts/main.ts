@@ -34,8 +34,10 @@ startBtn.tick = function() {
     if (collide(this.bounds, {x: mousePos.x, y: mousePos.y, w: 1, h: 1})) {
         this.sprite = startButtonSel;
         
-        if (isMousePressed)
+        if (isMousePressed) {
+            isMousePressed = false;
             this.action();
+        }
     }
     else {
         this.sprite = startButton;
@@ -159,6 +161,13 @@ function tick(): void {
     if (gameState === "game" || gameState === "menu") {
         if (gameState === "menu") {
             startBtn.tick();
+            
+            let text = "v1.1 | Made by Antonio (JuniorBecari10).";
+            
+            if (collide({x: 20, y: g.canvas.height - 40, w: text.length * 15, h: 20}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed) {
+                isMousePressed = false;
+                window.open("https://github.com/JuniorBecari10/Zombies", "_blank");
+            }
             
             if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
@@ -301,7 +310,7 @@ function render(): void {
         
         if (player.coins < powerMachinePrice) {
             g.ctx!.fillStyle = "#FF4545";
-            g.ctx?.fillText("Not Enough Money!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
+            g.ctx?.fillText("Not Enough Coins!", player.bounds.x + player.bounds.w - camera.x, player.bounds.y - camera.y + 90);
         }
         else if (powerOn) {
             g.ctx!.fillStyle = "#FF4545";
@@ -510,7 +519,7 @@ function render(): void {
         
         g.ctx!.globalAlpha = 1;
         
-        let text = "v1.1 | Made by Junior.";
+        let text = "v1.1 | Made by Antonio (JuniorBecari10).";
         
         g.ctx!.globalAlpha = 1;
         
