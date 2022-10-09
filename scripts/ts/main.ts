@@ -31,8 +31,14 @@ var startBtn: Button = new Button({x: (g.canvas.width / 2) - startButton.width /
 startBtn.tick = function() {
     this.bounds.x = (g.canvas.width / 2) - startButton.width / 2;
     
-    if (collide(this.bounds, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed) {
-        this.action();
+    if (collide(this.bounds, {x: mousePos.x, y: mousePos.y, w: 1, h: 1})) {
+        this.sprite = startButtonSel;
+        
+        if (isMousePressed)
+            this.action();
+    }
+    else {
+        this.sprite = startButton;
     }
 };
 
@@ -504,14 +510,15 @@ function render(): void {
         
         g.ctx!.globalAlpha = 1;
         
-        /*let text = "Press Enter to start";
+        let text = "v1.1 | Made by Junior.";
         
         g.ctx!.globalAlpha = 1;
         
         g.ctx!.fillStyle = "white";
         g.ctx!.font = "15px Pixel";
         
-        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);*/
+        g.ctx?.fillText(text, 20, g.canvas.height - 20);
+        
         g.ctx?.drawImage(logoSheet,
                          logoRects[logoIndex].x,
                          logoRects[logoIndex].y,

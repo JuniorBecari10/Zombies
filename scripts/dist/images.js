@@ -1,6 +1,7 @@
 "use strict";
 const logoSheet = loadImage("logo-sheet");
 const startButton = loadImage("start-button");
+const startButtonSel = loadImage("start-button-sel");
 const gameOver = loadImage("game-over");
 const playerSpritesheet = loadImage("player-spritesheet");
 const basicZombieSpr = loadImage("basic-zombie");
