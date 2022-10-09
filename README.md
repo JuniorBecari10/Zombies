@@ -9,8 +9,6 @@ Zombies come out to try to kill you, but you have to kill them first, brave warr
 Killing zombies give you Coins, where you can buy Weapons and Perks, and also unlock new
 places!
 
-<br>
-
 The objective is to survive **30** Waves of Zombies.
 
 ## Controls

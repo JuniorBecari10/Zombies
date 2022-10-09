@@ -68,6 +68,11 @@ function reset() {
     zombiePositions = [{ x: 1148, y: 1940 }, { x: 1152, y: 2148 }, { x: 1876, y: 1732 }];
 }
 // ----------------------------------------
+function setupOnce() {
+    for (let i = 0; i < logoFrames; i++) {
+        logoRects.push({ x: 0, y: logoHeight * i, w: logoSheet.width, h: logoHeight });
+    }
+}
 function init() {
     addBarriers();
     addWeaponStations();
@@ -100,6 +105,14 @@ function tick() {
         if (gameState === "menu") {
             if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
+            }
+            logoIndexCount++;
+            if (logoIndexCount >= logoIndexMaxCount) {
+                logoIndex++;
+                logoIndexCount = 0;
+                if (logoIndex >= logoFrames) {
+                    logoIndex = 0;
+                }
             }
         }
         for (let o of entities) {
@@ -377,7 +390,8 @@ function render() {
         g.ctx.fillStyle = "white";
         g.ctx.font = "15px Pixel";
         (_6 = g.ctx) === null || _6 === void 0 ? void 0 : _6.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
-        (_7 = g.ctx) === null || _7 === void 0 ? void 0 : _7.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+        (_7 = g.ctx) === null || _7 === void 0 ? void 0 : _7.drawImage(logoSheet, logoRects[logoIndex].x, logoRects[logoIndex].y, logoRects[logoIndex].w, logoRects[logoIndex].h, (g.canvas.width / 2) - (logoSheet.width / 2), 120, // 140
+        logoSheet.width, logoHeight);
     }
     else if (gameState === "win") {
         g.ctx.globalAlpha = 0.2;
@@ -393,7 +407,7 @@ function render() {
         (_10 = g.ctx) === null || _10 === void 0 ? void 0 : _10.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 310);
         text = "Press Enter to restart.";
         (_11 = g.ctx) === null || _11 === void 0 ? void 0 : _11.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 360);
-        (_12 = g.ctx) === null || _12 === void 0 ? void 0 : _12.drawImage(youWin, (g.canvas.width / 2) - (logo.width / 2), 140);
+        (_12 = g.ctx) === null || _12 === void 0 ? void 0 : _12.drawImage(youWin, (g.canvas.width / 2) - (logoSheet.width / 2), 140);
     }
 }
 function loop() {

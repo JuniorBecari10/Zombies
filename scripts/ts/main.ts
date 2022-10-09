@@ -98,6 +98,12 @@ function reset(): void {
 
 // ----------------------------------------
 
+function setupOnce(): void {
+    for (let i = 0; i < logoFrames; i++) {
+        logoRects.push({x: 0, y: logoHeight * i, w: logoSheet.width, h: logoHeight});
+    }
+}
+
 function init(): void {
     addBarriers();
     addWeaponStations();
@@ -138,6 +144,17 @@ function tick(): void {
         if (gameState === "menu") {
             if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
+            }
+            
+            logoIndexCount++;
+            
+            if (logoIndexCount >= logoIndexMaxCount) {
+                logoIndex++;
+                logoIndexCount = 0;
+                
+                if (logoIndex >= logoFrames) {
+                    logoIndex = 0;
+                }
             }
         }
         
@@ -481,7 +498,15 @@ function render(): void {
         g.ctx!.font = "15px Pixel";
         
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
-        g.ctx?.drawImage(logo, (g.canvas.width / 2) - (logo.width / 2), 140);
+        g.ctx?.drawImage(logoSheet,
+                         logoRects[logoIndex].x,
+                         logoRects[logoIndex].y,
+                         logoRects[logoIndex].w,
+                         logoRects[logoIndex].h,
+                         (g.canvas.width / 2) - (logoSheet.width / 2),
+                         120, // 140
+                         logoSheet.width,
+                         logoHeight);
     }
     else if (gameState === "win") {
         g.ctx!.globalAlpha = 0.2;
@@ -506,7 +531,7 @@ function render(): void {
         text = "Press Enter to restart.";
         g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 360);
         
-        g.ctx?.drawImage(youWin, (g.canvas.width / 2) - (logo.width / 2), 140);
+        g.ctx?.drawImage(youWin, (g.canvas.width / 2) - (logoSheet.width / 2), 140);
     }
 }
 

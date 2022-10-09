@@ -1,5 +1,11 @@
 "use strict";
 var gameState = "menu";
+const logoHeight = 95; // 76
+var logoRects = [];
+const logoFrames = 5;
+var logoIndex = 0;
+var logoIndexCount = 0;
+const logoIndexMaxCount = 8;
 var keyPressed = new Set();
 var mousePos = { x: 0, y: 0 };
 var isMousePressed = false;

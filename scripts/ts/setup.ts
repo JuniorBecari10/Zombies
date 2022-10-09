@@ -3,6 +3,16 @@ type Immunity = "none" | "fire" | "ice" | "explosive";
 
 var gameState: GameState = "menu";
 
+const logoHeight: number = 95; // 76
+
+var logoRects: Rectangle[] = [];
+const logoFrames: number = 5;
+
+var logoIndex: number = 0;
+
+var logoIndexCount: number = 0;
+const logoIndexMaxCount: number = 8;
+
 var keyPressed: Set<number> = new Set();
 
 var mousePos: Point = {x: 0, y: 0};
