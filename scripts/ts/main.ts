@@ -26,6 +26,16 @@ var hour: number = 0;
 
 var count: number = 0;
 
+var startBtn: Button = new Button({x: (g.canvas.width / 2) - startButton.width / 2, y: 250, w: startButton.width, h: startButton.height}, startButton, () => { gameState = "game"; });
+
+startBtn.tick = function() {
+    this.bounds.x = (g.canvas.width / 2) - startButton.width / 2;
+    
+    if (collide(this.bounds, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed) {
+        this.action();
+    }
+};
+
 document.addEventListener("keydown", function (event: KeyboardEvent) {
     keyPressed.add(event.keyCode);
 });
@@ -142,6 +152,8 @@ function addPerkStations() {
 function tick(): void {
     if (gameState === "game" || gameState === "menu") {
         if (gameState === "menu") {
+            startBtn.tick();
+            
             if (keyPressed !== undefined && isKeyPressed(enterCode)) {
                 gameState = "game";
             }
@@ -490,14 +502,16 @@ function render(): void {
         g.ctx!.fillStyle = "black";
         g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
         
-        let text = "Press Enter to start";
+        g.ctx!.globalAlpha = 1;
+        
+        /*let text = "Press Enter to start";
         
         g.ctx!.globalAlpha = 1;
         
         g.ctx!.fillStyle = "white";
         g.ctx!.font = "15px Pixel";
         
-        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);
+        g.ctx?.fillText(text, (g.canvas.width / 2) - ((fontSize * text.length) / 2), 280);*/
         g.ctx?.drawImage(logoSheet,
                          logoRects[logoIndex].x,
                          logoRects[logoIndex].y,
@@ -507,6 +521,8 @@ function render(): void {
                          120, // 140
                          logoSheet.width,
                          logoHeight);
+        
+        startBtn.render(g);
     }
     else if (gameState === "win") {
         g.ctx!.globalAlpha = 0.2;
