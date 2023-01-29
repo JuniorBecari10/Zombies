@@ -62,6 +62,8 @@ class Player extends Entity {
     
     cooldownCount = 0;
     
+    feedback: boolean = false;
+    
     weapons: Weapon[];
     perks: Perk[];
     
@@ -271,6 +273,12 @@ class Player extends Entity {
             if (this.dir == "right") {
                 this.cutBounds = this.rightSprs[0];
             }
+        }
+        
+        if (this.feedback) {
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, h: 16 * 70 };
+            
+            this.feedback = false;
         }
         
         if (this.weapons[weaponSelected].ammo === this.weapons[weaponSelected].ammoLoaded)

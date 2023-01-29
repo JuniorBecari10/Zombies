@@ -89,12 +89,8 @@ class Zombie extends Entity {
             }
         }
         if (this.feedback) {
-            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, y: 16 * 70 };
-            this.feedbackCount++;
-            if (this.feedbackCount >= this.maxFeedbackCount) {
-                this.feedbackCount = 0;
-                this.feedback = false;
-            }
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, h: 16 * 70 };
+            this.feedback = false;
         }
         // basic following system
         if (this.bounds.x <= player.bounds.x && !collideWithAny({ x: this.bounds.x + this.speed, y: this.bounds.y, w: this.bounds.w, h: this.bounds.h }))

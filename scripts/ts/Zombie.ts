@@ -145,14 +145,9 @@ class Zombie extends Entity {
         }
         
         if (this.feedback) {
-            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, y: 16 * 70 };
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, h: 16 * 70 };
             
-            this.feedbackCount++;
-            
-            if (this.feedbackCount >= this.maxFeedbackCount) {
-                this.feedbackCount = 0;
-                this.feedback = false;
-            }
+            this.feedback = false;
         }
         
         // basic following system

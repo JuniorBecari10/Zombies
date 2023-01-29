@@ -39,6 +39,7 @@ class Player extends Entity {
         this.dashSpeed = 4;
         this.constDashSpeed = 4;
         this.cooldownCount = 0;
+        this.feedback = false;
         this.dashDownSpr = { x: 80 * 70, y: 0, w: 16 * 70, h: 16 * 70 };
         this.dashLeftSpr = { x: 80 * 70, y: 16 * 70, w: 16 * 70, h: 16 * 70 };
         this.dashRightSpr = { x: 80 * 70, y: 32 * 70, w: 16 * 70, h: 16 * 70 };
@@ -213,6 +214,10 @@ class Player extends Entity {
             if (this.dir == "right") {
                 this.cutBounds = this.rightSprs[0];
             }
+        }
+        if (this.feedback) {
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, h: 16 * 70 };
+            this.feedback = false;
         }
         if (this.weapons[weaponSelected].ammo === this.weapons[weaponSelected].ammoLoaded)
             this.recharging = false;
