@@ -39,6 +39,8 @@ class Bullet extends Entity {
         
         if (this.collideWithEntity() instanceof Zombie)
             (this.collideWithEntity() as Zombie).hp -= player.weapons[weaponSelected].bulletDamage - (this.collideWithEntity() as Zombie).defense;
+            (this.collideWithEntity() as Zombie).feedback = true;
+            (this.collideWithEntity() as Zombie).feedbackCount = (this.collideWithEntity() as Zombie).maxFeedbackCount;
         
         if (collideWithAny(this.bounds) || this.collideWithEntity() instanceof Zombie) {
             if (this.explosive) {

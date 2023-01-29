@@ -36,6 +36,9 @@ class Zombie extends Entity {
         this.maxAnimIndex = 3;
         this.rising = true;
         this.dying = false;
+        this.feedback = false;
+        this.feedbackCount = 0;
+        this.maxFeedbackCount = 10;
         this.originalBounds = { x: bounds.x, y: bounds.y, w: bounds.w, h: bounds.h };
         this.hp = hp;
         this.maxHp = hp;
@@ -83,6 +86,14 @@ class Zombie extends Entity {
             this.cutBounds = this.animFrames[this.animIndex];
             if (this.animIndex >= this.maxAnimIndex) {
                 this.animIndex = 0;
+            }
+        }
+        if (this.feedback) {
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, y: 16 * 70 };
+            this.feedbackCount++;
+            if (this.feedbackCount >= this.maxFeedbackCount) {
+                this.feedbackCount = 0;
+                this.feedback = false;
             }
         }
         // basic following system

@@ -18,6 +18,8 @@ const fontSize: number = 15;
 const powerMachinePrice: number = 1000;
 const powerMachineBounds: Rectangle = {x: 2432, y: 706, w: 260, h: 273};
 
+const text: string = "v1.1 | Made by JuniorBecari10.";
+
 var powerOn: boolean = false;
 
 var sec: number = 0;
@@ -161,8 +163,6 @@ function tick(): void {
     if (gameState === "game" || gameState === "menu") {
         if (gameState === "menu") {
             startBtn.tick();
-            
-            let text = "v1.1 | Made by Antonio (JuniorBecari10).";
             
             if (collide({x: 20, y: g.canvas.height - 40, w: text.length * 15, h: 20}, {x: mousePos.x, y: mousePos.y, w: 1, h: 1}) && isMousePressed) {
                 isMousePressed = false;
@@ -518,8 +518,6 @@ function render(): void {
         g.ctx?.fillRect(0, 0, g.canvas.width, g.canvas.height);
         
         g.ctx!.globalAlpha = 1;
-        
-        let text = "v1.1 | Made by Antonio (JuniorBecari10).";
         
         g.ctx!.globalAlpha = 1;
         

@@ -69,6 +69,10 @@ class Zombie extends Entity {
     rising: boolean = true;
     dying: boolean = false;
     
+    feedback: boolean = false;
+    feedbackCount: number = 0;
+    maxFeedbackCount: number = 10;
+    
     constructor(bounds: Rectangle, spritesheet: HTMLImageElement, cutBounds: Rectangle,
     hp: number, defense: number, attack: number, immunity: Immunity, ability: () => void,
     name: string, isBoss: boolean, animFrames: Rectangle[]) {
@@ -137,6 +141,17 @@ class Zombie extends Entity {
             
             if (this.animIndex >= this.maxAnimIndex) {
                 this.animIndex = 0;
+            }
+        }
+        
+        if (this.feedback) {
+            this.cutBounds = { x: (16 * 70) * 4, y: 0, w: 16 * 70, y: 16 * 70 };
+            
+            this.feedbackCount++;
+            
+            if (this.feedbackCount >= this.maxFeedbackCount) {
+                this.feedbackCount = 0;
+                this.feedback = false;
             }
         }
         
